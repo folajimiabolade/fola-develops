@@ -1,0 +1,38 @@
+{% extends "user_base.html" %}
+
+{% block user_title %}Administration{% endblock %}
+
+{% block user_body %}
+    <div class="admin-content testimonials-content">
+        <h3 class="text">Hello {{ current_user.first_name.lower() }}, testimonies are below:</h3>
+        {% for testimony in testimonies %}
+            {% if testimony.is_visible == True %}
+                <div class="testimony">
+            {% elif testimony.is_visible == False %}
+                <div class="testimony hidden">
+            {% endif %}
+                    <p class="text">Testimony {{ testimony.id }}</p>
+                    {% if testimony.user.picture_url %}
+                        <img class="testimony-picture"
+                             alt="{{ testimony.user.first_name }} {{ testimony.user.last_name }}"
+                             src="{{ testimony.user.picture_url }}"
+                        >
+                    {% else %}
+                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle holder-svg" viewBox="0 0 16 16">
+                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                        </svg>
+                    {% endif %}
+                    <p class="text testimony-author">{{ testimony.user.first_name }} {{ testimony.user.last_name }}</p>
+                    <p class="text testimony"><b>- {{ testimony.testimony }}</b></p>
+                    <p class="text testimony-website">Website built for user: <a class=text href="{{ testimony.website }}">{{ testimony.website }}</a></p>
+                    <p class="text testimony-date"><em>Posted on {{ testimony.datetime.strftime("%A, %B %d, %Y at %H:%M UTC") }}</em></p>
+                </div>
+            {% if testimony.is_visible == False %}
+                <a class="text cancel-anchor show-button" type="button" href="{{ url_for('show_testimony', i_d=testimony.id) }}">Show</a>
+            {% elif testimony.is_visible == True %}
+                <a class="text delete-anchor hide-button" type="button" href="{{ url_for('hide_testimony', i_d=testimony.id) }}">Hide</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

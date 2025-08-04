@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}What is your email{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        div.email-card::before {
+            content: "sign-up";
+            color: transparent;
+            background-image: url( "{{ url_for('static', filename='images/formal-meeting.jpg') }}" );
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            min-width: 100vw;
+            min-height: 100vh;
+            filter: brightness(0.2);
+       }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="email-card">
+        <div class="email-form">
+            <form class="email-house" action="{{ url_for('your_email') }}" method="post" novalidate>
+                {{ form.csrf_token }}
+                {{ form.email.label }}<br>
+                {{ form.email() }}<br>
+                {% for error in form.email.errors %}
+                <p class="text signup-instruction">{{ error }}</p>
+                {% endfor %}
+                {{ form.button() }}
+                <!--  Flashed Messages  -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="text login-flash">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <!--  End of Flashed Messages  -->
+            </form>
+        </div>
+    </div>
+{% endblock %}
