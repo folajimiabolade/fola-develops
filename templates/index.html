@@ -32,10 +32,6 @@
 
 {% block body %}
 
-    <script>
-      fbq('track', 'ViewContent');
-    </script>
-
     <!--  Hero  -->
     <div class="hero-prompt">
         <h2 class="text hero-body hero-title" style="display: none;">Own a website</h2>
@@ -89,17 +85,7 @@
             {% endfor %}
         {% endif %}
         {% if testimonies %}
-            <a class="text more-testimonies" href="{{ url_for('testimonies') }}" style="display: none;">View more testimonies</a>
+<!--            <a class="text more-testimonies" href="{{ url_for('testimonies') }}" style="display: none;">View more testimonies</a>-->
         {% endif %}
     </div>
-
-    <script>
-        document.querySelector("a.hero-button").addEventListener("click", function(e) {
-            e.preventDefault();
-            fbq('track', 'Contact');
-            setTimeout(function() {
-            window.open('https://wa.me/2347067681676', '_blank');
-            }, 300);
-        });
-    </script>
 {% endblock %}

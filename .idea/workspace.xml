@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1e872e6-5a59-4351-b112-4d48359f6c0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/designs.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/designs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/testimonies.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/testimonies.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +29,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="30pInBJIGcPgFZldM1FcKouG1U0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -31,6 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Flowzo/Official Web Projects/Fola-Develops"
   }
 }]]></component>
@@ -40,17 +52,17 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="ADMIN-EMAIL" value="folajimiabolade@gmail.com" />
         <env name="API-TOKEN-INSTANCE" value="0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba" />
         <env name="API-URL" value="https://7105.api.greenapi.com" />
         <env name="CLOUDINARY_URL" value="cloudinary://215419464748498:KTOWvQnuwJB0CGG1GY2BC3WrD74@webbuildhq" />
         <env name="DATABASE-URI" value="sqlite:///webbuildhq.db" />
-        <env name="EMAIL" value="webbuildhq@gmail.com" />
+        <env name="EMAIL" value="foladevelops@gmail.com" />
         <env name="FLASK-SECRET-KEY" value="promoted" />
         <env name="ID-INSTANCE" value="7105242026" />
         <env name="NUMBER" value="2348067071135" />
-        <env name="PASSWORD" value="ionixqjqqdnihazq" />
+        <env name="PASSWORD" value="ivmpdevgaqdrahrg" />
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="VIDEO-URL" value="https://res.cloudinary.com/webbuildhq/video/upload/v1753647414/Eating_meat._cfcf1m.mp4" />
       </envs>
       <option name="SDK_HOME" value="" />

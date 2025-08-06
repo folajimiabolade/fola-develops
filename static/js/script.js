@@ -92,47 +92,50 @@ if (this.document.querySelector("div.user-page")) { // if it is a user page
 }
 
 
-// Convert text version to title case
-function toTitleCase(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+// // Convert text version to title case
+// function toTitleCase(str) {
+//     return str.charAt(0).toUpperCase() + str.slice(1);
+// }
 
 
-// Make each design section show or hide their content, also add their emojis
-function activateDesign(design, emoji) {
-    const business_html1 = '<p class="text design-type"><b>▲ ' + emoji + ' ' + toTitleCase(design) + ' Designs</b></p>';
-    const business_html2 = '<p class="text design-type"><b>▼ ' + emoji + ' ' + toTitleCase(design) + ' Designs</b></p>';
-    $("div." + design).click(() => {
-    $("div." + design + "-designs").toggleClass("hidden");
-    if ($("div." + design + "-designs").hasClass("hidden")) {
-        console.log(true)
-        $("div." + design).html(business_html1);
-    } else {
-        console.log(false)
-        $("div." + design).html(business_html2);
-    }
-})
-}
+ 
 
 
-activateDesign("business", "💼");
-activateDesign("portfolio", "🗂️");
-activateDesign("blog", "📝");
-activateDesign("personal", "👨🏼‍💼");
+// // Make each design section show or hide their content, also add their emojis
+// function activateDesign(design, emoji) {
+//     const business_html1 = '<p class="text design-type"><b>▲ ' + emoji + ' ' + toTitleCase(design) + ' Designs</b></p>';
+//     const business_html2 = '<p class="text design-type"><b>▼ ' + emoji + ' ' + toTitleCase(design) + ' Designs</b></p>';
+//     $("div." + design).click(() => {
+//     $("div." + design + "-designs").toggleClass("hidden");
+//     if ($("div." + design + "-designs").hasClass("hidden")) {
+//         console.log(true)
+//         $("div." + design).html(business_html1);
+//     } else {
+//         console.log(false)
+//         $("div." + design).html(business_html2);
+//     }
+// })
+// }
+
+
+// activateDesign("business", "💼");
+// activateDesign("portfolio", "🗂️");
+// activateDesign("blog", "📝");
+// activateDesign("personal", "👨🏼‍💼");
 
 
 // Show or hide the 'Must read' full text when the 'more' or 'less' span element is clicked
 
-var information = $("div.information").html();
-$("div.information").html(information.slice(0, 440) + '<span class="text must-read"> ...more</span>')
+// var information = $("div.information").html();
+// $("div.information").html(information.slice(0, 440) + '<span class="text must-read"> ...more</span>')
 
-$("div.information").on("click", "span.must-read", function () {
-    if ($(this).text() === " ...more") {
-        $("div.information").html(information.slice(0, -38) + '<span class="text must-read"> less</span>' + information.slice(-39, -1));    
-    } else if ($(this).text() === " less") {
-        $("div.information").html(information.slice(0, 440) + '<span class="text must-read"> ...more</span>')
-    }
-})
+// $("div.information").on("click", "span.must-read", function () {
+//     if ($(this).text() === " ...more") {
+//         $("div.information").html(information.slice(0, -38) + '<span class="text must-read"> less</span>' + information.slice(-39, -1));    
+//     } else if ($(this).text() === " less") {
+//         $("div.information").html(information.slice(0, 440) + '<span class="text must-read"> ...more</span>')
+//     }
+// })
 
 
 // scroll the page to the list of designs on-click
@@ -140,6 +143,61 @@ $("span.touch-designs").click(function () {
     document.querySelector("div.design.business").scrollIntoView({behavior: "smooth"})
 })
 
+
+
+
+
+
+
+//  Projects page
+$("div.business").click(() => {
+    $("div.business-designs").toggleClass("hidden");
+    if ($("div.business-designs").hasClass("hidden")) {
+        $("div.business").html('<p class="text design-type"><b>▲ 1. 🔐 Authentication System</b></p>');
+    } else {
+        $("div.business").html('<p class="text design-type"><b>▼ 1. 🔐 Authentication System</b></p>');
+    }
+});
+$("div.portfolio").click(() => {
+    $("div.portfolio-designs").toggleClass("hidden");
+    if ($("div.portfolio-designs").hasClass("hidden")) {
+        $("div.portfolio").html('<p class="text design-type"><b>▲ 2. 📤 Picture Upload Manager</b></p>');
+    } else {
+        $("div.portfolio").html('<p class="text design-type"><b>▼ 2. 📤 Picture Upload Manager</b></p>');
+    }
+});
+$("div.blog").click(() => {
+    $("div.blog-designs").toggleClass("hidden");
+    if ($("div.blog-designs").hasClass("hidden")) {
+        $("div.blog").html('<p class="text design-type"><b>▲ 3. 🛒 E-commerce Platform (Prototype)</b></p>');
+    } else {
+        $("div.blog").html('<p class="text design-type"><b>▼ 3. 🛒 E-commerce Platform (Prototype)</b></p>');
+    }
+});
+$("div.personal").click(() => {
+    $("div.personal-designs").toggleClass("hidden");
+    if ($("div.personal-designs").hasClass("hidden")) {
+        $("div.personal").html('<p class="text design-type"><b>▲ 4. 🤖 AI-Powered Writing Assistant</b></p>');
+    } else {
+        $("div.personal").html('<p class="text design-type"><b>▼ 4. 🤖 AI-Powered Writing Assistant</b></p>');
+    }
+});
+
+
+// Updload section
+$("div.upload-house").click(function () {
+    $("input.upload-picture").click();
+});
+
+$("input.upload-picture").change(function () {
+    if ($("input.upload-picture")[0].files.length > 0) {
+        const fileName = $("input.upload-picture")[0].files[0].name;
+        $("p.file-name").text(fileName);
+        $("p.file-name").css("color", "#81E7AF");
+    } else {
+        $("p.file-name").text("No file chosen");
+    }
+});
 
 
 

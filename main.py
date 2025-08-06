@@ -57,7 +57,7 @@ db.init_app(app)
 
 app.config["UPLOAD_FOLDER"] = "static/images/uploads"
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
-app.config["MAX_CONTENT_LENGTH"] = 8 * 1000 * 1000
+# app.config["MAX_CONTENT_LENGTH"] = 8 * 1000 * 1000
 
 url = os.environ.get("API-URL")
 i_d_ = os.environ.get("ID-INSTANCE")
@@ -302,7 +302,7 @@ def add_testimony():
                     f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
                         "chatId": f"{number}@c.us",
-                        "message": f"{current_user.first_name} {current_user.last_name} added a testimony: "
+                        "message": f"{current_user.first_name} {current_user.last_name} added a testimony to FolaDevelops: "
                                    f"{data['testimony']}\nfor: {data['website']}"
                     },
                     headers={'Content-Type': 'application/json'}
@@ -329,7 +329,7 @@ def edit_testimony(i_d):
                     f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
                         "chatId": f"{number}@c.us",
-                        "message": f"{current_user.first_name} {current_user.last_name} edited a testimony: "
+                        "message": f"{current_user.first_name} {current_user.last_name} edited a testimony in FolaDevelops: "
                                    f"{data['testimony']}\nfor: {data['website']}"
                     },
                     headers={'Content-Type': 'application/json'}
@@ -380,7 +380,7 @@ def upload_picture():
             return redirect(url_for("upload_picture"))
         if profile_pic and valid_picture(pic_name):
             if current_user.picture_url:
-                cloudinary.uploader.destroy(f"{current_user.id}-{current_user.picture_number - 1}")  # (invalidate=True)
+                cloudinary.uploader.destroy(f"{current_user.id}-{current_user.picture_number - 1}", invalidate=True)
             lad = db.get_or_404(User, current_user.id)
             picture_no = lad.picture_number
             cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
@@ -395,7 +395,7 @@ def upload_picture():
                     "chatId": f"{number}@c.us",
                     "urlFile": f"{current_user.picture_url}",
                     "fileName": f"{current_user.first_name}-{current_user.last_name}.png",
-                    "caption": f"{current_user.first_name} {current_user.last_name} uploaded a picture."
+                    "caption": f"{current_user.first_name} {current_user.last_name} uploaded a picture to FolaDevelops."
                 },
                 headers={'Content-Type': 'application/json'}
             )
@@ -436,9 +436,9 @@ def verify_email(e_mail):
             connection.sendmail(
                 from_addr=email,
                 to_addrs=e_mail,
-                msg=f"Subject:{unconfirmed_person.verification_code} is your verification code for WebBuildHQ\n\n"
+                msg=f"Subject:{unconfirmed_person.verification_code} is your verification code for FolaDevelops\n\n"
                     f"Dear user,\n\nYour verification code is {unconfirmed_person.verification_code}. Please "
-                    f"note that it will expire in 14 minutes.\n\nBest Regards,\nWebBuildHQ"
+                    f"note that it will expire in 14 minutes.\n\nBest Regards,\nFolaDevelops"
             )
     unconfirmed_person.mail_sent = True
     db.session.commit()
@@ -460,11 +460,11 @@ def verify_email(e_mail):
                     f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
                         "chatId": f"{number}@c.us",
-                        "message": f"{user.first_name} {user.last_name} Signed Up with a successful verification!"
+                        "message": f"{user.first_name} {user.last_name} Signed Up to FolaDevelops with a successful verification!"
                     },
                     headers={'Content-Type': 'application/json'}
                 )
-                flash("Your email has been verified successfully, welcome to WebBuildHQ.")
+                flash("Your email has been verified successfully, Welcome.")
                 return redirect(url_for("account"))
             else:
                 flash("Wrong verification code, please try again", "error")
@@ -495,9 +495,9 @@ def resend_email(e_mail):
         connection.sendmail(
             from_addr=email,
             to_addrs=e_mail,
-            msg=f"Subject:{person.verification_code} is your verification code for WebBuildHQ\n\n"
+            msg=f"Subject:{person.verification_code} is your verification code for FolaDevelops\n\n"
                 f"Dear user,\n\nYour verification code is {person.verification_code}. Please "
-                f"note that it will expire in 14 minutes.\n\nBest Regards,\nWebBuildHQ"
+                f"note that it will expire in 14 minutes.\n\nBest Regards,\nFolaDevelops"
         )
     flash(f"A verification code has been resent to '{e_mail}'.", "success")
     return redirect(url_for("verify_email", e_mail=e_mail))
@@ -539,10 +539,10 @@ def reset_password(e_mail):
             connection.sendmail(
                 from_addr=email,
                 to_addrs=e_mail,
-                msg=f"Subject:Password reset for WebBuildHQ account ({password_changer.verification_code})\n\n"
+                msg=f"Subject:Password reset for FolaDevelops account ({password_changer.verification_code})\n\n"
                     f"Dear user,\n\nYour verification code to use in changing your password "
                     f"is {password_changer.verification_code}. Please note, it will expire in "
-                    f"14 minutes.\n\nBest Regards,\nWebBuildHQ"
+                    f"14 minutes.\n\nBest Regards,\nFolaDevelops"
             )
     password_changer.mail_sent = True
     db.session.commit()
@@ -591,10 +591,10 @@ def resend_password(e_mail):
         connection.sendmail(
             from_addr=email,
             to_addrs=e_mail,
-            msg=f"Subject:Password reset for WebBuildHQ account ({someone.verification_code})\n\n"
+            msg=f"Subject:Password reset for FolaDevelops account ({someone.verification_code})\n\n"
                 f"Dear user,\n\nYour verification code to use in changing your password "
                 f"is {someone.verification_code}. Please note, it will expire in "
-                f"14 minutes.\n\nBest Regards,\nWebBuildHQ"
+                f"14 minutes.\n\nBest Regards,\nFolaDevelops"
         )
     flash(f"A verification code has been resent to '{e_mail}'.")
     return redirect(url_for("reset_password", e_mail=e_mail))
@@ -626,11 +626,11 @@ def show_testimony(i_d):
         connection.sendmail(
             from_addr=email,
             to_addrs=testimony.user.email,
-            msg=f"Subject:Your testimony has been published on the WebBuildHQ testimonies section\n\n"
+            msg=f"Subject:Your testimony has been published on the FolaDevelops testimonies section\n\n"
                 f"Dear user,\n\nYour testimony '{testimony.testimony}' for '{testimony.website}' has "
-                f"been published on the WebBuildHQ testimonies section, you can view your testimony "
+                f"been published on the FolaDevelops testimonies section, you can view your testimony "
                 f"among others on https://webbuildhq.com/testimonies, thank you for leaving a testimony." 
-                f"\n\nBest Regards,\nWebBuildHQ"
+                f"\n\nBest Regards,\nFolaDevelops"
         )
     return redirect(url_for("admin"))
 
@@ -643,6 +643,11 @@ def hide_testimony(i_d):
     testimony.is_visible = False
     db.session.commit()
     return redirect(url_for("admin"))
+
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
 
 
 if __name__ == "__main__":

@@ -54,6 +54,20 @@ span.free {
     color: #16C47F;
 }
 
+div.upload-house:hover {
+    /* border-color: #F2F2E4; */
+    border-style: dotted;
+}
+
+input.upload-picture {
+    display: none;
+}
+
+p.file-name {
+    text-align: center;
+    word-break: break-word;
+}
+
 @media (orientation: portrait) {
 
     webbuild-container {
@@ -586,7 +600,7 @@ span.free {
         border-radius: 2vw;
         border: none;
         padding: 1.5vh 3.6vw;
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
     }
 
     svg.testify-svg {
@@ -825,7 +839,7 @@ span.free {
         border-radius: 2vw;
         border: 1px solid #E7F2E4;
         padding: 1.5vh 3.6vw;
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
     }
 
     svg.picture-svg {
@@ -840,6 +854,24 @@ span.free {
     div.picture-testimony {
         display: flex;
         justify-content: center;
+    }
+
+    div.projects-grid {
+        width: 65vw;
+        display: grid;
+        grid-template-columns: 30vw 30vw;
+        gap: 5vw;
+    }
+
+    div.projects-grid {
+        width: 62vw;
+        display: grid;
+        grid-template-columns: 30vw 30vw;
+        gap: 5vw;
+    }
+
+    a.account-project {
+        text-align: center;
     }
 
     div.picture-holder {
@@ -886,7 +918,7 @@ span.free {
     }
 
     form.upload-form {
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
         margin-bottom: 50vh;
     }
 
@@ -1044,17 +1076,22 @@ span.free {
         margin-top: 36vw;
     }
 
-
+    div.upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     h2.upload-instruction {
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
         margin-top: 4vh;
         font-size: 2.5vw;
     }
 
     p.upload-instruction {
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
         font-size: 2.5vw;
+        margin-top: 0vw;
     }
 
     div.head-holder {
@@ -1248,7 +1285,7 @@ span.free {
     }
 
     div.design {
-        border-top: 0.2025vw solid #E7F2E4;
+        border-bottom: 0.2025vw solid #E7F2E4;
         cursor: pointer;
     }
 
@@ -1305,6 +1342,7 @@ span.free {
 
     ul.designs-list {
         margin-bottom: 10vw;
+        list-style-type:none;
     }
 
     p.themewagon-prompt {
@@ -1362,6 +1400,34 @@ span.free {
 
     p.location {
         font-size: 2.5vw;   
+    }
+
+    ul.features {
+        margin-bottom: 5vw;
+        list-style-type: disc;
+    }
+
+    li.uploader-instruction {
+        color:#FF90BB;
+        margin-bottom: 5vw;
+    }
+
+    div.upload-house {
+        width: 40vw;
+        height: 30vw;
+        border-radius: 2vw;
+        border: 0.6vw dashed rgba(231, 242, 228, 0.85);
+        margin-bottom: 3.5vw;
+        margin-top: 2.5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg.uploadey-svg {
+        width: 8vw;
+        height: 8vw;
     }
 
 }
@@ -2119,6 +2185,17 @@ span.free {
         justify-content: center;
     }
 
+    div.projects-grid {
+        width: 46vw;
+        display: grid;
+        grid-template-columns: 22vw 22vw;
+        gap: 2vw;
+    }
+
+    a.account-project {
+        text-align: center;
+    }
+
     div.picture-holder {
         display: flex;
         justify-content: center;
@@ -2162,7 +2239,7 @@ span.free {
     }
 
     form.upload-form {
-        margin-left: 2vw;
+        /* margin-left: 2vw; */
     }
 
     input.upload-picture {
@@ -2310,13 +2387,20 @@ span.free {
         margin-top: 15vw;
     }
 
+    div.upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     h2.upload-instruction {
-        margin-left: 2vw;
+        /* margin-left: 2vw; */
         margin-top: 8vh;
     }
 
     p.upload-instruction {
-        margin-left: 2vw;
+        /* margin-left: 2vw; */
+        margin-top: 0vw;
     }
 
     button.menu {
@@ -2502,7 +2586,7 @@ span.free {
 
     div.design {
         width: 96vw;
-        border-top: 0.0675vw solid rgba(231, 242, 228, 0.7);
+        border-bottom: 0.0675vw solid rgba(231, 242, 228, 0.7);
         cursor: pointer;
     }
 
@@ -2561,6 +2645,7 @@ span.free {
 
     ul.designs-list {
         margin-bottom: 4vw;
+        list-style-type:none;
     }
 
     p.themewagon-prompt {
@@ -2629,6 +2714,36 @@ span.free {
     p.location {
         font-size: 1.25vw;
         margin-left: 2vw;  
+    }
+
+    
+
+    ul.features {
+        margin-bottom: 2vw;
+        list-style-type: disc;
+    }
+
+    li.uploader-instruction {
+        color:#FF90BB;
+        margin-bottom: 2vw;
+    }
+
+    div.upload-house {
+        width: 30vw;
+        height: 15vw;
+        border-radius: 1.4vw;
+        border: 0.3vw dashed rgba(231, 242, 228, 0.85);
+        margin-bottom: 2vw;
+        margin-top: 1.25vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg.uploadey-svg {
+        width: 4vw;
+        height: 4vw;
     }
 
 }
