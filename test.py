@@ -108,3 +108,17 @@
     #             f"is {password_changer.verification_code}. Please note it will expire in "
     #             f"14 minutes.\n\nBest Regards,\nWebBuildHQ"
     #     )
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def test():
+    return render_template("test.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

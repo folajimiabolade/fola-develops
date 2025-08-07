@@ -193,7 +193,7 @@ $("input.upload-picture").change(function () {
     if ($("input.upload-picture")[0].files.length > 0) {
         const fileName = $("input.upload-picture")[0].files[0].name;
         $("p.file-name").text(fileName);
-        $("p.file-name").css("color", "#81E7AF");
+        $("p.file-name").css("color", "#FF90BB");
     } else {
         $("p.file-name").text("No file chosen");
     }
