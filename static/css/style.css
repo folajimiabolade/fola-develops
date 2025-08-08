@@ -1,3 +1,5 @@
+
+
 html[lang="en"] {
     box-sizing: border-box;
 }
@@ -69,6 +71,50 @@ p.file-name {
 }
 
 @media (orientation: portrait) {
+
+    div.showcase {
+        display: grid;
+    }
+
+    div.loading-overlay {
+        grid-area: 1/ 1/ 2/ 2;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        /* background: rgb(0, 0, 0); */
+        background: rgba(0, 0, 0, 0.5);
+        /* z-index: 1; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.the-content {
+        grid-area: 1/ 1/ 2/ 2;
+        z-index: 1;
+    }
+
+    @keyframes roll {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    div.loader {
+        border: 1vw solid transparent;
+        width: 4vw;
+        height: 4vw;
+        border-radius: 50%;
+        border-top: 1vw solid #E7F2E4;
+        animation-name: roll;
+        animation-timing-function: ease-in;
+        animation-iteration-count: infinite;
+        animation-duration: 0.5s;
+    }
 
     webbuild-container {
         margin: 0;
@@ -1430,9 +1476,9 @@ p.file-name {
         height: 8vw;
     }
 
-    div.store-holder {
+    /* div.store-holder {
         margin-top: 4vw;
-    }
+    } */
 
     div.cart-holder {
         display: flex;
@@ -1443,7 +1489,7 @@ p.file-name {
         position: fixed;
         bottom: 0;
         left: 47vw;
-        z-index: 1;
+        z-index: 2;
     }
 
     svg.cart {
@@ -1473,12 +1519,12 @@ p.file-name {
         background: #2b3035;
         position: fixed;
         bottom: 0;
-        /* z-index: 1; */
+        z-index: 1;
         border-top: 0.2vw solid #E7F2E4;
     }
 
     div.items-grid {
-        margin: 2vw 7vw;
+        margin: 6vw 7vw;
         display: grid;
         grid-template-columns: 40vw 40vw;
         gap: 6vw;
@@ -1551,6 +1597,50 @@ p.file-name {
         padding-bottom: 0vw;
         width: 0vw;
         height: 0vh;
+    }
+
+    div.showcase {
+        display: grid;
+    }
+
+    div.loading-overlay {
+        grid-area: 1/ 1/ 2/ 2;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        /* background: rgb(0, 0, 0); */
+        background: rgba(0, 0, 0, 0.5);
+        /* z-index: 1; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.the-content {
+        grid-area: 1/ 1/ 2/ 2;
+        z-index: 1;
+    }
+
+    @keyframes roll {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    div.loader {
+        border: 0.5vw solid transparent;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50%;
+        border-top: 0.5vw solid #E7F2E4;
+        animation-name: roll;
+        animation-timing-function: ease-in;
+        animation-iteration-count: infinite;
+        animation-duration: 0.5s;
     }
 
     div.navigation-container {

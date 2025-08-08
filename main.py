@@ -8,18 +8,13 @@ import os
 from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsForm, VerifyForm, EmailForm, NewPasswordForm
 # CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
-# sqlalchemy creates the relational database where information like usernames, emails, testimonies are stored
-# https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/
-# https://docs.sqlalchemy.org/en/20/orm/quickstart.html
-# https://docs.sqlalchemy.org/en/20/orm/basic_relationships.html
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, DateTime, ForeignKey, text, Boolean
-from flask_sqlalchemy import SQLAlchemy
+# Import database tables from the entities.py file
+from entities import db, UnverifiedUser, User, PasswordChanger, Testimony
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
 # flask_login logs users in and out https://flask-login.readthedocs.io/en/latest/
-from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 # The python datetime module is used for getting the time that testimonies were made
 from datetime import datetime, timezone, timedelta
 # API requests are made through the requests module
@@ -39,13 +34,7 @@ import smtplib
 from functools import wraps
 
 
-class Base(DeclarativeBase):
-    pass
-
-
 load_dotenv()
-
-db = SQLAlchemy(model_class=Base)
 
 app = Flask(__name__)
 
@@ -71,65 +60,18 @@ video_url = os.environ.get("VIDEO-URL")
 
 config = cloudinary.config(secure=True)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-class UnverifiedUser(UserMixin, db.Model):
-    __tablename__ = "unverified users"
-    id: Mapped[int] = mapped_column(Integer(), primary_key=True)
-    first_name: Mapped[str] = mapped_column(String())
-    last_name: Mapped[str] = mapped_column(String())
-    email: Mapped[str] = mapped_column(String(), unique=True)
-    password: Mapped[str] = mapped_column(String())
-    verification_code: Mapped[int] = mapped_column(Integer(), nullable=True)
-    sent_at: Mapped[datetime] = mapped_column(DateTime(), nullable=True)
-    mail_sent: Mapped[bool] =mapped_column(Boolean(), nullable=True)
-
-
-class User(UserMixin, db.Model):
-    __tablename__ = "users"
-    id: Mapped[int] = mapped_column(Integer(), primary_key=True)
-    first_name: Mapped[str] = mapped_column(String())
-    last_name: Mapped[str] = mapped_column(String())
-    email: Mapped[str] = mapped_column(String(), unique=True)
-    password: Mapped[str] = mapped_column(String())
-    picture_number: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
-    picture_url: Mapped[str] = mapped_column(String(), nullable=True)
-    testimonies = relationship("Testimony", back_populates="user")
-
-
-class Testimony(UserMixin, db.Model):
-    __tablename__ = "testimonies"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    datetime: Mapped[datetime] = mapped_column(DateTime())
-    website: Mapped[str] = mapped_column(String(), nullable=True)
-    testimony: Mapped[str] = mapped_column(String())
-    is_visible: Mapped[bool] = mapped_column(Boolean(), default=False, server_default=text("false"))
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user = relationship("User", back_populates="testimonies")
-
-
-class PasswordChanger(UserMixin, db.Model):
-    __tablename__ = "password changers"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    email: Mapped[str] = mapped_column(String(), unique=True)
-    verification_code: Mapped[int] = mapped_column(Integer(), nullable=True)
-    sent_at: Mapped[datetime] = mapped_column(DateTime(), nullable=True)
-    mail_sent: Mapped[bool] = mapped_column(Boolean(), nullable=True)
-
+admin_email = os.environ.get("ADMIN-EMAIL")
 
 with app.app_context():
     db.create_all()
 
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return db.get_or_404(User, user_id)
-
-
-admin_email = os.environ.get("ADMIN-EMAIL")
 
 
 def admin_only(f):
