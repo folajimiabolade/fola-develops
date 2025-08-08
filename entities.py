@@ -1,3 +1,4 @@
+# Import necessary libraries and modules
 # sqlalchemy creates the relational database where information like usernames, emails, testimonies are stored
 # https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/
 # https://docs.sqlalchemy.org/en/20/orm/quickstart.html
