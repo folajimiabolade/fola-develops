@@ -42,6 +42,7 @@ class User(UserMixin, db.Model):
     picture_number: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
     picture_url: Mapped[str] = mapped_column(String(), nullable=True)
     testimonies = relationship("Testimony", back_populates="user")
+    items = relationship("Item", back_populates="user")
 
 
 class Testimony(UserMixin, db.Model):
@@ -62,3 +63,22 @@ class PasswordChanger(UserMixin, db.Model):
     verification_code: Mapped[int] = mapped_column(Integer(), nullable=True)
     sent_at: Mapped[datetime] = mapped_column(DateTime(), nullable=True)
     mail_sent: Mapped[bool] = mapped_column(Boolean(), nullable=True)
+
+
+class Item(UserMixin, db.Model):
+    __tablename__ = "items"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    picture_url: Mapped[str] = mapped_column(String())
+    unique_name: Mapped[str] = mapped_column(String())
+    name: Mapped[str] = mapped_column(String())
+    price: Mapped[str] = mapped_column(String())
+    description: Mapped[str] = mapped_column(String())
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user = relationship("User", back_populates="items")
+    # carts = relationship("Cart", back_populates="item")
+
+
+# class Cart(UserMixin, db.Model):
+#     __tablename__ = "carts"
+#     id: Mapped[int] = mapped_column(primary_key=True)
+#     item = relationship("Item", back_populates="carts")

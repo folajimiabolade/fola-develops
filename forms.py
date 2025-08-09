@@ -136,3 +136,31 @@ class NewPasswordForm(FlaskForm):
         label="Change password",
         render_kw={"class": "text button signup-button signup-field"}
     )
+
+
+class ItemForm(FlaskForm):
+    picture = FileField(
+        label="Photo",
+        render_kw={"class": "text upload-photo"}
+    )
+    name = StringField(
+        label="Name",
+        validators=[DataRequired(), Length(max=1000)],
+        render_kw={"class": "field add-field", "placeholder": "A name for your item"}
+    )
+    unique_name = StringField(
+        label="Unique name",
+        validators=[DataRequired(), Length(max=1000)],
+        render_kw={"class": "field add-field", "placeholder": "A unique name for your item"}
+    )
+    price = StringField(
+        label="Price",
+        validators=[DataRequired(), Length(max=1000)],
+        render_kw={"class": "field add-field", "placeholder": "e.g ₦25,000", "value": "₦123,456,789"}
+    )
+    description = TextAreaField(
+        label="Description",
+        validators=[DataRequired()],
+        render_kw={"class": "field add-field", "placeholder": "About your item"}
+    )
+    button = SubmitField(label="Add", render_kw={"class": "text button add-button"})

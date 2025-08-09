@@ -184,7 +184,7 @@ $("div.personal").click(() => {
 });
 
 
-// Updload section
+// Upload section
 $("div.upload-house").click(function () {
     $("input.upload-picture").click();
 });
@@ -198,6 +198,30 @@ $("input.upload-picture").change(function () {
         $("p.file-name").text("No file chosen");
     }
 });
+
+
+// Upload Item section
+$("div.upload-home").click(function () {
+    $("input.upload-photo").click();
+});
+
+$("input.upload-photo").change(function () {
+    if ($("input.upload-photo")[0].files.length > 0) {
+        const fileName = $("input.upload-photo")[0].files[0].name;
+        $("p.file-title").text(fileName);
+        $("p.file-title").css("color", "#FF90BB");
+    } else {
+        $("p.file-title").text("No file chosen");
+    }
+});
+
+
+document.querySelectorAll("div.store-item").forEach(function(item) {
+    item.addEventListener("click", function() {
+        const itemId = item.getAttribute("data-item-id");
+        document.querySelector("a.item-information.id-" + itemId).click();
+    })
+})
 
 
 

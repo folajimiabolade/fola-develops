@@ -56,18 +56,36 @@ span.free {
     color: #16C47F;
 }
 
-div.upload-house:hover {
+div.upload-house:hover, div.upload-home:hover {
     /* border-color: #F2F2E4; */
     border-style: dotted;
 }
 
-input.upload-picture {
+input.upload-picture, input.upload-photo {
     display: none;
 }
 
-p.file-name {
+p.file-name, p.file-title {
     text-align: center;
     word-break: break-word;
+}
+
+p.item-flash {
+    text-align: center;
+    color: #FF90BB;
+}
+
+p.store-flash {
+    text-align: center;
+    color: #81E7AF;
+}
+
+a.item-information {
+    display: none;
+}
+
+div.store-item {
+    cursor: pointer;
 }
 
 @media (orientation: portrait) {
@@ -747,7 +765,7 @@ p.file-name {
     }
 
 
-    label[for="website"], label[for="testimony"] {
+    label[for="website"], label[for="testimony"], label[for="picture"], label[for="name"], label[for="unique_name"] label[for="price"], label[for="description"] {
         font-family: "Noto Sans", sans-serif;
         color: #EFEEEA;
         font-size: 3vw;
@@ -1583,6 +1601,72 @@ p.file-name {
     }
 
     svg.item-svg {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+
+    div.upload-home {
+        height: 30vw;
+        border-radius: 2vw;
+        margin-bottom: 3.5vw;
+        margin-top: 2.5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 43.8vw;
+        border: 0.2vw dashed rgba(117, 117, 117, 1);
+    }
+
+    svg.uploadei-svg {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    p.file-title {
+        font-size: 2vw;
+    }
+
+    img.item {
+        width: 93vw;
+        /* height: 46vw; */
+        object-fit: cover;
+        border-radius: 2vw;
+    }
+
+    div.item {
+        margin-left: 3.5vw;
+        margin-right: 3.5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4vw;
+    }
+
+    div.item > * {
+        margin: 1vw 0vw;
+    }
+
+    p.item-name {
+        font-size: 2.75vw;
+    }
+
+    p.item-amount {
+        font-size: 3vw;
+    }
+
+    p.item-description {
+        font-size: 2.5vw;
+        text-align: center;
+    }
+
+    a.add-item {
+        margin: 0;
+        margin-top: 2.5vw;
+        font-size: 2.5vw;
+    }
+
+    svg.add-item {
         width: 2vw;
         height: 2vw;
     }
@@ -2094,8 +2178,7 @@ p.file-name {
     } 
 
     a.user-link {
-        width: 11vw;
-        padding: ;
+        width: 15vw;
         border-top: 0.1vw solid #E7F2E4;
         padding: 0.3vw 2vw;
         font-size: 1.35vw;
@@ -2228,7 +2311,7 @@ p.file-name {
     }
 
 
-    label[for="website"], label[for="testimony"] {
+    label[for="website"], label[for="testimony"], label[for="picture"], label[for="name"], label[for="unique_name"], label[for="price"], label[for="description"] {
         font-family: "Noto Sans", sans-serif;
         color: #EFEEEA;
         font-size: 1.5vw;
@@ -2959,7 +3042,7 @@ p.file-name {
         background: #2b3035;
         position: fixed;
         bottom: 0;
-        left: 56vw;
+        left: 58vw;
         z-index: 1;
     }
 
@@ -2995,7 +3078,7 @@ p.file-name {
     }
 
     div.items-grid {
-        margin: 1vw 10.5vw;
+        margin: 1vw 8.5vw;
         display: grid;
         grid-template-columns: 20vw 20vw 20vw;
         gap: 2vw;
@@ -3054,8 +3137,39 @@ p.file-name {
     }
 
     svg.item-svg {
-        width: 1vw;
-        height: 1vw;
+        width: 1.25vw;
+        height: 1.25vw;
+    }
+
+    div.upload-home {
+        height: 15vw;
+        border-radius: 1.4vw;
+        margin-bottom: 2vw;
+        margin-top: 1.25vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 22.9vw;
+        border: 0.1vw dashed rgba(117, 117, 117, 1);
+    }
+
+    svg.uploadei-svg {
+        width: 2vw;
+        height: 2vw;
+    }
+
+    p.file-title {
+        font-size: 1vw;
+    }
+
+    img.item {
+        width: 77vw;
+    }
+
+    div.item {
+        margin-left: 2vw;
+        margin-right: 2vw;
     }
 
 

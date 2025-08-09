@@ -5,11 +5,11 @@ from flask import Flask, render_template, redirect, url_for, request, flash, jso
 # os is where the secrets are saved, like developer passwords and api keys
 import os
 # Import forms from the forms.py file
-from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsForm, VerifyForm, EmailForm, NewPasswordForm
+from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsForm, VerifyForm, EmailForm, NewPasswordForm, ItemForm
 # CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
 # Import database tables from the entities.py file
-from entities import db, UnverifiedUser, User, PasswordChanger, Testimony
+from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -32,6 +32,7 @@ import random
 # The simple-mail-transfer-protocol library(smtplib) is used send emails
 import smtplib
 from functools import wraps
+from items_data import things
 
 
 load_dotenv()
@@ -58,7 +59,7 @@ password = os.environ.get("PASSWORD")
 
 video_url = os.environ.get("VIDEO-URL")
 
-config = cloudinary.config(secure=True)
+config = cloudinary.config(secure=True)  # Signed up with the Google account
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -66,6 +67,7 @@ login_manager.init_app(app)
 admin_email = os.environ.get("ADMIN-EMAIL")
 
 with app.app_context():
+    db.drop_all()
     db.create_all()
 
 
@@ -221,7 +223,7 @@ def settings():
                 user.last_name = data["last_name"].title()
                 db.session.commit()
             return redirect(url_for("account"))
-    return render_template("settings.html", form=settings_form, email=user.email)
+    return render_template("settings.html", form=settings_form, email=user.email, admin_email=admin_email)
 
 
 @app.route("/add-testimony", methods=["GET", "POST"])
@@ -251,7 +253,7 @@ def add_testimony():
                 )
             flash("Thanks for adding a testimony, your testimony will be reviewed.")
             return redirect(url_for("account"))
-    return render_template("add-testimony.html", form=testimony_form)
+    return render_template("add-testimony.html", form=testimony_form, admin_email=admin_email)
 
 
 @app.route("/edit-testimony/<int:i_d>", methods=["GET", "POST"])
@@ -552,7 +554,7 @@ def active():
 @admin_only
 def admin():
     testimonials = db.session.execute(db.select(Testimony).order_by(Testimony.id.desc())).scalars().all()
-    return render_template("admin.html", testimonies=testimonials)
+    return render_template("admin.html", testimonies=testimonials, admin_email=admin_email)
 
 
 @app.route("/show-testimony/<i_d>")
@@ -594,8 +596,79 @@ def projects():
 
 @app.route("/store")
 def store():
-    return render_template("store.html")
+    items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
+    return render_template("store.html", items=items, admin_email=admin_email)
+
+
+@app.route("/add-item", methods=["GET", "POST"])
+@login_required
+@admin_only
+def add_item():
+    item_form = ItemForm()
+    if request.method == "POST":
+        if item_form.validate_on_submit():
+            if "picture" not in request.files:
+                flash("No file part")
+                return redirect(url_for("add_item"))
+            item_pic = request.files["picture"]
+            pic_name = item_pic.filename
+            if pic_name == "":
+                flash("No file selected")
+                return redirect(url_for("add_item"))
+            item_data = request.form
+            if item_pic and valid_picture(pic_name):
+                item_name = item_data["name"].replace(" ", "_").replace("|", "-")
+                cloudinary.uploader.upload(item_pic, public_id=f"{item_name}",
+                                           unique_filename=False, overwrite=True)
+                pic_url = CloudinaryImage(f"{item_name}").build_url()
+                picture_url = pic_url.rsplit("/", 1)[0] + "/q_auto/f_auto/c_scale,w_500/" + pic_url.rsplit("/", 1)[
+                    1]
+                item = Item(
+                    picture_url=picture_url,
+                    unique_name=item_name,
+                    name=item_data["name"],
+                    price=item_data["price"],
+                    description=item_data["description"],
+                    user_id=current_user.id
+                )
+                db.session.add(item)
+                db.session.commit()
+                flash("Your item has been added successfully.")
+        return redirect(url_for("store"))
+    return render_template("add-item.html", form=item_form, admin_email=admin_email)
+
+
+@app.route("/item/<unique_name>")
+def item(unique_name):
+    item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
+    return render_template("item.html", item=item, admin_email=admin_email)
+
+
+# Add all the placeholder entities to the database, only use when you are creating a new database
+    # Add store items
+with app.app_context():
+    for thing in things:
+        item = Item(
+            picture_url=thing["picture_url"],
+            unique_name=thing["unique_name"],
+            name=thing["name"],
+            price=thing["price"],
+            description=thing["description"],
+            user_id=thing["user_id"]
+        )
+        db.session.add(item)
+        db.session.commit()
+    # Add yourself
+    user = User(
+        first_name="Jimi",
+        last_name="Abolade",
+        email="folajimiabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
+        picture_number=0
+    )
+    db.session.add(user)
+    db.session.commit()
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

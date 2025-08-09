@@ -34,12 +34,8 @@
 
     <!--  Hero  -->
     <div class="hero-prompt">
-        <h2 class="text hero-body hero-title" style="display: none;">Own a website</h2>
-        <p class="text hero-body " style="display: none;">Own a website or web application. Pick a
-                domain name (e.g. webapp.com), choose a design from
-                WebBuildHQ's <a class="text home-templates" href="{{ url_for('designs') }}">templates</a>,
-                provide your information (texts, pictures, videos e.t.c.) and publish it (get it on the internet).
-        </p>
+        <h2 class="text hero-body hero-title" style="display: none;">Hi!</h2>
+        <p class="text hero-body " style="display: none;">Still developing...
         <div class="hero-actions" style="display: none;">
             <a class="text button hero-body hero-button whatsapp" type="button" href="#" target="_blank" rel="noopener noreferrer">
                 <svg class="bi bi-whatsapp home-whatsapp" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -61,7 +57,7 @@
 
     <div class="home-testimonies">
         {% if testimonies %}
-            <h2 class="testimonials-text text testimonials-header home-testifies" style="display: none;">Testimonies</h2>
+            <!-- <h2 class="testimonials-text text testimonials-header home-testifies" style="display: none;">Testimonies</h2> -->
             {% for testimony in testimonies %}
                 {% if testimony.is_visible == True %}
                     <div class="testimony home-testifies" style="display: none;">
