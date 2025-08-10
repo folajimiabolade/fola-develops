@@ -115,7 +115,7 @@ def about():
 #     })
 
 
-@app.route("/designs")
+@app.route("/projects")
 def designs():
     return render_template("designs.html")
 
