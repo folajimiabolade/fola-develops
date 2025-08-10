@@ -645,8 +645,18 @@ def item(unique_name):
 
 
 # Add all the placeholder entities to the database, only use when you are creating a new database
+    with app.app_context():
+    # Add yourself
+         user = User(
+        first_name="Jimi",
+        last_name="Abolade",
+        email="folajimiabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
+        picture_number=0
+    )
+    db.session.add(user)
+    db.session.commit()
     # Add store items
-with app.app_context():
     for thing in things:
         item = Item(
             picture_url=thing["picture_url"],
@@ -658,16 +668,6 @@ with app.app_context():
         )
         db.session.add(item)
         db.session.commit()
-    # Add yourself
-    user = User(
-        first_name="Jimi",
-        last_name="Abolade",
-        email="folajimiabolade@gmail.com",
-        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
-        picture_number=0
-    )
-    db.session.add(user)
-    db.session.commit()
 
 
 if __name__ == "__main__":
