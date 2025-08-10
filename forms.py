@@ -151,12 +151,12 @@ class ItemForm(FlaskForm):
     unique_name = StringField(
         label="Unique name",
         validators=[DataRequired(), Length(max=1000)],
-        render_kw={"class": "field add-field", "placeholder": "A unique name for your item"}
+        render_kw={"class": "field add-field", "placeholder": "A name that is not already taken"}
     )
     price = StringField(
         label="Price",
         validators=[DataRequired(), Length(max=1000)],
-        render_kw={"class": "field add-field", "placeholder": "e.g ₦25,000", "value": "₦123,456,789"}
+        render_kw={"class": "field add-field", "placeholder": "e.g ₦25,000", "value": "₦123,456"}
     )
     description = TextAreaField(
         label="Description",

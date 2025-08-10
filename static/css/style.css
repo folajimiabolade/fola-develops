@@ -765,7 +765,7 @@ div.store-item {
     }
 
 
-    label[for="website"], label[for="testimony"], label[for="picture"], label[for="name"], label[for="unique_name"] label[for="price"], label[for="description"] {
+    label[for="website"], label[for="testimony"], label[for="picture"], label[for="name"], label[for="unique_name"], label[for="price"], label[for="description"] {
         font-family: "Noto Sans", sans-serif;
         color: #EFEEEA;
         font-size: 3vw;
