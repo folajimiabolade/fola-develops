@@ -625,7 +625,7 @@ def store():
 
 
 @app.route("/add-item", methods=["GET", "POST"])
-@login_required
+# @login_required
 # @admin_only
 def add_item():
     item_form = ItemForm()
