@@ -588,9 +588,9 @@ def hide_testimony(i_d):
     return redirect(url_for("admin"))
 
 
-@app.route("/projects")
-def projects():
-    return render_template("projects.html")
+# @app.route("/projects")
+# def projects():
+#     return render_template("projects.html")
 
 
 @app.route("/store")
