@@ -601,7 +601,7 @@ def store():
 
 @app.route("/add-item", methods=["GET", "POST"])
 @login_required
-@admin_only
+# @admin_only
 def add_item():
     item_form = ItemForm()
     if request.method == "POST":
