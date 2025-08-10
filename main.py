@@ -67,7 +67,6 @@ login_manager.init_app(app)
 admin_email = os.environ.get("ADMIN-EMAIL")
 
 with app.app_context():
-    # db.drop_all()
     db.create_all()
 
 
@@ -173,32 +172,6 @@ def sign_up():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-
-    # Add all the placeholder entities to the database, only use when you are creating a new database
-    with app.app_context():
-    # Add yourself
-        user = User(
-        first_name="Jimi",
-        last_name="Abolade",
-        email="folajimiabolade@gmail.com",
-        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
-        picture_number=0
-        )
-        db.session.add(user)
-        db.session.commit()
-        # Add store items
-        for thing in things:
-            item = Item(
-            picture_url=thing["picture_url"],
-            unique_name=thing["unique_name"],
-            name=thing["name"],
-            price=thing["price"],
-            description=thing["description"],
-            user_id=thing["user_id"]
-            )
-            db.session.add(item)
-            db.session.commit()
-
     login_form = LoginForm()
     if request.method == "POST":
         if login_form.validate_on_submit():
