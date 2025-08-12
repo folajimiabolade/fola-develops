@@ -9,7 +9,7 @@ from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsFor
 # CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
 # Import database tables from the entities.py file
-from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item
+from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item, CartProduct
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -594,14 +594,15 @@ def hide_testimony(i_d):
 
 
 @app.route("/store")
+@login_required
 def store():
     items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
     return render_template("store.html", items=items, admin_email=admin_email)
 
 
 @app.route("/add-item", methods=["GET", "POST"])
-# @login_required
-# @admin_only
+@login_required
+@admin_only
 def add_item():
     item_form = ItemForm()
     if request.method == "POST":
@@ -638,6 +639,7 @@ def add_item():
 
 
 @app.route("/item/<unique_name>")
+@login_required
 def item(unique_name):
     item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
     return render_template("item.html", item=item, admin_email=admin_email)
@@ -672,10 +674,20 @@ def add_placeholders():
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
-@app.route("/api/cart-it", methods=["GET", "POST"])
+@app.route("/cart-it/api", methods=["POST"])
+@login_required
 def cart_it():
-    return jsonify({})
-
+    print(request.args)
+    print(f"request is: {request.get_json()}")
+    data = request.get_json()
+    item_id = data.get("item_id")
+    cart_product = CartProduct(
+        item_id=item_id,
+        user_id=current_user.id
+    )
+    db.session.add(cart_product)
+    db.session.commit()
+    return jsonify({"status": "item added"})
 
 if __name__ == "__main__":
     app.run(debug=True)

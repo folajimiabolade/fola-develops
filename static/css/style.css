@@ -1597,13 +1597,16 @@ div.store-item {
 
     a.item-button {
         /* margin: 2vw 0vw; */
-        font-size: 2.25vw;
+        font-size: 2.5vw;
         padding: 3vw 7vw;
         margin-top: 2vw;
         width: 36vw;
-        background: #ffd814;
-        color: #0f1111;
+        /* background: #ffd814; */
+        background: #0065F8;
+        /* color: #0f1111; */
+        color: #E7F2E4;
         /* border: 0.2vw solid #E7F2E4; */
+        text-decoration: none;
     }
 
     svg.item-svg {
@@ -3144,8 +3147,10 @@ div.store-item {
         font-size: 1.125vw;
         margin-left: 0vw;
         width: 18vw;
-        background: #ffd814;
-        color: #0f1111;
+        /* background: #ffd814; */
+        background: #0065F8;
+        /* color: #0f1111; */
+        color: #E7F2E4;
         /* border: 0.1vw solid #E7F2E4; */
     }
 

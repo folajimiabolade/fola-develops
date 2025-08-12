@@ -217,17 +217,30 @@ $("input.upload-photo").change(function () {
 
 
 // Make every item on the store home page a button that links to their information
-document.querySelectorAll("div.store-item").forEach(function(item) {
-    item.addEventListener("click", function() {
+// document.querySelectorAll("div.store-item").forEach(function(item) {
+//     item.addEventListener("click", function() {
+//         const itemId = item.getAttribute("data-item-id");
+//         document.querySelector("a.item-information.id-" + itemId).click();
+//     })
+// })
+
+
+document.querySelectorAll("a.item-button").forEach(function(item) {
+    item.addEventListener("click", function(event) {
+        event.preventDefault()
         const itemId = item.getAttribute("data-item-id");
-        document.querySelector("a.item-information.id-" + itemId).click();
+        fetch("http://127.0.0.1:5000/cart-it/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                item_id: itemId
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
     })
-})
-
-
-document.querySelector("a.item-button").addEventListener("click", function() {
-    const itemId = item.getAttribute("data-item-id");
-
 })
 
 

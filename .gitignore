@@ -1,3 +1,9 @@
+# My test files
+test.py
+templates/test.html
+static/css/test.css
+static/js/test.js
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
