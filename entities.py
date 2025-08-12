@@ -43,6 +43,8 @@ class User(UserMixin, db.Model):
     picture_url: Mapped[str] = mapped_column(String(), nullable=True)
     testimonies = relationship("Testimony", back_populates="user")
     items = relationship("Item", back_populates="user")
+    cart_products = relationship("CartProduct", back_populates="user")
+    cart_length: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
 
 
 class Testimony(UserMixin, db.Model):
@@ -75,10 +77,14 @@ class Item(UserMixin, db.Model):
     description: Mapped[str] = mapped_column(String())
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user = relationship("User", back_populates="items")
-    # carts = relationship("Cart", back_populates="item")
+    cart_product = relationship("CartProduct", back_populates="item")
+    
 
-
-# class Cart(UserMixin, db.Model):
-#     __tablename__ = "carts"
-#     id: Mapped[int] = mapped_column(primary_key=True)
-#     item = relationship("Item", back_populates="carts")
+class CartProduct(UserMixin, db.Model):
+    __tablename__ = "cart products"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    item_id: Mapped[int] = mapped_column(ForeignKey("items.id"))
+    item = relationship("Item", back_populates="cart_product")
+    quantity: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user = relationship("User", back_populates="cart_products")

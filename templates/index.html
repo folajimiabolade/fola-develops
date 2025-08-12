@@ -13,7 +13,7 @@
         div.hero-prompt::before {
             content: "Hero";
             color: transparent;
-            background-image: url("{{ url_for('static', filename='images/laptop-table.png') }}");
+            background-image: url("{{ url_for('static', filename='images/folavatar.jpeg') }}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -35,7 +35,8 @@
     <!--  Hero  -->
     <div class="hero-prompt">
         <h2 class="text hero-body hero-title" style="display: none;">Hi!</h2>
-        <p class="text hero-body " style="display: none;">Still developing...
+        <p class="text hero-body" style="display: none;">Still <span class="typer"></span></span></p>
+        <a class="text hero-body home-link" style="display: none;" href="{{ url_for('designs')}}">View projects</a>
         <div class="hero-actions" style="display: none;">
             <a class="text button hero-body hero-button whatsapp" type="button" href="#" target="_blank" rel="noopener noreferrer">
                 <svg class="bi bi-whatsapp home-whatsapp" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -84,4 +85,26 @@
 <!--            <a class="text more-testimonies" href="{{ url_for('testimonies') }}" style="display: none;">View more testimonies</a>-->
         {% endif %}
     </div>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        var typed = new Typed(".typer", {
+        strings: [
+            "developing", 
+            "programming", 
+            "building", 
+            "coding",
+            "designing",
+            "architecting",
+            "debugging",
+            "testing",
+            "deploying",
+            "maintaining"
+        ],
+        typeSpeed: 100,
+        backSpeed: 50,
+        loop: true,
+        });
+    </script>
 {% endblock %}

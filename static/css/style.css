@@ -265,7 +265,9 @@ div.store-item {
         /* min-height: 90vh; */
         padding: 0vh 20vw;
         font-size: 3vw;
-        margin-top: 20vw;
+        /* margin-top: 20vw; */
+        height: 100vh;
+        justify-content: center;
     }
 
     .hero-body {
@@ -274,7 +276,7 @@ div.store-item {
     }
 
     .hero-title {
-        margin-bottom: 8vw;
+        margin-bottom: 4.2vw;
     }
 
     .hero-content {
@@ -318,9 +320,13 @@ div.store-item {
         text-align: center;
     }
 
-    a.home-link, a.about-link {
-        text-decoration: none;
+    a.about-link {
+        /* text-decoration: none; */
         color: #FF90BB; /* #71C0BB; */
+    }
+
+    a.home-link {
+        color: #FF90BB;
     }
 
     div.about-button-container {
@@ -1441,7 +1447,7 @@ div.store-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 70vh;
+        /* min-height: 70vh; */
         font-size: 3vw;
     }
 
@@ -1821,11 +1827,13 @@ div.store-item {
         flex-direction: column;
         margin-top: 0vw;
         align-items: center;
-        padding: 7vw 20vw;
+        padding: 0vw 20vw;
         padding-bottom: 4vw;
         font-size: 2vw;
         margin-top: 2vw;
         min-width: 60vw;
+        height: 100vh;
+        justify-content: center;
     }
 
     .hero-body {
@@ -1881,9 +1889,14 @@ div.store-item {
         text-align: center;
     }
 
-    a.home-link, a.about-link {
-        text-decoration: none;
+    a.about-link {
+        /* text-decoration: none; */
         color: #FF90BB; /* #71C0BB */
+    }
+
+    a.home-link {
+        color: #FF90BB;
+        margin-bottom: 2vw;
     }
 
     div.about-button-container {
@@ -2973,7 +2986,7 @@ div.store-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 100vh;
+        /* min-height: 100vh; */
         font-size: 2vw;
         margin-bottom: 4vw;
     }

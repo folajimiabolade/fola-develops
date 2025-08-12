@@ -110,18 +110,15 @@
     #     )
 
 
-# from flask import Flask, render_template
-#
-# app = Flask(__name__)
-#
-#
-# @app.route("/")
-# def test():
-#     return render_template("test.html")
-#
-#
-# if __name__ == "__main__":
-#     app.run(debug=True)
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 
-print("Axopar 37XC Cross Cabin White| 38ft".replace(" ", "_"))
+@app.route("/")
+def test():
+    return render_template("test.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

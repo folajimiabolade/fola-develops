@@ -1,6 +1,6 @@
-body {
+/* body {
     background: black;
-}
+} */
 
 @keyframes merigoround {
 
@@ -26,3 +26,4 @@ body {
     animation-timing-function: ease-in;
     animation-iteration-count: infinite;
 }
+

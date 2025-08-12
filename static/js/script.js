@@ -216,11 +216,18 @@ $("input.upload-photo").change(function () {
 });
 
 
+// Make every item on the store home page a button that links to their information
 document.querySelectorAll("div.store-item").forEach(function(item) {
     item.addEventListener("click", function() {
         const itemId = item.getAttribute("data-item-id");
         document.querySelector("a.item-information.id-" + itemId).click();
     })
+})
+
+
+document.querySelector("a.item-button").addEventListener("click", function() {
+    const itemId = item.getAttribute("data-item-id");
+
 })
 
 
