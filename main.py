@@ -674,20 +674,20 @@ def add_placeholders():
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
-@app.route("/cart-it/api", methods=["POST"])
+@app.route("/api/cart-it", methods=["POST"])
 @login_required
 def cart_it():
-    print(request.args)
-    print(f"request is: {request.get_json()}")
     data = request.get_json()
-    item_id = data.get("item_id")
-    cart_product = CartProduct(
-        item_id=item_id,
-        user_id=current_user.id
-    )
-    db.session.add(cart_product)
-    db.session.commit()
-    return jsonify({"status": "item added"})
+    value = data.get("value")
+    print(value)
+    return jsonify({"status": f"item seen at backend, it is : {value}"})
+
+
+@app.route("/api/submit", methods=["POST"])
+def submit():
+    data = request.get_json()
+    name = data.get("name")
+    return jsonify({"message": f"Hello, {name}!"})
 
 if __name__ == "__main__":
     app.run(debug=True)
