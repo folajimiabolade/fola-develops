@@ -311,6 +311,8 @@ def valid_picture(filename):
 @app.route("/upload-picture", methods=["GET", "POST"])
 @login_required
 def upload_picture():
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
     picture_form = PictureForm()
     if request.method == "POST":
         if "picture" not in request.files:
