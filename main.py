@@ -594,11 +594,47 @@ def hide_testimony(i_d):
 #     return render_template("projects.html")
 
 
+@app.route("/ap")
+def add_placeholders():
+    # Add all the placeholder entities to the database, only use when you are creating a new database
+    with app.app_context():
+    # Add yourself
+        user = User(
+        first_name="Jimi",
+        last_name="Abolade",
+        email="folajimiabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
+        picture_number=0
+        )
+        db.session.add(user)
+        db.session.commit()
+        # Add store items
+        for thing in things:
+            item = Item(
+            picture_url=thing["picture_url"],
+            unique_name=thing["unique_name"],
+            name=thing["name"],
+            price=thing["price"],
+            description=thing["description"],
+            user_id=thing["user_id"]
+            )
+            db.session.add(item)
+            db.session.commit()
+    return "<h2>All placeholders have been added successfully!</h2>"
+
+
 @app.route("/store")
 @login_required
 def store():
     items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
-    return render_template("store.html", items=items, admin_email=admin_email)
+    return render_template("store.html", items=items, admin_email=admin_email, page_name="store")
+
+
+@app.route("/show-cart/api")
+@login_required
+def show_cart():
+    cart_length = sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()])
+    return jsonify({"cart_length": cart_length})
 
 
 @app.route("/add-item", methods=["GET", "POST"])
@@ -646,47 +682,28 @@ def item(unique_name):
     return render_template("item.html", item=item, admin_email=admin_email)
 
 
-@app.route("/ap")
-def add_placeholders():
-    # Add all the placeholder entities to the database, only use when you are creating a new database
-    with app.app_context():
-    # Add yourself
-        user = User(
-        first_name="Jimi",
-        last_name="Abolade",
-        email="folajimiabolade@gmail.com",
-        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
-        picture_number=0
-        )
-        db.session.add(user)
-        db.session.commit()
-        # Add store items
-        for thing in things:
-            item = Item(
-            picture_url=thing["picture_url"],
-            unique_name=thing["unique_name"],
-            name=thing["name"],
-            price=thing["price"],
-            description=thing["description"],
-            user_id=thing["user_id"]
-            )
-            db.session.add(item)
-            db.session.commit()
-    return "<h2>All placeholders have been added successfully!</h2>"
-
-
 @app.route("/cart-it/api", methods=["POST"])
 @login_required
 def cart_it():
     data = request.get_json()
     item_id = data.get("item_id")
-    cart_product = CartProduct(
-        item_id=item_id,
-        user_id=current_user.id
-    )
-    db.session.add(cart_product)
-    db.session.commit()
-    return jsonify({"status": "item added"})
+    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
+    if cart_product:
+        products_ids = [product_id[0] for product_id in db.session.query(CartProduct.item_id).all()]
+        if item_id in products_ids:
+            cart_product.quantity += 1
+            db.session.commit()
+    else:
+        cart_product = CartProduct(
+            item_id=item_id,
+            user_id=current_user.id
+        )
+        db.session.add(cart_product)
+        db.session.commit()
+    return jsonify({
+        "status": "item added",
+        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()])
+        })
 
 if __name__ == "__main__":
     app.run(debug=True)

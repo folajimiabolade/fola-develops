@@ -241,8 +241,24 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data["status"]));
+        .then(function(data)  {
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+        });
     })
+})
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "store") {
+        fetch("/show-cart/api")
+        .then(response => response.json())
+        .then(function(data)  {
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+        });
+    }
 })
 
 

@@ -3,7 +3,7 @@ An application where you can add
 pictures and comments to.
 
 ## About
-WebBuildHQ is an application where you
+This is an application where you
 can add comments and pictures to, it
 was built with Python, the server
 that communicates with the users
@@ -27,30 +27,32 @@ The application is run from the
 ## How to use the app
 **Step 1**
 Visit the homepage 
-https://webbuildhq.onrender.com, you 
-should see a webpage that looks like this:
+https://foladevelops.onrender.com
+<!-- , you 
+should see a webpage that looks like this: -->
 
-![Home page](static/images/screenshots/Home.jpg)
+<!-- ![Home page](static/images/screenshots/Home.jpg) -->
 
 **Step 2**
 Sign up or login, after signing up or 
 logging in, you should be redirected to 
-your 'Account' page which looks like this:
+your 'Account' page
+ <!-- which looks like this:
 
-![Account page](static/images/screenshots/Account.jpg)
+![Account page](static/images/screenshots/Account.jpg) -->
 
 **Step 3**
 Click on the 'Profile Picture' button, 
 then click on 'Add a profile picture' and 
 upload your picture, then your picture 
-should display on your 'Profile Picture' 
-page like this:
+should display on your 'Profile Picture'. 
+<!-- page like this:
 
-![Profile picture page](static/images/screenshots/Picture.jpg)
+![Profile picture page](static/images/screenshots/Picture.jpg) -->
 
-Done! Now you can navigate back to 
-your 'Account' page.
-
+<!-- Done! Now you can navigate back to 
+your 'Account' page. -->
+<!-- 
 **Step 4**
 On your 'Account' page, click on 
 the 'Add comment' button, add 
@@ -58,18 +60,19 @@ your comment and click the 'Submit'
 button, you should be redirected to 
 your 'Account' page with your comment and 
 the date and time it was made showing up 
-on your dashboard, your 'Account' page 
+on your dashboard -->
+<!-- , your 'Account' page 
 should look like this:
 
-![Account page with a comment](static/images/screenshots/Comment.jpg)
+![Account page with a comment](static/images/screenshots/Comment.jpg) -->
 
-You can add as many comments as you want! 
-Your comment should also show up on 
+<!-- You can add as many comments as you want!  -->
+<!-- Your comment should also show up on 
 the 'Comments' page, which you can 
 navigate to by clicking the 'Menu' button, 
 then clicking the 'Comments' button, the 
 'Comments' page looks like this:
 
-![Comments section](static/images/screenshots/Comments.jpg)
+![Comments section](static/images/screenshots/Comments.jpg) -->
 
 
