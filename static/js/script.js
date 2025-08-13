@@ -230,7 +230,7 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
         event.preventDefault()
         const itemId = Number(item.getAttribute("data-item-id"));
         const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        fetch("127.0.0.1:5000/cart-it/api", {
+        fetch("/cart-it/api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -241,8 +241,7 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data["status"]))
-        .catch(error => console.error("Error is: ", error));
+        .then(data => console.log(data["status"]));
     })
 })
 
