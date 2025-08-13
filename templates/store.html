@@ -10,7 +10,7 @@
     <div class="store-holder">
         <div class="cart-holder">
             <div class="item-count">
-                <p class="text item-count">6</p>
+                <p class="text item-count"></p>
             </div>
             <svg class="bi bi-cart3 text cart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
@@ -39,6 +39,49 @@
                     <div class="item-details">
                         <p class="text item-title">{{ item.name }}</p>
                         <p class="text item-price">{{ item.price }}</p>
+
+                        <!-- <div class="item-button">
+                            <a class="text testimony-button account-project item-button" data-item-id="{{ item.id }}" type="button" href="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
+                                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg><p class="testimony-prompt cart-paragraph">  Add To Cart</p>
+                            </a>
+                        </div> -->
+
+                        <div class="quantity-buttons">
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity" data-item-id="{{ item.id }}" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            
+                            <p class="text item-quantity">1</p>
+
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity" data-item-id="{{ item.id }}" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% for item in items %}
+                <a class="item-information id-{{ item.id }}" href="{{ url_for('item', unique_name=item.unique_name) }}">Item Info</a>
+
+                <div class="store-item" data-item-id="{{ item.id }}">
+                    <img class="item-image" alt="{{ item.name }}" src="{{ item.picture_url }}"/>
+                    <div class="item-details">
+                        <p class="text item-title">{{ item.name }}</p>
+                        <p class="text item-price">{{ item.price }}</p>
+
                         <div class="item-button">
                             <a class="text testimony-button account-project item-button" data-item-id="{{ item.id }}" type="button" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
@@ -47,110 +90,31 @@
                                 </svg><p class="testimony-prompt cart-paragraph">  Add To Cart</p>
                             </a>
                         </div>
+
+                        <!-- <div class="quantity-buttons">
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity" data-item-id="{{ item.id }}" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            
+                            <p class="text item-quantity">1</p>
+
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity" data-item-id="{{ item.id }}" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </div> -->
             {% endfor %}
-            
-            <!-- <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/fish-and-jollof.jpg"/>
-                <div class="item-details">
-                    <p class="text item-title">Fish, Jollof Rice, Plantains and Vegetables</p>
-                    <p class="text item-price">₦8,200</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/fashion.jpg"/>
-                <div class="item-details">
-                    <p class="text item-title">Jamie Arnold Men and Women High End Collection</p>
-                    <p class="text item-price">₦132,800</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/house.jpg"/>
-                <div class="item-details">
-                    <p class="text item-title">Four Bedroom House on Fola Jimi Close</p>
-                    <p class="text item-price">₦108,205,400</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/bentayga.png"/>
-                <div class="item-details">
-                    <p class="text item-title">Bentayga EWB Silver with Black Interior</p>
-                    <p class="text item-price">₦64,806,320</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/plane.png"/>
-                <div class="item-details">
-                    <p class="text item-title">Bombardier Learjet 45 with Cream Interior</p>
-                    <p class="text item-price">₦3,686,302,600</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-item">
-                <img class="item-image" alt="fish and jollof" src="/static/images/store/boat.webp"/>
-                <div class="item-details">
-                    <p class="text item-title">Axopar 37XC Cross Cabin White| 38ft</p>
-                    <p class="text item-price">₦420,333,260</p>
-                    <div class="item-button">
-                        <a class="text testimony-button account-project item-button" type="button" href="{{ url_for('add_testimony') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
-                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg><p class="testimony-prompt">  Add To Cart</p>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-            
-            <!-- <div class="store-item">
-                <img/>
-                <div class="item-details"></div>
-            </div> -->
+
 
         </div>
 

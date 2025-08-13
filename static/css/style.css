@@ -1553,6 +1553,8 @@ div.store-item {
         grid-template-columns: 40vw 40vw;
         gap: 6vw;
         /* display: none; */
+        /* display: flex;
+        justify-content: center; */
     }
 
     div.store-item {
@@ -1678,6 +1680,35 @@ div.store-item {
     svg.add-item {
         width: 2vw;
         height: 2vw;
+    }
+
+    div.quantity-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2.2vw;
+    }
+
+    a.toggle-quantity {
+        padding: 0;
+        width: 9vw;
+        height: 9vw;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p.item-quantity {
+        font-size: 3.5vw;
+        min-height: 4vw;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    svg.toggle-quantity {
+        width: 3.5vw;
+        height: 3.5vw;
     }
 
 }
@@ -3100,6 +3131,8 @@ div.store-item {
         gap: 2vw;
         margin-bottom: 4vw;
         /* display: none; */
+        display: flex;
+        justify-content: center;
     }
 
     div.store-item {
@@ -3188,6 +3221,36 @@ div.store-item {
     div.item {
         margin-left: 2vw;
         margin-right: 2vw;
+    }
+
+    div.quantity-buttons {
+        display: flex;
+        justify-content: space-between;
+        /* margin-top: 1.1vw; */
+    }
+
+    a.toggle-quantity {
+        padding: 0;
+        margin: 0;
+        width: 5.05vw;
+        height: 5.05vw;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p.item-quantity {
+        font-size: 1.75vw;
+        min-height: 2vw;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    svg.toggle-quantity {
+        width: 1.75vw;
+        height: 1.75vw;
     }
 
 
