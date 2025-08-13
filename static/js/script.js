@@ -169,9 +169,9 @@ $("div.portfolio").click(() => {
 $("div.blog").click(() => {
     $("div.blog-designs").toggleClass("hidden");
     if ($("div.blog-designs").hasClass("hidden")) {
-        $("div.blog").html('<p class="text design-type"><b>▲ 3. 🛒 E-commerce Platform (Prototype)</b></p>');
+        $("div.blog").html('<p class="text design-type"><b>▲ 3. 🛒 E-commerce Platform (Demo)</b></p>');
     } else {
-        $("div.blog").html('<p class="text design-type"><b>▼ 3. 🛒 E-commerce Platform (Prototype)</b></p>');
+        $("div.blog").html('<p class="text design-type"><b>▼ 3. 🛒 E-commerce Platform (Demo)</b></p>');
     }
 });
 $("div.personal").click(() => {
@@ -225,62 +225,26 @@ $("input.upload-photo").change(function () {
 // })
 
 
-document.querySelector("button.menu").addEventListener("click", function(event) {
-    event.preventDefault()
-    fetch("http://127.0.0.1:5000/api/cart-it", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({value: 2})
+document.querySelectorAll("a.item-button").forEach(function(item) {
+    item.addEventListener("click", function(event) {
+        event.preventDefault()
+        const itemId = Number(item.getAttribute("data-item-id"));
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch("127.0.0.1:5000/cart-it/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": token
+            },
+            body: JSON.stringify({
+                "item_id": itemId
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data["status"]))
+        .catch(error => console.error("Error is: ", error));
     })
-    .then(response => response.json())
-    .then(data => console.log("response is: " + data["status"]))
 })
-
-
-function sendName() {
-      const name = document.getElementById("nameInput").value;
-      const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-      fetch("http://127.0.0.1:5000/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": token
-        },
-        body: JSON.stringify({ name: name })
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("responseText").textContent = data.message;
-      });
-    }
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     // your querySelectorAll loop here
-//     document.querySelectorAll("a.item-button").forEach(function(item) {
-//         item.addEventListener("click", function(event) {
-//             event.preventDefault()
-//             const itemId = item.getAttribute("data-item-id");
-//             // var numItemId = Number(itemId)
-//             // console.log(numItemId)
-//             fetch("http://127.0.0.1:5000/api/cart-it", {
-//             method: "POST",
-//             headers: {
-//             "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify({ value: itemId })
-//             })
-//             .then(response => response.json())
-//             .then(data => {
-//                 console.log(data["status"]);
-//             });
-//         })
-//     })
-// });
-
 
 
 // // Get data from the database by fetching data from the Flask server

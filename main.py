@@ -309,10 +309,8 @@ def valid_picture(filename):
 
 
 @app.route("/upload-picture", methods=["GET", "POST"])
-# @login_required
+@login_required
 def upload_picture():
-    if not current_user.is_authenticated:
-        return redirect(url_for("login"))
     picture_form = PictureForm()
     if request.method == "POST":
         if "picture" not in request.files:
@@ -676,20 +674,18 @@ def add_placeholders():
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
-@app.route("/api/cart-it", methods=["POST"])
+@app.route("/cart-it/api", methods=["POST"])
 @login_required
 def cart_it():
     data = request.get_json()
-    value = data.get("value")
-    print(value)
-    return jsonify({"status": f"item seen at backend, it is : {value}"})
-
-
-@app.route("/api/submit", methods=["POST"])
-def submit():
-    data = request.get_json()
-    name = data.get("name")
-    return jsonify({"message": f"Hello, {name}!"})
+    item_id = data.get("item_id")
+    cart_product = CartProduct(
+        item_id=item_id,
+        user_id=current_user.id
+    )
+    db.session.add(cart_product)
+    db.session.commit()
+    return jsonify({"status": "item added"})
 
 if __name__ == "__main__":
     app.run(debug=True)
