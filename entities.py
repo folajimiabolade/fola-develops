@@ -85,6 +85,5 @@ class CartProduct(UserMixin, db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     item_id: Mapped[int] = mapped_column(ForeignKey("items.id"))
     item = relationship("Item", back_populates="cart_product")
-    quantity: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user = relationship("User", back_populates="cart_products")

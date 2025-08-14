@@ -225,6 +225,7 @@ $("input.upload-photo").change(function () {
 // })
 
 
+// add-to-cart
 document.querySelectorAll("a.item-button").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -256,15 +257,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
 
     if (pageName === "store") {
-        fetch("/show-cart/api")
+        fetch("/show-cart-and-item-quantities/api")
         .then(response => response.json())
         .then(function(data)  {
             document.querySelector("p.item-count").textContent = data["cart_length"];
-            // item-button quantity-buttons
             document.querySelectorAll("a.item-button").forEach(function(item) {
                 const itemId = Number(item.getAttribute("data-item-id"));
-                if (data["item_ids"].includes(itemId)) {
-                    $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantities"][data["item_ids"].indexOf(itemId)] + " item(s) selected");
+                const currentUserId = item.getAttribute("data-current-user-id");
+                const itemQuantity = data["quantities"][data["item_ids"].indexOf(itemId)];
+                const buyerId = data["user_ids"][data["item_ids"].indexOf(itemId)];
+                console.log("currentUserId: " + currentUserId)
+                console.log("buyerId: " + buyerId)
+                if (buyerId !== currentUserId) {
+                    $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+                } else if (data["item_ids"].includes(itemId)) {
+                    $("p.item-quantity[data-item-id='" + itemId + "']").text(itemQuantity + " item(s) selected");
                     $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
                 } else {
                     $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
