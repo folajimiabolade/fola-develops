@@ -230,7 +230,7 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
         event.preventDefault()
         const itemId = Number(item.getAttribute("data-item-id"));
         const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        fetch("/cart-it/api", {
+        fetch("/add-to-cart/api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -242,14 +242,17 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
         })
         .then(response => response.json())
         .then(function(data)  {
+            console.log(data["status"])
             document.querySelector("p.item-count").textContent = data["cart_length"];
+            $("div.item-button[data-item-id='" + itemId + "']").addClass("hidden");
+            $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantities"][data["item_ids"].indexOf(itemId)] + " item(s) selected");
+            $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+            })
         });
     })
-})
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
 
     if (pageName === "store") {
@@ -257,9 +260,75 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(function(data)  {
             document.querySelector("p.item-count").textContent = data["cart_length"];
+            // item-button quantity-buttons
+            document.querySelectorAll("a.item-button").forEach(function(item) {
+                const itemId = Number(item.getAttribute("data-item-id"));
+                if (data["item_ids"].includes(itemId)) {
+                    $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantities"][data["item_ids"].indexOf(itemId)] + " item(s) selected");
+                    $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+                } else {
+                    $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+                }
+            });
         });
     }
 })
+
+
+document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
+    item.addEventListener("click", function(event) {
+        event.preventDefault()
+        const itemId = Number(item.getAttribute("data-item-id"));
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch("/reduce-quantity/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": token
+            },
+            body: JSON.stringify({
+                "item_id": itemId
+            })
+        })
+        .then(response => response.json())
+        .then(function(data)  {
+            if (data["quantity"] === 0) {
+                $("div.quantity-buttons[data-item-id='" + itemId + "']").addClass("hidden");
+                $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+            } else{
+                $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+            }
+        })
+    })
+});
+
+
+document.querySelectorAll("a.increase-quantity").forEach(function(item) {
+    item.addEventListener("click", function(event) {
+        event.preventDefault()
+        const itemId = Number(item.getAttribute("data-item-id"));
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch("/increase-quantity/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": token
+            },
+            body: JSON.stringify({
+                "item_id": itemId
+            })
+        })
+        .then(response => response.json())
+        .then(function(data)  {
+            $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+        })
+    })
+});
+
+
+
 
 
 // // Get data from the database by fetching data from the Flask server

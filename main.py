@@ -627,6 +627,9 @@ def add_placeholders():
 @login_required
 def store():
     items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
+    cart_products = db.session.execute(db.select(CartProduct).order_by(CartProduct.id)).scalars().all()
+    product_details = [{"item_id": product.item_id, "quantity": product.quantity} for product in cart_products]
+    print(product_details)
     return render_template("store.html", items=items, admin_email=admin_email, page_name="store")
 
 
@@ -634,7 +637,14 @@ def store():
 @login_required
 def show_cart():
     cart_length = sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()])
-    return jsonify({"cart_length": cart_length})
+    cart_products = db.session.execute(db.select(CartProduct).order_by(CartProduct.id)).scalars().all()
+    item_ids = [product.item_id for product in cart_products]
+    quantities = [product.quantity for product in cart_products]
+    return jsonify({
+        "cart_length": cart_length,
+        "item_ids": item_ids,
+        "quantities": quantities
+        })
 
 
 @app.route("/add-item", methods=["GET", "POST"])
@@ -682,7 +692,7 @@ def item(unique_name):
     return render_template("item.html", item=item, admin_email=admin_email)
 
 
-@app.route("/cart-it/api", methods=["POST"])
+@app.route("/add-to-cart/api", methods=["POST"])
 @login_required
 def cart_it():
     data = request.get_json()
@@ -696,14 +706,55 @@ def cart_it():
     else:
         cart_product = CartProduct(
             item_id=item_id,
+            quantity=1,
             user_id=current_user.id
         )
         db.session.add(cart_product)
         db.session.commit()
+    cart_products = db.session.execute(db.select(CartProduct).order_by(CartProduct.id)).scalars().all()
+    item_ids = [product.item_id for product in cart_products]
+    quantities = [product.quantity for product in cart_products]
     return jsonify({
         "status": "item added",
-        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()])
+        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
+        "item_ids": item_ids,
+        "quantities": quantities
         })
+
+
+@app.route("/reduce-quantity/api", methods=["POST"])
+@login_required
+def reduce_quantity():
+    data = request.get_json()
+    item_id = data.get("item_id")
+    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
+    cart_product.quantity -= 1
+    if cart_product.quantity == 0:
+        db.session.delete(cart_product)
+        db.session.commit()
+    else:
+        db.session.commit()
+    return jsonify({
+        "status": "quantity reduced",
+        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
+        "quantity": cart_product.quantity
+        })
+
+
+@app.route("/increase-quantity/api", methods=["POST"])
+@login_required
+def increase_quantity():
+    data = request.get_json()
+    item_id = data.get("item_id")
+    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
+    cart_product.quantity += 1
+    db.session.commit()
+    return jsonify({
+        "status": "quantity increased",
+        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
+        "quantity": cart_product.quantity
+        })
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -88,6 +88,14 @@ div.store-item {
     cursor: pointer;
 }
 
+div.item-button.hidden {
+    display: none;
+}
+
+div.quantity-buttons.hidden {
+    display: none;
+}
+
 @media (orientation: portrait) {
 
     div.showcase {
@@ -1699,11 +1707,12 @@ div.store-item {
     }
 
     p.item-quantity {
-        font-size: 3.5vw;
+        font-size: 2.5vw;
         min-height: 4vw;
         display: flex;
         align-items: center;
         margin: 0;
+        text-align: center;
     }
 
     svg.toggle-quantity {
@@ -3131,8 +3140,8 @@ div.store-item {
         gap: 2vw;
         margin-bottom: 4vw;
         /* display: none; */
-        display: flex;
-        justify-content: center;
+        /* display: flex;
+        justify-content: center; */
     }
 
     div.store-item {
@@ -3241,11 +3250,12 @@ div.store-item {
     }
 
     p.item-quantity {
-        font-size: 1.75vw;
+        font-size: 1.25vw;
         min-height: 2vw;
         display: flex;
         align-items: center;
         margin: 0;
+        text-align: center;
     }
 
     svg.toggle-quantity {
