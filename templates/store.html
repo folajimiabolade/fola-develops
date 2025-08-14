@@ -35,7 +35,7 @@
                 <a class="item-information id-{{ item.id }}" href="{{ url_for('item', unique_name=item.unique_name) }}">Item Info</a>
 
                 <div class="store-item" data-item-id="{{ item.id }}">
-                    <img class="item-image" alt="{{ item.name }}" src="{{ item.picture_url }}"/>
+                    <img class="item-image" alt="{{ item.name }}" src="{{ item.picture_url }}" data-item-id="{{ item.id }}"/>
                     <div class="item-details">
                         <p class="text item-title">{{ item.name }}</p>
                         <p class="text item-price">{{ item.price }}</p>

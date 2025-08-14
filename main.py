@@ -10,6 +10,7 @@ from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsFor
 from flask_wtf.csrf import CSRFProtect
 # Import database tables from the entities.py file
 from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item, CartProduct
+from sqlalchemy import func
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -630,19 +631,20 @@ def store():
     return render_template("store.html", items=items, page_name="store", admin_email=admin_email)
 
 
-@app.route("/show-cart-and-item-quantities/api")
+@app.route("/load-store/api")
 @login_required
-def show_cart():
-    cart_length = sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()])
-    cart_products = db.session.execute(db.select(CartProduct).order_by(CartProduct.id)).scalars().all()
-    item_ids = [product.item_id for product in cart_products]
-    quantities = [product.quantity for product in cart_products]
-    user_ids = [product.user_id for product in cart_products]
+def load_store():
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    product_ids = [product.item_id for product in cart_products]
+    buyer_ids = [product.user_id for product in cart_products]
+    users_items = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    items_ids = [product.item_id for product in users_items]
+    print(items_ids)
     return jsonify({
-        "cart_length": cart_length,
-        "item_ids": item_ids,
-        "quantities": quantities,
-        "user_ids": user_ids
+        "cart_length": len(cart_products),
+        "product_ids": product_ids,
+        "buyer_ids": buyer_ids,
+        "items_ids": items_ids
         })
 
 
@@ -688,27 +690,28 @@ def add_item():
 @login_required
 def item(unique_name):
     item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
-    return render_template("item.html", item=item, admin_email=admin_email)
+    return render_template("item.html", item=item, page_name="item", admin_email=admin_email)
 
 
 @app.route("/add-to-cart/api", methods=["POST"])
 @login_required
-def cart_it():
+def add_to_cart():
     data = request.get_json()
     item_id = data.get("item_id")
-    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
     cart_product = CartProduct(
         item_id=item_id,
         user_id=current_user.id
     )
     db.session.add(cart_product)
     db.session.commit()
-    cart_products = db.session.execute(db.select(CartProduct).order_by(CartProduct.id)).scalars().all()
-    item_ids = [product.item_id for product in cart_products]
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    items = db.session.query(CartProduct).filter(
+        CartProduct.item_id == item_id, 
+        CartProduct.user_id == current_user.id
+        ).all()
     return jsonify({
-        "status": "item added",
-        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
-        "item_ids": item_ids,
+        "cart_length": len(cart_products),
+        "quantity": len(items)
         })
 
 
@@ -717,17 +720,18 @@ def cart_it():
 def reduce_quantity():
     data = request.get_json()
     item_id = data.get("item_id")
-    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
-    cart_product.quantity -= 1
-    if cart_product.quantity == 0:
-        db.session.delete(cart_product)
-        db.session.commit()
-    else:
-        db.session.commit()
+    cart_product = db.session.query(CartProduct).filter(CartProduct.item_id == item_id, CartProduct.user_id == current_user.id).first()
+    db.session.delete(cart_product)
+    db.session.commit()
+    products = db.session.query(CartProduct).filter(
+        CartProduct.user_id == current_user.id, 
+        CartProduct.item_id == item_id
+        ).all()
+    quantity = len(products)
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     return jsonify({
-        "status": "quantity reduced",
-        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
-        "quantity": cart_product.quantity
+        "cart_length": len(cart_products),
+        "quantity": quantity
         })
 
 
@@ -736,20 +740,32 @@ def reduce_quantity():
 def increase_quantity():
     data = request.get_json()
     item_id = data.get("item_id")
-    cart_product = db.session.execute(db.select(CartProduct).where(CartProduct.item_id == item_id)).scalar()
-    cart_product.quantity += 1
+    cart_product = CartProduct(item_id=item_id, user_id=current_user.id)
+    db.session.add(cart_product)
     db.session.commit()
+    products = db.session.query(CartProduct).filter(
+        CartProduct.user_id == current_user.id, 
+        CartProduct.item_id == item_id
+        ).all()
+    quantity = len(products)
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     return jsonify({
-        "status": "quantity increased",
-        "cart_length": sum([quantity[0] for quantity in db.session.query(CartProduct.quantity).all()]),
-        "quantity": cart_product.quantity
+        "cart_length": len(cart_products),
+        "quantity": quantity
         })
 
 
 @app.route("/cart")
 @login_required
 def cart():
-    return render_template("cart.html")
+    results = (
+        db.session.query(CartProduct.item_id, func.count(CartProduct.item_id))
+        .filter(CartProduct.user_id == current_user.id)
+        .group_by(CartProduct.item_id).all()
+    )
+    for value, frequency in results:
+        print(f"{value} appears {frequency} times")
+    return render_template("cart.html", page_name="cart")
 
 
 if __name__ == "__main__":

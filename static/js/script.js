@@ -216,13 +216,39 @@ $("input.upload-photo").change(function () {
 });
 
 
-// Make every item on the store home page a button that links to their information
-// document.querySelectorAll("div.store-item").forEach(function(item) {
-//     item.addEventListener("click", function() {
-//         const itemId = item.getAttribute("data-item-id");
-//         document.querySelector("a.item-information.id-" + itemId).click();
-//     })
-// })
+// Load store
+document.addEventListener("DOMContentLoaded", () => {
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "store" || "cart" || "item") {
+        fetch("/load-store/api")
+        .then(response => response.json())
+        .then(function(data)  {
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+            document.querySelectorAll("a.item-button").forEach(function(item) {
+                const itemId = Number(item.getAttribute("data-item-id"));
+                $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+                const currentUserId = Number(item.getAttribute("data-current-user-id"));
+                data["product_ids"].forEach(content => {
+                    const buyerId = data["buyer_ids"][data["product_ids"].indexOf(itemId)]
+                    if (buyerId === currentUserId) {
+                        var quantity = 0;
+                        data["items_ids"].forEach(item => {
+                            if (item === itemId) {
+                                quantity++;
+                            }
+                        })
+                        $("div.item-button[data-item-id='" + itemId + "']").addClass("hidden");
+                        $("p.item-quantity[data-item-id='" + itemId + "']").text(quantity + " item(s) selected");
+                        $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+                    } else {
+                        $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+                    }
+                })
+            });
+        });
+    }
+})
 
 
 // add-to-cart
@@ -243,45 +269,16 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
         })
         .then(response => response.json())
         .then(function(data)  {
-            console.log(data["status"])
             document.querySelector("p.item-count").textContent = data["cart_length"];
             $("div.item-button[data-item-id='" + itemId + "']").addClass("hidden");
-            $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantities"][data["item_ids"].indexOf(itemId)] + " item(s) selected");
+            $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
             $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
             })
         });
     })
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
-
-    if (pageName === "store") {
-        fetch("/show-cart-and-item-quantities/api")
-        .then(response => response.json())
-        .then(function(data)  {
-            document.querySelector("p.item-count").textContent = data["cart_length"];
-            document.querySelectorAll("a.item-button").forEach(function(item) {
-                const itemId = Number(item.getAttribute("data-item-id"));
-                const currentUserId = item.getAttribute("data-current-user-id");
-                const itemQuantity = data["quantities"][data["item_ids"].indexOf(itemId)];
-                const buyerId = data["user_ids"][data["item_ids"].indexOf(itemId)];
-                console.log("currentUserId: " + currentUserId)
-                console.log("buyerId: " + buyerId)
-                if (buyerId !== currentUserId) {
-                    $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
-                } else if (data["item_ids"].includes(itemId)) {
-                    $("p.item-quantity[data-item-id='" + itemId + "']").text(itemQuantity + " item(s) selected");
-                    $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
-                } else {
-                    $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
-                }
-            });
-        });
-    }
-})
-
-
+// Reduce quantity
 document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -304,13 +301,14 @@ document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
                 $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
             } else{
                 $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
-            document.querySelector("p.item-count").textContent = data["cart_length"];
             }
+            document.querySelector("p.item-count").textContent = data["cart_length"];
         })
     })
 });
 
 
+// Increase quantity
 document.querySelectorAll("a.increase-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -333,6 +331,15 @@ document.querySelectorAll("a.increase-quantity").forEach(function(item) {
         })
     })
 });
+
+
+// Make every item image on the store home page a button that links to it's information
+document.querySelectorAll("img.item-image").forEach(function(item) {
+    item.addEventListener("click", function() {
+        const itemId = item.getAttribute("data-item-id");
+        document.querySelector("a.item-information.id-" + itemId).click();
+    })
+})
 
 
 
