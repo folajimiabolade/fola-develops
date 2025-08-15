@@ -1755,18 +1755,20 @@ div.quantity-buttons.hidden {
 
     div.cart-item {
         width: 92vw;
-        height: 35vw;
+        height: 39.4vw;
         border-radius: 1.75vw;
         border: 0.2vw solid #E7F2E4;
-        padding: 0vw 2.2vw;
         margin-bottom: 2vw;
+        padding: 0vw 2.2vw;
+        display: flex;
+        align-items: center;
     }
 
     div.item-grid {
         padding: 1vw;
         display: grid;
         /* display:none; */
-        grid-template-columns: 26vw 52vw;
+        grid-template-columns: 26vw 52vw 14vw;
         grid-template-rows: 8vw 8vw 8vw 8vw;
     }
 
@@ -1777,21 +1779,22 @@ div.quantity-buttons.hidden {
     }
 
     img.product-image {
-        border-radius: 1.5vw;
+        border-radius: 2.75vw;
         width: 18vw;
-        height: 22vw;
+        height: 21vw;
         object-fit: cover;
+        padding-top: 1vw;
     }
 
     p.product-title {
-        grid-area: 1/ 2/ 3/ 3; 
+        grid-area: 1/ 2/ 3/ 4; 
         margin-left: 2vw;
         /* margin-top: 0; */
         font-size: 2.5vw;
     }
 
     p.product-price {
-        grid-area: 3/ 2/ 4/ 3; 
+        grid-area: 3/ 2/ 4/ 4; 
         margin-left: 2vw;
         margin-top: 0;
         font-size: 4vw;
@@ -1846,6 +1849,10 @@ div.quantity-buttons.hidden {
         justify-content: center;
     }
 
+    div.empty-cart.hidden {
+        display: none;
+    }
+
     svg.empty-cart {
         width: 10vw;
         height: 10vw;
@@ -1859,6 +1866,38 @@ div.quantity-buttons.hidden {
     p.cart-empty {
         font-size: 2vw;
         margin: 0;
+    }
+
+    div.delete-item {
+        grid-area: 4/ 3/ 5/ 4;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a.delete-item {
+        margin: 0;
+        border-radius: 2vw;
+        padding: 0;
+        width: 6.75vw;
+        height: 6.75vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        /* border: 0.4vw solid #FB4141;
+        background: transparent;
+        color: #FB4141;
+        padding: 0;
+        width: 6.05vw;
+        height: 6.05vw; */
+    }
+
+    svg.delete-item {
+        width: 2.625vw;
+        height: 2.625vw;
     }
 
 }

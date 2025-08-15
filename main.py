@@ -805,5 +805,24 @@ def cart():
         )
 
 
+@app.route("/delete-item/api", methods=["POST"])
+@login_required
+def delete_item():
+    data = request.get_json()
+    item_id = data.get("item_id")
+    products = db.session.query(CartProduct).filter(
+        CartProduct.user_id == current_user.id, 
+        CartProduct.item_id == item_id
+        ).all()
+    for product in products:
+        db.session.delete(product)
+        db.session.commit()
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    return jsonify({
+        "cart_length": len(cart_products)
+        })
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)

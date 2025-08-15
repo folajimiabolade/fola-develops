@@ -324,6 +324,11 @@ document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
             }
             document.querySelector("p.item-count").textContent = data["cart_length"];
             document.querySelector("b.total-price").textContent = data["total_price"].toLocaleString('en-NG', { style: 'currency', currency: 'NGN' });
+            if (data["cart_length"] === 0) {
+                $("a.checkout-button").css("display", "none");
+                $("div.total").css("display", "none");
+                $("div.empty-cart").removeClass("hidden")
+            }
         })
     })
 });
@@ -380,6 +385,35 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     }
+});
+
+
+// Delete item from cart
+document.querySelectorAll("a.delete-item").forEach(item => {
+    item.addEventListener("click", function(event) {
+        event.preventDefault()
+        const itemId = Number(item.getAttribute("data-item-id"));
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch("/delete-item/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": token
+            },
+            body: JSON.stringify({
+                "item_id": itemId
+            })
+        })
+        .then(response => response.json())
+        .then(function(data)  {
+            $("div.cart-item[data-item-id='" + itemId + "']").css("display", "none");
+            if (data["cart_length"] === 0) {
+                $("a.checkout-button").css("display", "none");
+                $("div.total").css("display", "none");
+                $("div.empty-cart").removeClass("hidden")
+            }
+        })
+    })
 });
 
 
