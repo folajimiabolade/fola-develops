@@ -9,49 +9,55 @@
 {% block user_body %}
 
     <div class="cart-page">
-        {% if items %}
+        {% if cart_products %}
 
             <div class="total">
                 <p class="text total">Total price</p>
-                <p class="text total"><b>₦132,800</b></p>
+                <p class="text total"><b class="total-price">{{ "₦{:,.0f}".format(total_price) }}</b></p>
             </div>
 
             <a class="text testimony-button checkout-button">Proceed to checkout (1 items[s])</a>
 
-            <div class="cart-item">
-                <div class="item-grid">
-                    <div class="product-image">
-                        <img class="product-image" alt="item-image" src="../static/images/store/fashion.jpg"/>
-                    </div>
-                    <p class="text product-title">Jamie Arnold Men and Women High End Collection</p>
-                    <p class="text product-price">₦3,686,302,600</p>
-                    <div class="product-toggle">
-                        <div class="quantity-buttons amount-buttons" data-item-id="">
-                            <div class="item-button">
-                                <a class="text testimony-button toggle-quantity reduce-quantity toggle-amount" data-item-id="" type="button" href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
-                                    </svg>
-                                </a>
-                            </div>
-                    
-                            <p class="text item-quantity item-amount" data-item-id="">2</p>
+            {% for product in cart_products %}
+                {% for item in items %}
+                    {% if product["item_id"] == item.id %}
+                        <div class="cart-item" data-item-id="{{ product['item_id'] }}">
+                            <div class="item-grid">
+                                <div class="product-image">
+                                    <img class="product-image" alt="{{ item.name }}" src="{{ item.picture_url }}"/>
+                                </div>
+                                <p class="text product-title">{{ item.name }}</p>
+                                <p class="text product-price">{{ "₦{:,.0f}".format(item.price) }}</p>
+                                <div class="product-toggle">
+                                    <div class="quantity-buttons amount-buttons" data-item-id="{{ item.id }}">
+                                        <div class="item-button">
+                                            <a class="text testimony-button toggle-quantity reduce-quantity toggle-amount reduce-amount" data-item-id="{{ item.id }}" data-quantity="{{ product['quantity'] }}" type="button" href="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                
+                                        <p class="text item-quantity item-amount" data-item-id="{{ item.id }}">{{ product["quantity"] }}</p>
 
-                            <div class="item-button">
-                                <a class="text testimony-button toggle-quantity increase-quantity toggle-amount" data-item-id="" type="button" href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                                    </svg>
-                                </a>
+                                        <div class="item-button">
+                                            <a class="text testimony-button toggle-quantity increase-quantity toggle-amount" data-item-id="{{ item.id }}" type="button" href="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-link">
+                                    <a class="text product-link" href="{{ url_for('item', unique_name=item.unique_name) }}">View product</a>
+                                </div>
                             </div>
+                            
                         </div>
-                    </div>
-                    <div class="product-link">
-                        <a class="text product-link" href="#">View product</a>
-                    </div>
-                </div>
-                
-            </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
 
         {% else %}
             <div class="text empty-cart">

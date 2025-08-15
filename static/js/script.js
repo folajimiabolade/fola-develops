@@ -9,6 +9,20 @@ const closedIcon = [
             '0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5',
             '0 0 1-.5-.5"/> Menule'
         ].join("");
+const deleteItem = [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"',
+    ' class="bi bi-trash-fill toggle-amount" style="opacity: 0.75;" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 ',
+    '0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0',
+    ' 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1',
+    ' .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1',
+    ' 0v-7a.5.5 0 0 1 1 0"/></svg>'
+].join("");
+const reduce = [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" ',
+    'fill="currentColor" class="bi bi-dash-lg toggle-amount" viewBox="0 0 16 16"><path ',
+    'fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 ',
+    '1 2 8"/></svg>'
+].join("");
 
 /*
 Show and hide the navigation bar whenever the 'Menu' button is clicked on portrait mode,
@@ -278,7 +292,7 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
     })
 
 
-// Reduce quantity
+// Reduce quantity buttons for store and cart pages
 document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -299,16 +313,23 @@ document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
             if (data["quantity"] === 0) {
                 $("div.quantity-buttons[data-item-id='" + itemId + "']").addClass("hidden");
                 $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+                $("div.cart-item[data-item-id='" + itemId + "']").css("display", "none")
+            } else if (data["quantity"] === 1) {
+                $("a.reduce-amount[data-item-id='" + itemId + "']").html(deleteItem);
+                $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+                $("p.item-amount[data-item-id='" + itemId + "']").text(data["quantity"]);
             } else{
                 $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+                $("p.item-amount[data-item-id='" + itemId + "']").text(data["quantity"]);
             }
             document.querySelector("p.item-count").textContent = data["cart_length"];
+            document.querySelector("b.total-price").textContent = data["total_price"].toLocaleString('en-NG', { style: 'currency', currency: 'NGN' });
         })
     })
 });
 
 
-// Increase quantity
+// Increase quantity buttons for store and cart pages
 document.querySelectorAll("a.increase-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -326,8 +347,13 @@ document.querySelectorAll("a.increase-quantity").forEach(function(item) {
         })
         .then(response => response.json())
         .then(function(data)  {
-            $("p.item-quantity[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+            $("p.item-quantity[data-item-id='" + itemId + "'], p.item-amount[data-item-id='" + itemId + "']").text(data["quantity"] + " item(s) selected");
+            $("p.item-amount[data-item-id='" + itemId + "']").text(data["quantity"]);
             document.querySelector("p.item-count").textContent = data["cart_length"];
+            if (data["quantity"] !== 1) {
+                $("a.reduce-amount[data-item-id='" + itemId + "']").html(reduce);
+            }
+            document.querySelector("b.total-price").textContent = data["total_price"].toLocaleString('en-NG', { style: 'currency', currency: 'NGN' });
         })
     })
 });
@@ -340,6 +366,21 @@ document.querySelectorAll("img.item-image").forEach(function(item) {
         document.querySelector("a.item-information.id-" + itemId).click();
     })
 })
+
+
+// Load cart page
+document.addEventListener("DOMContentLoaded", () => {
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "cart") {
+        document.querySelectorAll("a.reduce-amount").forEach(item => {
+            const quantity = Number(item.getAttribute("data-quantity"));
+            if (quantity === 1) {
+                item.innerHTML = deleteItem;
+            }
+        })
+    }
+});
 
 
 

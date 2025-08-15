@@ -728,9 +728,22 @@ def reduce_quantity():
         ).all()
     quantity = len(products)
     cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    items_details = (
+        db.session.query(CartProduct.item_id, func.count(CartProduct.item_id))
+        .filter(CartProduct.user_id == current_user.id)
+        .group_by(CartProduct.item_id).all()
+    )
+    cart_items = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
+    items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
+    total_price = 0
+    for item in items:
+        for thing in cart_items:
+            if item.id == thing["item_id"]:
+                total_price += (item.price * thing["quantity"])
     return jsonify({
         "cart_length": len(cart_products),
-        "quantity": quantity
+        "quantity": quantity,
+        "total_price": total_price
         })
 
 
@@ -748,25 +761,48 @@ def increase_quantity():
         ).all()
     quantity = len(products)
     cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    items_details = (
+        db.session.query(CartProduct.item_id, func.count(CartProduct.item_id))
+        .filter(CartProduct.user_id == current_user.id)
+        .group_by(CartProduct.item_id).all()
+    )
+    cart_items = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
+    items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
+    total_price = 0
+    for item in items:
+        for thing in cart_items:
+            if item.id == thing["item_id"]:
+                total_price += (item.price * thing["quantity"])
     return jsonify({
         "cart_length": len(cart_products),
-        "quantity": quantity
+        "quantity": quantity,
+        "total_price": total_price
         })
 
 
 @app.route("/cart")
 @login_required
 def cart():
-    results = (
+    items_details = (
         db.session.query(CartProduct.item_id, func.count(CartProduct.item_id))
         .filter(CartProduct.user_id == current_user.id)
         .group_by(CartProduct.item_id).all()
     )
-    items = [{"item_id": value, "quantity": frequency} for value, frequency in results]
-    print(items)
-    # for value, frequency in results:
-    #     print(f"{value} appears {frequency} times")
-    return render_template("cart.html", page_name="cart", items=items)
+    cart_products = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
+    print(cart_products)
+    items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
+    total_price = 0
+    for item in items:
+        for product in cart_products:
+            if item.id == product["item_id"]:
+                total_price += (item.price * product["quantity"])
+    return render_template(
+        "cart.html", 
+        page_name="cart", 
+        cart_products=cart_products, 
+        items=items,
+        total_price=total_price
+        )
 
 
 if __name__ == "__main__":

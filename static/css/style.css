@@ -1725,6 +1725,7 @@ div.quantity-buttons.hidden {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 16vw;
     }
 
     div.total {
@@ -1749,7 +1750,7 @@ div.quantity-buttons.hidden {
         font-size: 2.5vw;
         position: fixed;
         bottom: 22vw;
-        display: none;
+        /* display: none; */
     }
 
     div.cart-item {
@@ -1822,6 +1823,9 @@ div.quantity-buttons.hidden {
     a.toggle-amount {
         width: 6.75vw;
         height: 6.75vw;
+        background: transparent;
+        border: 0.2vw solid #E7F2E4;
+        color: #E7F2E4;
     }
 
     svg.toggle-amount {
