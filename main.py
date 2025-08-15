@@ -689,7 +689,26 @@ def add_item():
 @login_required
 def item(unique_name):
     item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
-    return render_template("item.html", item=item, page_name="item", admin_email=admin_email)
+    item_id = item.id
+    count = 0
+    cart_products = db.session.query(CartProduct).filter(CartProduct.item_id == item_id, CartProduct.user_id == current_user.id).all()
+    print(cart_products)
+    if cart_products:
+        # count = (
+        #     db.session.query(func.count(CartProduct.id))
+        #     .filter(CartProduct.item_id == item_id)
+        #     .scalar()
+        # )
+        count = len(cart_products)
+        print(f"item appears {count} times")
+    return render_template("item.html", item=item, page_name="item", admin_email=admin_email, count=count)
+
+
+@app.route("/load-item/api")
+@login_required
+def load_item():
+
+    return jsonify({})
 
 
 @app.route("/add-to-cart/api", methods=["POST"])
@@ -796,12 +815,14 @@ def cart():
         for product in cart_products:
             if item.id == product["item_id"]:
                 total_price += (item.price * product["quantity"])
+    cart_items = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     return render_template(
         "cart.html", 
         page_name="cart", 
         cart_products=cart_products, 
         items=items,
-        total_price=total_price
+        total_price=total_price,
+        cart_length=len(cart_items)
         )
 
 
@@ -820,6 +841,28 @@ def delete_item():
     cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     return jsonify({
         "cart_length": len(cart_products)
+        })
+
+
+@app.route("/add-to-trolley/api", methods=["POST"])
+@login_required
+def add_to_trolley():
+    data = request.get_json()
+    item_id = data.get("item_id")
+    cart_product = CartProduct(
+        item_id=item_id,
+        user_id=current_user.id
+    )
+    db.session.add(cart_product)
+    db.session.commit()
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    items = db.session.query(CartProduct).filter(
+        CartProduct.item_id == item_id, 
+        CartProduct.user_id == current_user.id
+        ).all()
+    return jsonify({
+        "cart_length": len(cart_products),
+        "quantity": len(items)
         })
 
 

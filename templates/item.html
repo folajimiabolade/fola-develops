@@ -13,12 +13,63 @@
         <p class="text item-name"><b>Name: </b>{{ item.name }}</p>
         <p class="text item-amount"><b>Price: </b>{{ item.price }}</p>
         <p class="text item-description"><b>Description: </b>{{ item.description }}</p>
-        <a class="text testimony-button account-project item-button add-item" type="button" data-item-id="{{ item.id }}" href="{{ url_for('add_testimony') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg add-item" viewBox="0 0 16 16">
-                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
-                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-            </svg><p class="testimony-prompt">  Add To Cart</p>
-        </a>
+        
+        {% if count == 0 %}
+            <a class="text testimony-button account-project add-item" data-item-id="{{ item.id }}" data-current-user-id="{{ current_user.id }}" type="button" href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
+                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                </svg><p class="testimony-prompt cart-paragraph">  Add To Cart</p>
+            </a>
+            
+            <div class="quantity-buttons count-buttons hidden" data-item-id="{{ item.id }}">
+                <div class="item-button">
+                    <a class="text testimony-button toggle-quantity reduce-count toggle-count" data-item-id="{{ item.id }}" type="button" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="text item-size" data-item-id="{{ item.id }}">{{ count }}</p>
+
+                <div class="item-button">
+                    <a class="text testimony-button toggle-quantity increase-count toggle-count" data-item-id="{{ item.id }}" type="button" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        {% else %}
+            <div class="quantity-buttons count-buttons" data-item-id="{{ item.id }}">
+                <div class="item-button">
+                    <a class="text testimony-button toggle-quantity reduce-count toggle-count" data-item-id="{{ item.id }}" type="button" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="text item-size" data-item-id="{{ item.id }}">{{ count }}</p>
+
+                <div class="item-button">
+                    <a class="text testimony-button toggle-quantity increase-count toggle-count" data-item-id="{{ item.id }}" type="button" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <a class="text testimony-button account-project add-item hidden" data-item-id="{{ item.id }}" data-current-user-id="{{ current_user.id }}" type="button" href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus testify-svg item-svg" viewBox="0 0 16 16">
+                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                </svg><p class="testimony-prompt cart-paragraph">  Add To Cart</p>
+            </a>
+        {% endif %}
     </div>
 
     <a class="cart-holder" href="{{ url_for('cart') }}">

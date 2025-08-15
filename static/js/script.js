@@ -292,7 +292,7 @@ document.querySelectorAll("a.item-button").forEach(function(item) {
     })
 
 
-// Reduce quantity buttons for store and cart pages
+// Reduce-quantity buttons for store and cart pages
 document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -329,12 +329,13 @@ document.querySelectorAll("a.reduce-quantity").forEach(function(item) {
                 $("div.total").css("display", "none");
                 $("div.empty-cart").removeClass("hidden")
             }
+            $("a.checkout-button").text("Proceed to checkout (" + data["cart_length"] + " items[s])")
         })
     })
 });
 
 
-// Increase quantity buttons for store and cart pages
+// Increase-quantity buttons for store and cart pages
 document.querySelectorAll("a.increase-quantity").forEach(function(item) {
     item.addEventListener("click", function(event) {
         event.preventDefault()
@@ -359,6 +360,7 @@ document.querySelectorAll("a.increase-quantity").forEach(function(item) {
                 $("a.reduce-amount[data-item-id='" + itemId + "']").html(reduce);
             }
             document.querySelector("b.total-price").textContent = data["total_price"].toLocaleString('en-NG', { style: 'currency', currency: 'NGN' });
+            $("a.checkout-button").text("Proceed to checkout (" + data["cart_length"] + " items[s])")
         })
     })
 });
@@ -416,6 +418,81 @@ document.querySelectorAll("a.delete-item").forEach(item => {
     })
 });
 
+
+// Reduce count on 'Item' page
+document.querySelector("a.reduce-count").addEventListener("click", function(event) {
+    event.preventDefault();
+    const itemId = Number(document.querySelector("a.reduce-count").getAttribute("data-item-id"));
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch("/reduce-quantity/api", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": token
+        },
+        body: JSON.stringify({
+            "item_id": itemId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+            if (data["quantity"] === 0) {
+                $("div.count-buttons[data-item-id='" + itemId + "']").addClass("hidden");
+                $("a.add-item[data-item-id='" + itemId + "']").removeClass("hidden");
+            } else{
+                $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+            }
+            document.querySelector("p.item-count").textContent = data["cart_length"];
+    });
+})
+
+
+// Increase count on 'Item' page
+document.querySelector("a.increase-count").addEventListener("click", function(event) {
+    event.preventDefault()
+    const itemId = Number(document.querySelector("a.increase-count").getAttribute("data-item-id"));
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch("/increase-quantity/api", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": token
+        },
+        body: JSON.stringify({
+            "item_id": itemId
+        })
+    })
+    .then(response => response.json())
+    .then(function(data)  {
+        $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+        document.querySelector("p.item-count").textContent = data["cart_length"];
+    })
+});
+
+
+// Add to cart from 'Item' page
+document.querySelector("a.add-item").addEventListener("click", function(event) {
+    event.preventDefault()
+    const itemId = Number(document.querySelector("a.add-item").getAttribute("data-item-id"));
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch("/add-to-trolley/api", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": token
+        },
+        body: JSON.stringify({
+            "item_id": itemId
+        })
+    })
+    .then(response => response.json())
+    .then(function(data)  {
+        $("a.add-item[data-item-id='" + itemId + "']").addClass("hidden");
+        $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+        $("div.count-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+        document.querySelector("p.item-count").textContent = data["cart_length"];
+    })
+});
 
 
 
