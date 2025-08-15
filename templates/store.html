@@ -38,7 +38,7 @@
                     <img class="item-image" alt="{{ item.name }}" src="{{ item.picture_url }}" data-item-id="{{ item.id }}"/>
                     <div class="item-details">
                         <p class="text item-title">{{ item.name }}</p>
-                        <p class="text item-price">{{ item.price }}</p>
+                        <p class="text item-price">{{ "₦{:,.0f}".format(item.price) }}</p>
 
                         <div class="item-button hidden" data-item-id="{{ item.id }}">
                             <a class="text testimony-button account-project item-button" data-item-id="{{ item.id }}" data-current-user-id="{{ current_user.id }}" type="button" href="">

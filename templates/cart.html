@@ -8,6 +8,62 @@
 
 {% block user_body %}
 
+    <div class="cart-page">
+        {% if items %}
+
+            <div class="total">
+                <p class="text total">Total price</p>
+                <p class="text total"><b>₦132,800</b></p>
+            </div>
+
+            <a class="text testimony-button checkout-button">Proceed to checkout (1 items[s])</a>
+
+            <div class="cart-item">
+                <div class="item-grid">
+                    <div class="product-image">
+                        <img class="product-image" alt="item-image" src="../static/images/store/fashion.jpg"/>
+                    </div>
+                    <p class="text product-title">Jamie Arnold Men and Women High End Collection</p>
+                    <p class="text product-price">₦3,686,302,600</p>
+                    <div class="product-toggle">
+                        <div class="quantity-buttons amount-buttons" data-item-id="">
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity reduce-quantity toggle-amount" data-item-id="" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                                    </svg>
+                                </a>
+                            </div>
+                    
+                            <p class="text item-quantity item-amount" data-item-id="">2</p>
+
+                            <div class="item-button">
+                                <a class="text testimony-button toggle-quantity increase-quantity toggle-amount" data-item-id="" type="button" href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg toggle-quantity toggle-amount" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-link">
+                        <a class="text product-link" href="#">View product</a>
+                    </div>
+                </div>
+                
+            </div>
+
+        {% else %}
+            <div class="text empty-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x empty-cart" viewBox="0 0 16 16">
+                    <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                </svg>
+                <p class="text empty-cart">Your cart is empty.</p>
+                <p class="text cart-empty">You have not added any item to your cart yet.</p>
+            </div>
+
+        {% endif %}
 
         <a class="cart-holder" href="{{ url_for('cart') }}">
             <div class="item-count">
@@ -19,4 +75,6 @@
         </a>
 
         <div class="cart-background"></div>
+
+    </div>
 {% endblock %}

@@ -73,7 +73,7 @@ class Item(UserMixin, db.Model):
     picture_url: Mapped[str] = mapped_column(String())
     unique_name: Mapped[str] = mapped_column(String())
     name: Mapped[str] = mapped_column(String())
-    price: Mapped[str] = mapped_column(String())
+    price: Mapped[int] = mapped_column(Integer())
     description: Mapped[str] = mapped_column(String())
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user = relationship("User", back_populates="items")

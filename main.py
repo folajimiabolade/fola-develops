@@ -639,7 +639,6 @@ def load_store():
     buyer_ids = [product.user_id for product in cart_products]
     users_items = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     items_ids = [product.item_id for product in users_items]
-    print(items_ids)
     return jsonify({
         "cart_length": len(cart_products),
         "product_ids": product_ids,
@@ -763,9 +762,11 @@ def cart():
         .filter(CartProduct.user_id == current_user.id)
         .group_by(CartProduct.item_id).all()
     )
-    for value, frequency in results:
-        print(f"{value} appears {frequency} times")
-    return render_template("cart.html", page_name="cart")
+    items = [{"item_id": value, "quantity": frequency} for value, frequency in results]
+    print(items)
+    # for value, frequency in results:
+    #     print(f"{value} appears {frequency} times")
+    return render_template("cart.html", page_name="cart", items=items)
 
 
 if __name__ == "__main__":
