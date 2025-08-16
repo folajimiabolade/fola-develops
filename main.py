@@ -618,23 +618,24 @@ def add_placeholders():
         db.session.add(user_2)
         db.session.commit()
         # Add store items
-        # for thing in things:
-        #     item = Item(
-        #     picture_url=thing["picture_url"],
-        #     unique_name=thing["unique_name"],
-        #     name=thing["name"],
-        #     price=thing["price"],
-        #     description=thing["description"],
-        #     user_id=thing["user_id"]
-        #     )
-        #     db.session.add(item)
-        #     db.session.commit()
+        for thing in things:
+            item = Item(
+            picture_url=thing["picture_url"],
+            unique_name=thing["unique_name"],
+            name=thing["name"],
+            price=thing["price"],
+            description=thing["description"],
+            user_id=thing["user_id"]
+            )
+            db.session.add(item)
+            db.session.commit()
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
 @app.route("/store")
-@login_required
 def store():
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
     items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
     return render_template("store.html", items=items, page_name="store", admin_email=admin_email)
 
@@ -692,6 +693,7 @@ def add_item():
         return redirect(url_for("store"))
     return render_template("add-item.html", form=item_form, admin_email=admin_email)
 
+print("Oraimo Watch 5 Litev 2.01'' AMOLED Screen Smart Watch".replace(" ", "_").replace("|", "-"))
 
 @app.route("/item/<unique_name>")
 @login_required

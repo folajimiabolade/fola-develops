@@ -1,85 +1,92 @@
-boat = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Axopar_37XC_Cross_Cabin_White-_38ft",
-    "unique_name": "Axopar_37XC_Cross_Cabin_White-_38ft",
-    "name": "Axopar 37XC Cross Cabin White| 38ft",
-    "price": 420333260,
-    "description": "The new Crossover that challenges convention in both looks and onboard functionality, bringing a new era to all-weather boating."
-    "The Axopar 37 XC Cross Cabin takes you further on your journey, whether it be in the harsh cold seas of Svalbard, in the sunny and warm Caribbean or on the bustling scenes in Manhattan. Every foot on board is used for socialising and practical living; indoors and outdoors as well, infused with a myriad of new onboard solutions and functionalities whether cruising or at anchor."
-    "The Axopar 37 XC Cross Cabin is the perfect platform for every adventure at sea.",
+air_fryer = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755356537/air_fryer_kdigcd.jpg",
+    "unique_name": "SILVER CREST 8L Extra Large Capacity Digital AirFryer",
+    "name": "SILVER CREST 8L Extra Large Capacity Digital AirFryer",
+    "price": 36785,
+    "description": "The Silver crest 8L Air Fryer helps you reduce up to 99% of your fat intake enabling you to fry food without the need of oil. It features rapid air technology, an adjustable temperature control and a 30 minute time that helps you pre-set your cooking time. The Integrated air filter keeps your kitchen fresh and clean while parts of the air fryer are removable and dishwasher safe. Included is a recipe booklet to help you kick start your healthy cooking regime.",
     "user_id": 1
 }
 
-plane = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Bombardier_Learjet_45_with_Cream_Interior",
-    "unique_name": "Bombardier_Learjet_45_with_Cream_Interior",
-    "name": "Bombardier Learjet 45 with Cream Interior",
-    "price": 3686302600,
-    "description": "-Only 4,460 TTSN (Lowest Time on Market)"
-    "-Engines and APU on MSP Gold"
-    "-2024 Full Interior Refurbishment"
-    "-A1-A6 and B1-B6 Complete April 2025"
-    "-Updated Dual UNS-1EW FMS"
-    "-No Damage History",
+mens_clothes = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755356221/clothes_wlkwp1.jpg",
+    "unique_name": "Men's Shorts And T-shirt Set -2 Pieces - Black",
+    "name": "Men's Shorts And T-shirt Set -2 Pieces - Black",
+    "price": 8690,
+    "description": "Summer new men's casual lazy ins teenage beautiful basketball fashion sportswear short sleeved T-shirt shorts two-piece set",
     "user_id": 1
 }
 
-car = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Bentayga_EWB_Silver_with_Black_Interior",
-    "unique_name": "Bentayga_EWB_Silver_with_Black_Interior",
-    "name": "Bentayga EWB Silver with Black Interior",
-    "price": 64806320,
-    "description": "Craftsmanship, comfort or sheer exhilaration. Available with a 4.0 litre V8 petrol engine capable of producing 770 Nm of torque and 550 PS, or an even more powerful, performance-tuned version of the same engine capable of producing 850 Nm of torque and 650 PS, alternatively a 3.0 litre hybrid powertrain which delivers 25 miles of EV driving, it is a luxury SUV.",
+computer = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355304/laptop_kujckc.jpg",
+    "unique_name": 'Blueing 15.6" Laptop J4125 8GB+256GB SSD Student Portable Computer',
+    "name": 'Blueing 15.6" Laptop J4125 8GB+256GB SSD Student Portable Computer',
+    "price": 232580,
+    "description": "This cpu has a total of 4 cores and 4 threads that can handle a large number of tasks.",
     "user_id": 1
 }
 
-house = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Four_Bedroom_House_on_Fola_Jimi_Close",
-    "unique_name": "Four_Bedroom_House_on_Fola_Jimi_Close",
-    "name": "Four Bedroom House on Fola Jimi Close",
-    "price": 108205400,
-    "description": "FOUR BEDROOM HOUSE"
-    "PRICE: 108,205,400"
-    "LOCATION: Fola Jimi Close"
-    "FEATURES :"
-    "- Massive Kitchen with accessories"
-    "- Modern Day POP Ceiling"
-    "- Detailed finishing"
-    "- Wardrobes"
-    "- Balcony"
-    "- Water heater"
-    "- Heat extractor"
-    "- Walk-in Closet"
-    "- Walk-in Shower"
-    "- Swimming pool"
-    "- Stamped concrete floor"
-    "- Spacious compound"
-    "- Bathtub"
-    "- 24hrs Security"
-    "- Serene Environment"
-    "TITLE: Governor's Consent and Building Approval",
+glasses = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355942/glasses_itxgmd.jpg",
+    "unique_name": "EAGEAT Unisex Anti Blue Light Protective Computer Screen Glasses",
+    "name": "EAGEAT Unisex Anti Blue Light Protective Computer Screen Glasses",
+    "price": 2440,
+    "description": "HOW TO PROTECT YOUR EYESBlue light blocking glasses from our store are specially designed to filter out harmful blue-violet light. This makes screen time more comfortable and help eliminate symptoms of digital eyestrain. Simultaneously, this Blu-ray filter glasses will improve your sleep and make you fall asleep.",
     "user_id": 1
 }
 
-cloth = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Jamie_Arnold_Men_and_Women_High_End_Collection",
-    "unique_name": "Jamie_Arnold_Men_and_Women_High_End_Collection",
-    "name": "Jamie Arnold Men and Women High End Collection",
-    "price": 132800,
-    "description": "Whether formally dressed or in casuals, style should never be compromised."
-    "Material: 100% Cotton"
-    "Color: Multicolor"
-    "Style: formal"
-    "Perfect Finish",
+womens_shoes = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755354294/women_s_shoes_ihm3wl.jpg",
+    "unique_name": "Women Shoes Sandals Ladies Classic Wedge Shoes - White",
+    "name": "Women Shoes Sandals Ladies Classic Wedge Shoes - White",
+    "price": 13973,
+    "description": "Dear customer friend, welcome to our store!  This shoe features the most classic minimalist design, combining sports and casual elements to easily match multiple styles.",
     "user_id": 1
 }
 
-food = {
-    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/q_auto/f_auto/c_scale,w_500/Fish%2C_Jollof_Rice%2C_Plantains_and_Vegetables",
-    "unique_name": "Fish,_Jollof_Rice,_Plantains_and_Vegetables",
-    "name": "Fish, Jollof Rice, Plantains and Vegetables",
+phone = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355031/phone_pv91em.jpg",
+    "unique_name": 'Samsung Galaxy A05 6.7" 4GB RAM/64GB ROM Android 13 - Black',
+    "name": 'Samsung Galaxy A05 6.7" 4GB RAM/64GB ROM Android 13 - Black',
+    "price": 118945,
+    "description": "The Samsung Galaxy A05 sports a large 6.6 inches IPS LCD display that has an HD+ resolution of 720 x 1600 pixels and a 269 PPI density. The display has a water drop notch at the top center which houses the selfie camera. The screen still has noticable bezels around it but that is normal for an entry-level smartphone.",
+    "user_id": 1
+}
+
+washing_machine = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355472/1_dyuv4y.jpg",
+    "unique_name": "Snowsea 8kg Double Tub Washing Machine 785*465*870 MM (Machine Gross Weight 21KG)",
+    "name": "Snowsea 8kg Double Tub Washing Machine 785*465*870 MM (Machine Gross Weight 21KG)",
     "price": 8200,
-    "description": "Enjoy smoky fish, jollof rice, plantains with fresh veggies, a tasty and easy Nigerian main dish perfect for family meals!",
+    "description": "Washing/Spinning Capacity[8kg]: The Snowsea washing machine has a washing and spinning capacity of 8kg. This means that it can accommodate a maximum weight of 8 kilograms of laundry for both washing and spinning cycles. The capacity is suitable for medium-sized households and allows you to wash a significant amount of clothes in a single load.",
     "user_id": 1
 }
 
-things = [boat, plane, car, house, cloth, food]
+kettle = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355649/kettle_bubptu.jpg",
+    "unique_name": "Syinix 2.2L Electric Kettle - Silver SKE22U1",
+    "name": "Syinix 2.2L Electric Kettle - Silver SKE22U1",
+    "price": 8200,
+    "description": "The Syinix Electric Kettle 2.2L is a quality appliance for home and office use"
+    "It has a 2.2 liters capacity and a compact design which makes it suitable to use anywhere as it won’t take up much space. It is very efficient and guarantees sound performance at all times. It has an indicator that shows when it is turned on and its heating element is well-concealed which makes it safe to use. The handle has an ergonomic design which makes it easy for you to grip when pouring hot water into a cup.  ",
+    "user_id": 1
+}
+
+fan = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755354719/fan_rhucml.jpg",
+    "unique_name": 'SOLITEC 18" Standing fan plus',
+    "name": 'SOLITEC 18" Standing fan plus',
+    "price": 18999,
+    "description": "Standing Fan, your ultimate cooling solution designed to harmonize with modern living.",
+    "user_id": 1
+}
+
+watch = {
+    "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755354059/watch_hrirqz.jpg",
+    "unique_name": "Oraimo_Watch_5_Litev_2.01_AMOLED_Screen_Smart_Watch",
+    "name": "Oraimo Watch 5 Litev 2.01'' AMOLED Screen Smart Watch",
+    "price": 16187,
+    "description": "2.01'' AMOLED Screen-Vivid Clarity, Sharp VisualsThe expansive screen offers ultra-smooth operation and vibrant, saturated colors. Experience stunning brightness and clarity that make every interaction engaging and enjoyable, bringing life to your daily moments.",
+    "user_id": 1
+}
+
+things = [air_fryer, mens_clothes, computer, glasses, womens_shoes, phone, washing_machine, kettle, fan, watch]

@@ -11,7 +11,7 @@
     <div class="item">
         <img class="item" alt="item" src="{{ item.picture_url }}" />
         <p class="text item-name"><b>Name: </b>{{ item.name }}</p>
-        <p class="text item-amount"><b>Price: </b>{{ item.price }}</p>
+        <p class="text item-amount"><b>Price: </b>{{ "₦{:,.0f}".format(item.price) }}</p>
         <p class="text item-description"><b>Description: </b>{{ item.description }}</p>
         
         {% if count == 0 %}

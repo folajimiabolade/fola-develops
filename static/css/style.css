@@ -1567,7 +1567,7 @@ div.quantity-buttons.hidden {
 
     div.store-item {
         width: 40vw;
-        height: 60vw;
+        height: 57vw;
         border: 0.2vw solid #E7F2E4;
         border-radius: 2vw;
     }
@@ -1668,10 +1668,12 @@ div.quantity-buttons.hidden {
 
     p.item-name {
         font-size: 2.75vw;
+        text-align: center;
     }
 
     p.item-amount {
         font-size: 3vw;
+        text-align: center;
     }
 
     p.item-description {
@@ -3435,7 +3437,7 @@ div.quantity-buttons.hidden {
 
     div.store-item {
         width: 20vw;
-        height: 30vw;
+        height: 28.5vw;
         border: 0.1vw solid #E7F2E4;
         border-radius: 1vw;
     }
