@@ -234,7 +234,7 @@ $("input.upload-photo").change(function () {
 document.addEventListener("DOMContentLoaded", () => {
     const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
 
-    if (pageName === "store" || "cart" || "item" || "checkout" || "orders") {
+    if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
         fetch("/load-store/api")
         .then(response => response.json())
         .then(function(data)  {

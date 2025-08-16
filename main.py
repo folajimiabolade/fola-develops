@@ -884,7 +884,39 @@ def checkout():
 
 @app.route("/orders")
 def orders():
-    return render_template("orders.html", page_name="orders")
+    order_points = (
+        db.session.query(Order.datetime)  #, func.count(CartProduct.item_id)
+        .filter(Order.user_id == current_user.id)
+        .group_by(Order.datetime).all()
+    )
+    print(order_points)
+    return render_template("orders.html", order_points=order_points, page_name="orders")
+
+@app.route("/order/<order_point>")
+
+
+def order(order_point):
+    order_instance = datetime.fromisoformat(order_point)
+    orders = db.session.query(Order).filter(Order.datetime == order_instance).all()
+    items_details = (
+        db.session.query(Order.item_id, func.count(Order.item_id))
+        .filter(Order.user_id == current_user.id, Order.datetime == order_instance)
+        .group_by(Order.item_id).all()
+    )
+    orders = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
+    items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
+    total_price = 0
+    for item in items:
+        for order in orders:
+            if item.id == order["item_id"]:
+                total_price += (item.price * order["quantity"])
+    return render_template(
+        "order.html", 
+        orders=orders, 
+        items=items, 
+        total_price=total_price, 
+        page_name="order"
+        )
 
 
 if __name__ == "__main__":
