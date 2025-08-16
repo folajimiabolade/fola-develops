@@ -64,6 +64,7 @@ config = cloudinary.config(secure=True)  # Signed up with the Google account
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = "login" 
 
 admin_email = os.environ.get("ADMIN-EMAIL")
 
@@ -181,12 +182,20 @@ def login():
             if user:
                 if check_password_hash(user.password, data["password"]):
                     login_user(user)
-                    return redirect(url_for("account"))
+                    # 👇 Try to get it first from hidden field
+                    next_page = login_form.next.data or request.args.get("next")
+                    # security check: only allow relative URLs
+                    if not next_page or not next_page.startswith("/"):
+                        next_page = url_for("account")
+                    return redirect(next_page)
                 flash("Invalid Password, Please Try Again.")
                 return redirect(url_for("login"))
             flash("Account Not Found.")
             return redirect(url_for("login"))
-    return render_template("login.html", form=login_form)
+    else: 
+        next_page = request.args.get("next")
+        login_form.next.data = next_page
+    return render_template("login.html", form=login_form, next=next_page)
 
 
 @app.route("/privacy-policy")
@@ -310,9 +319,10 @@ def valid_picture(filename):
 
 
 @app.route("/upload-picture", methods=["GET", "POST"])
+@login_required
 def upload_picture():
-    if not current_user.is_authenticated:
-        return redirect(url_for("login"))
+    # if not current_user.is_authenticated:
+    #     return redirect(url_for("login"))
     picture_form = PictureForm()
     if request.method == "POST":
         if "picture" not in request.files:
@@ -633,9 +643,10 @@ def add_placeholders():
 
 
 @app.route("/store")
+@login_required
 def store():
-    if not current_user.is_authenticated:
-        return redirect(url_for("login"))
+    # if not current_user.is_authenticated:
+    #     return redirect(url_for("login"))
     items = db.session.execute(db.select(Item).order_by(Item.id.desc())).scalars().all()
     return render_template("store.html", items=items, page_name="store", admin_email=admin_email)
 

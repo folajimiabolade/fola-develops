@@ -30,6 +30,7 @@
     <div class="login-card">
         <div class="login-form">
             <form method="post" action="{{ url_for('login') }}">
+                {{ form.hidden_tag() }}
                 {{ form.csrf_token }}
                 <p class="text login-label">Email</p>
                 {{ form.email() }}
