@@ -1955,7 +1955,7 @@ div.quantity-buttons.hidden {
     }
 
     p.checkout-text {
-        font-size: 3.5vw;
+        font-size: 3.25vw;
     }
 
     a.checkout-link {
@@ -1994,7 +1994,7 @@ div.quantity-buttons.hidden {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 16vw;
+        margin-bottom: 6vw;
     }
 
     div.item-frequency {
@@ -2002,6 +2002,11 @@ div.quantity-buttons.hidden {
         align-items: center;
         justify-content: center;
         padding: 0;
+    }
+
+    p.order-time {
+        font-size: 3.5vw;
+        text-align: center;
     }
 
 }

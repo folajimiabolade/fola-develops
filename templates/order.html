@@ -8,6 +8,8 @@
 
 {% block user_body %}
     <div class="order-list">
+
+        <p class="text order-time">{{ order_point.strftime("%B %d, %Y") }}, {{ order_point.strftime("%H:%M:%S UTC") }}</p>
         
         <div class="total">
             <p class="text total">Total</p>

@@ -10,7 +10,7 @@ from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsFor
 from flask_wtf.csrf import CSRFProtect
 # Import database tables from the entities.py file
 from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item, CartProduct, Order
-from sqlalchemy import func
+from sqlalchemy import func, desc
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -607,20 +607,28 @@ def add_placeholders():
         password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
         picture_number=0
         )
+        user_2 = User(
+        first_name="Eniola",
+        last_name="Abolade",
+        email="i.eniolaabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$Djjxf1OZ$156ac5333ad3abdd78e0ae3e962c30ffa1e7d247843ceeeff6e908294474a00a",
+        picture_number=0
+        )
         db.session.add(user)
+        db.session.add(user_2)
         db.session.commit()
         # Add store items
-        for thing in things:
-            item = Item(
-            picture_url=thing["picture_url"],
-            unique_name=thing["unique_name"],
-            name=thing["name"],
-            price=thing["price"],
-            description=thing["description"],
-            user_id=thing["user_id"]
-            )
-            db.session.add(item)
-            db.session.commit()
+        # for thing in things:
+        #     item = Item(
+        #     picture_url=thing["picture_url"],
+        #     unique_name=thing["unique_name"],
+        #     name=thing["name"],
+        #     price=thing["price"],
+        #     description=thing["description"],
+        #     user_id=thing["user_id"]
+        #     )
+        #     db.session.add(item)
+        #     db.session.commit()
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
@@ -885,9 +893,10 @@ def checkout():
 @app.route("/orders")
 def orders():
     order_points = (
-        db.session.query(Order.datetime)  #, func.count(CartProduct.item_id)
+        db.session.query(Order.datetime)
         .filter(Order.user_id == current_user.id)
-        .group_by(Order.datetime).all()
+        .group_by(Order.datetime)
+        .order_by(desc(Order.datetime)).all()
     )
     print(order_points)
     return render_template("orders.html", order_points=order_points, page_name="orders")
@@ -915,7 +924,8 @@ def order(order_point):
         orders=orders, 
         items=items, 
         total_price=total_price, 
-        page_name="order"
+        page_name="order", 
+        order_point=order_instance
         )
 
 

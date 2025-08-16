@@ -11,7 +11,6 @@
         {% for order_point in order_points %}
             <div class="order">
                 <a class="text order" href="{{ url_for('order', order_point=order_point.datetime.isoformat()) }}">🛍️ Order on <b>{{ order_point.datetime.strftime("%B %d, %Y") }}</b> at <b>{{ order_point.datetime.strftime("%H:%M:%S UTC") }}</b></a>
-                <!-- <b>August 09, 2025</b> at <b>23:05:04</b> -->
             </div>
         {% endfor %}
     </div>
