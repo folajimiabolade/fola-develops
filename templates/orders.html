@@ -9,9 +9,7 @@
 {% block user_body %}
     <div class="orders">
         {% for order_point in order_points %}
-            <div class="order">
-                <a class="text order" href="{{ url_for('order', order_point=order_point.datetime.isoformat()) }}">🛍️ Order on <b>{{ order_point.datetime.strftime("%B %d, %Y") }}</b> at <b>{{ order_point.datetime.strftime("%H:%M:%S UTC") }}</b></a>
-            </div>
+            <a class="text order" href="{{ url_for('order', order_point=order_point.datetime.isoformat()) }}">🛍️ Order on <b>{{ order_point.datetime.strftime("%B %d, %Y") }}</b> at <b>{{ order_point.datetime.strftime("%H:%M:%S UTC") }}</b></a>
         {% endfor %}
     </div>
 
