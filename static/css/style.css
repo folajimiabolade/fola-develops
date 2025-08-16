@@ -3967,5 +3967,11 @@ div.quantity-buttons.hidden {
         font-size: 2vw;
     }
 
+    h2.store-heading {
+        margin-top: 2vw;
+        text-align: center;
+        font-size: 1.875vw;
+    }
+
 }
 
