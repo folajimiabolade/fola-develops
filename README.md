@@ -4,7 +4,7 @@ pictures and comments to.
 
 ## About
 This is an application where you
-can add comments and pictures to, it
+can add pictures to, it
 was built with Python, the server
 that communicates with the users
 was built with Flask, the database
