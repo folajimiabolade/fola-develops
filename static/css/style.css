@@ -2046,6 +2046,12 @@ div.quantity-buttons.hidden {
         font-size: 4vw;
     }
 
+    h2.store-heading {
+        margin-top: 4vw;
+        text-align: center;
+        font-size: 3.75vw;
+    }
+
 }
 
 @media (orientation: landscape) {
