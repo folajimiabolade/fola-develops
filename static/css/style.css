@@ -2026,7 +2026,7 @@ div.quantity-buttons.hidden {
         display: flex;
         width: 100vw;
         justify-content: space-between;
-        gap: 7vw;
+        gap: 40vw;
         height: auto;
     }
 
@@ -2326,7 +2326,7 @@ div.quantity-buttons.hidden {
 
     a.footer-link {
         margin-right: 2vw;
-        font-size: 0.94vw;
+        font-size: 1.25vw;
         min-width: 5vw;
         text-align: end;
         display: flex;
