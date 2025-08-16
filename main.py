@@ -9,7 +9,7 @@ from forms import LoginForm, SignupForm, TestimonyForm, PictureForm, SettingsFor
 # CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
 # Import database tables from the entities.py file
-from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item, CartProduct
+from entities import db, UnverifiedUser, User, PasswordChanger, Testimony, Item, CartProduct, Order
 from sqlalchemy import func
 # werkzeug.security hashes passwords
 # https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
@@ -635,10 +635,10 @@ def store():
 @login_required
 def load_store():
     cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
-    product_ids = [product.item_id for product in cart_products]
-    buyer_ids = [product.user_id for product in cart_products]
+    product_ids = [cart_product.item_id for cart_product in cart_products]
+    buyer_ids = [cart_product.user_id for cart_product in cart_products]
     users_items = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
-    items_ids = [product.item_id for product in users_items]
+    items_ids = [cart_product.item_id for cart_product in users_items]
     return jsonify({
         "cart_length": len(cart_products),
         "product_ids": product_ids,
@@ -812,9 +812,9 @@ def cart():
     items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
     total_price = 0
     for item in items:
-        for product in cart_products:
-            if item.id == product["item_id"]:
-                total_price += (item.price * product["quantity"])
+        for cart_product in cart_products:
+            if item.id == cart_product["item_id"]:
+                total_price += (item.price * cart_product["quantity"])
     cart_items = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
     return render_template(
         "cart.html", 
@@ -865,6 +865,26 @@ def add_to_trolley():
         "quantity": len(items)
         })
 
+
+@app.route("/checkout")
+def checkout():
+    now = datetime.now()
+    cart_products = db.session.query(CartProduct).filter(CartProduct.user_id == current_user.id).all()
+    for cart_product in cart_products:
+        order = Order(
+            item_id=cart_product.item_id,
+            user_id=cart_product.user_id,
+            datetime=now
+        )
+        db.session.add(order)
+        db.session.delete(cart_product)
+        db.session.commit()
+    return render_template("checkout.html", page_name="checkout")
+
+
+@app.route("/orders")
+def orders():
+    return render_template("orders.html", page_name="orders")
 
 
 if __name__ == "__main__":

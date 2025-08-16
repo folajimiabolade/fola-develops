@@ -44,7 +44,7 @@ class User(UserMixin, db.Model):
     testimonies = relationship("Testimony", back_populates="user")
     items = relationship("Item", back_populates="user")
     cart_products = relationship("CartProduct", back_populates="user")
-    cart_length: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
+    orders = relationship("Order", back_populates="user")
 
 
 class Testimony(UserMixin, db.Model):
@@ -78,6 +78,7 @@ class Item(UserMixin, db.Model):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user = relationship("User", back_populates="items")
     cart_product = relationship("CartProduct", back_populates="item")
+    order = relationship("Order", back_populates="item")
     
 
 class CartProduct(UserMixin, db.Model):
@@ -87,3 +88,13 @@ class CartProduct(UserMixin, db.Model):
     item = relationship("Item", back_populates="cart_product")
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user = relationship("User", back_populates="cart_products")
+    
+
+class Order(UserMixin, db.Model):
+    __tablename__ = "orders"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    item_id: Mapped[int] = mapped_column(ForeignKey("items.id"))
+    item = relationship("Item", back_populates="order")
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user = relationship("User", back_populates="orders")
+    datetime: Mapped[datetime] = mapped_column(DateTime())

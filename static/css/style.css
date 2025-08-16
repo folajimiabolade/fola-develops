@@ -472,7 +472,7 @@ div.quantity-buttons.hidden {
 
     a.footer-link {
         margin-right: 3.5vw;
-        font-size: 1.875vw;
+        font-size: 2.5vw;
         text-align: end;
     }
 
@@ -1756,6 +1756,7 @@ div.quantity-buttons.hidden {
         /* display: none; */
         text-align: center;
         white-space: nowrap;
+        text-decoration: none;
     }
 
     div.cart-item {
@@ -1847,7 +1848,7 @@ div.quantity-buttons.hidden {
 
     div.empty-cart {
         width: 100vw;
-        height: 65vh;
+        height: 67vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1935,6 +1936,31 @@ div.quantity-buttons.hidden {
         color: #E7F2E4;
         /* border: 0.2vw solid #E7F2E4; */
         text-decoration: none;
+    }
+
+    div.checkout-house {
+        width: 100vw;
+        height: 67vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #E7F2E4;
+    }
+
+    svg.checkout-svg {
+        opacity: 0.9;
+        width: 10vw;
+        height: 10vw;
+    }
+
+    p.checkout-text {
+        font-size: 3.5vw;
+    }
+
+    a.checkout-link {
+        color: #FF90BB;
+        font-size: 3.5vw;
     }
 
 }

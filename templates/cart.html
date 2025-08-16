@@ -16,7 +16,7 @@
                 <p class="text total"><b class="total-price">{{ "₦{:,.0f}".format(total_price) }}</b></p>
             </div>
 
-            <a class="text testimony-button checkout-button">Proceed to checkout ({{ cart_length }} items[s])</a>
+            <a class="text testimony-button checkout-button" href="{{ url_for('checkout') }}">Proceed to checkout ({{ cart_length }} items[s])</a>
 
             {% for product in cart_products %}
                 {% for item in items %}
