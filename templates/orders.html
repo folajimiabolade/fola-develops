@@ -8,10 +8,19 @@
 
 {% block user_body %}
     <div class="orders">
-        {% for order_point in order_points %}
-            <a class="text order" href="{{ url_for('order', order_point=order_point.datetime.isoformat()) }}">🛍️ Order on <b>{{ order_point.datetime.strftime("%B %d, %Y") }}</b> at <b>{{ order_point.datetime.strftime("%H:%M:%S UTC") }}</b></a>
-        {% endfor %}
+        {% if order_points %}
+            {% for order_point in order_points %}
+                <a class="text order" href="{{ url_for('order', order_point=order_point.datetime.isoformat()) }}">🛍️ Order on <b>{{ order_point.datetime.strftime("%B %d, %Y") }}</b> at <b>{{ order_point.datetime.strftime("%H:%M:%S UTC") }}</b></a>
+            {% endfor %}
+        {% else %}
+            <div class="no-orders">
+                <p class="text no-orders">You have no orders.</p>
+            </div>
+        {% endif %}
     </div>
+
+    
+    <a class="text store-anchor" href="{{ url_for('store') }}#">Store</a>
 
     <a class="cart-holder" href="{{ url_for('cart') }}">
         <div class="item-count">
@@ -21,5 +30,7 @@
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
         </svg>
     </a>
+
+    <a class="text orders-anchor" href="{{ url_for('orders') }}">Orders</a>
     <div class="cart-background"></div>
 {% endblock %}

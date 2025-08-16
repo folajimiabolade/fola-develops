@@ -2018,6 +2018,34 @@ div.quantity-buttons.hidden {
         text-align: center;
     }
 
+    a.store-anchor {
+        font-size: 2.5vw;
+        position: fixed;
+        bottom: 7.3vw;
+        left: 14.8vw;
+        z-index: 2;
+    }
+
+    a.orders-anchor {
+        font-size: 2.5vw;
+        position: fixed;
+        bottom: 7.3vw;
+        right: 15vw;
+        z-index: 2;
+    }
+
+    div.no-orders {
+        width: 100vw;
+        height: 62vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p.no-orders {
+        font-size: 4vw;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -3905,9 +3933,33 @@ div.quantity-buttons.hidden {
         text-align: center;
     }
 
-}
+    a.store-anchor {
+        font-size: 1.25vw;
+        position: fixed;
+        bottom: 2.6vw;
+        left: 44.5vw;
+        z-index: 2;
+    }
 
+    a.orders-anchor {
+        font-size: 1.25vw;
+        position: fixed;
+        bottom: 2.6vw;
+        right: 25vw;
+        z-index: 2;
+    }
 
+    div.no-orders {
+        width: 81vw;
+        height: 67vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p.no-orders {
+        font-size: 2vw;
+    }
 
 }
 
