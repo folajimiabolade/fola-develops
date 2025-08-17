@@ -412,6 +412,7 @@ document.querySelectorAll("a.delete-item").forEach(item => {
             if (data["cart_length"] === 0) {
                 $("a.checkout-button").css("display", "none");
                 $("div.total").css("display", "none");
+                document.querySelector("p.item-count").textContent = data["cart_length"];
                 $("div.empty-cart").removeClass("hidden")
             }
         })

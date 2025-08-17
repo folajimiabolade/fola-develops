@@ -96,6 +96,10 @@ div.quantity-buttons.hidden {
     display: none;
 }
 
+p {
+    font-weight: 500;
+}
+
 @media (orientation: portrait) {
 
     div.showcase {
@@ -253,6 +257,10 @@ div.quantity-buttons.hidden {
     a.account {
         flex: 1;
     }
+
+    /* a.settings {
+        flex: 1;
+    } */
 
     a.logout {
         flex: 1;
@@ -677,8 +685,9 @@ div.quantity-buttons.hidden {
         background: #0065F8;
         border-radius: 2vw;
         border: none;
-        padding: 1.5vh 3.6vw;
+        padding: 1.5vh 15.6vw;
         /* margin-left: 3.5vw; */
+        /* display: flex; */
     }
 
     svg.testify-svg {
@@ -916,7 +925,7 @@ div.quantity-buttons.hidden {
         background: transparent;
         border-radius: 2vw;
         border: 1px solid #E7F2E4;
-        padding: 1.5vh 3.6vw;
+        padding: 1.5vh 15.6vw;
         /* margin-left: 3.5vw; */
     }
 
@@ -942,14 +951,15 @@ div.quantity-buttons.hidden {
     }
 
     div.projects-grid {
-        width: 62vw;
+        width: 80vw;
         display: grid;
         grid-template-columns: 30vw 30vw;
-        gap: 5vw;
+        gap: 10vw;
     }
 
     a.account-project {
         text-align: center;
+        font-size: 3vw;
     }
 
     div.picture-holder {
@@ -2047,7 +2057,7 @@ div.quantity-buttons.hidden {
     }
 
     h2.store-heading {
-        margin-top: 4vw;
+        margin-top: 8vw;
         text-align: center;
         font-size: 3.75vw;
     }
@@ -3974,4 +3984,5 @@ div.quantity-buttons.hidden {
     }
 
 }
+
 
