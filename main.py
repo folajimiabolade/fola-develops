@@ -287,7 +287,7 @@ def edit_testimony(i_d):
                     },
                     headers={'Content-Type': 'application/json'}
                 )
-            flash("Thanks for editing a comment.")
+            flash("Thanks for editing your comment.")
             return redirect(url_for("account"))
     return render_template("edit-testimony.html", i_d=i_d, form=testimony_form)
 
