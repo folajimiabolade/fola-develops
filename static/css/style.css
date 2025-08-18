@@ -685,6 +685,14 @@ p {
         background: #0065F8;
         border-radius: 2vw;
         border: none;
+        padding: 1.5vh 3.6vw;
+        /* margin-left: 3.5vw; */
+    }
+
+    a.mony-button {
+        background: #0065F8;
+        border-radius: 2vw;
+        border: none;
         width: 36vw;
         height: 9.5vw;
         display: flex;
@@ -2614,6 +2622,14 @@ p {
     }
 
     a.testimony-button {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 1vh 2vw;
+        margin-left: 2vw;
+    }
+
+    a.mony-button {
         background: #0065F8;
         border-radius: 1vw;
         border: none;
