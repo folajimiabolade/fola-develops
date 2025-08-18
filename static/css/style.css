@@ -946,8 +946,8 @@ p {
 
     svg.picture-svg {
         display: inline;
-        width: 3vw;
-        height: 3vw;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.picture-prompt {
@@ -1119,14 +1119,14 @@ p {
     }
 
     img.account-picture {
-        width: 1rem;
-        height: 1rem;
+        width: 2.3vw;
+        height: 2.3vw;
         object-fit: cover;
         object-position: center;
         border-radius: 50%;
         display: inline;
         position: static;
-        border: 1px solid #E7F2E4;
+        border: 0.1vw solid #E7F2E4;
     }
 
     h2.picture-greeting {
@@ -2889,6 +2889,8 @@ p {
 
     svg.picture-svg {
         display: inline-block;
+        width: 1.25vw;
+        height: 1.25vw;
     }
 
     p.picture-prompt {
@@ -3050,12 +3052,12 @@ p {
     }
 
     img.account-picture {
-        width: 1rem;
-        height: 1rem;
+        width: 1.15vw;
+        height: 1.15vw;
         object-fit: cover;
         object-position: center;
         border-radius: 50%;
-        border: 1px solid #E7F2E4;
+        border: 0.05vw solid #E7F2E4;
     }
 
     h2.picture-greeting {
