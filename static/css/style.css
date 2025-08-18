@@ -106,6 +106,9 @@ input.password {
 }
 
 @media (orientation: portrait) {
+    .landscape-only {
+        display: none;
+    }
 
     div.showcase {
         display: grid;
@@ -1266,7 +1269,7 @@ input.password {
     }
 
     div.user-body {
-        min-height: 80vh;
+        min-height: 110vh;
     }
 
     div.privacy-house {
@@ -1594,29 +1597,49 @@ input.password {
         margin-top: 4vw;
     } */
 
+    div.store-nav {
+        width: 100vw;
+        height: 16vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        background: #2b3035;
+        border-top: 0.2vw solid #E7F2E4;
+    }
+
     a.cart-holder {
         display: flex;
         /* justify-content: center; */
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
         background: #2b3035;
-        position: fixed;
-        bottom: 0;
+        /* position: fixed; */
+        bottom: 7.3vw;
         left: 47vw;
         z-index: 2;
     }
 
     svg.cart {
-        width: 6vw;
-        height: 6vw;
-        margin-bottom: 2.8vw;
+        width: 3vw;
+        height: 3vw;
+        /* margin-bottom: 2.8vw; */
+    }
+
+    p.cart {
+        font-size: 3vw;
+        padding-right: 1vw;
+        white-space: pre;
+        margin: 0;
     }
 
     div.item-count {
         border-radius: 50%;
-        width: 4vw;
-        height: 4vw;
-        border: 0.4vw solid #E7F2E4;
+        background: #0065F8;
+        width: 5vw;
+        height: 5vw;
+        /* border: 0.4vw solid #E7F2E4; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1624,7 +1647,7 @@ input.password {
 
     p.item-count {
         margin: 0;
-        font-size: 1.75vw;
+        font-size: 2.75vw;
     }
 
     div.cart-background {
@@ -2102,19 +2125,21 @@ input.password {
     }
 
     a.store-anchor {
-        font-size: 2.5vw;
-        position: fixed;
+        font-size: 3vw;
+        /* position: fixed; */
         bottom: 7.3vw;
         left: 14.8vw;
         z-index: 2;
+        text-decoration: none;
     }
 
     a.orders-anchor {
-        font-size: 2.5vw;
-        position: fixed;
+        font-size: 3vw;
+        /* position: fixed; */
         bottom: 7.3vw;
         right: 15vw;
         z-index: 2;
+        text-decoration: none;
     }
 
     div.no-orders {
@@ -2138,6 +2163,9 @@ input.password {
 }
 
 @media (orientation: landscape) {
+    .portrait-only {
+        display: none;
+    }
 
     body{
         margin: 0vw;
@@ -3540,29 +3568,47 @@ input.password {
         margin-top: 2vw;
     }
 
+    div.store-nav {
+        width: 81vw;
+        height: 7.1vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        background: #2b3035;
+        border-top: 0.1vw solid #E7F2E4;
+    }
+
     a.cart-holder {
         display: flex;
         /* justify-content: center; */
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
         background: #2b3035;
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         left: 58vw;
         z-index: 1;
     }
 
     svg.cart {
-        width: 3vw;
-        height: 3vw;
-        margin-bottom: 1vw;
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+
+    p.cart {
+        font-size: 1.5vw;
+        padding-right: 0.5vw;
+        white-space: pre;
+        margin: 0;
     }
 
     div.item-count {
         border-radius: 50%;
-        width: 2vw;
-        height: 2vw;
-        border: 0.2vw solid #E7F2E4;
+        width: 2.5vw;
+        height: 2.5vw;
+        background: #0065F8;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -3570,7 +3616,7 @@ input.password {
 
     p.item-count {
         margin: 0;
-        font-size: 0.875vw;
+        font-size: 1.375vw;
     }
 
     div.cart-background {
@@ -4057,19 +4103,21 @@ input.password {
     }
 
     a.store-anchor {
-        font-size: 1.25vw;
-        position: fixed;
+        font-size: 1.55vw;
+        /* position: fixed; */
         bottom: 2.6vw;
         left: 44.5vw;
         z-index: 2;
+        text-decoration: none;
     }
 
     a.orders-anchor {
-        font-size: 1.25vw;
-        position: fixed;
+        font-size: 1.5vw;
+        /* position: fixed; */
         bottom: 2.6vw;
         right: 25vw;
         z-index: 2;
+        text-decoration: none;
     }
 
     div.no-orders {

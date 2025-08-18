@@ -532,7 +532,7 @@ function togglePassword(buttonClass, inputClass) {
         inputField.type = "password";
         $("button." + buttonClass).html(eye);  // change back to "show"
     }
-    }
+}
 
 // // Get data from the database by fetching data from the Flask server
 //$(".betan").click(function () {

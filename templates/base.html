@@ -55,16 +55,22 @@
                             <a type="button" class="about text nav-link" href="{{ url_for('designs') }}">Projects</a>
         <!--                    <a type="button" class="testimonials text nav-link" href="{{ url_for('testimonies') }}">Testimonies</a>-->
         <!--                    <a type="button" class="sign-up text nav-link" href="{{ url_for('designs') }}">Designs</a>-->
-                            <a type="button" class="contact text nav-link" href="{{ url_for('contact') }}">Contact</a>
                             {% if current_user.is_authenticated %}
-                            <a type="button" class="account text nav-link" href="{{ url_for('account') }}">Account</a>
-                            <!-- <a type="button" class="settings text nav-link"href="{{ url_for('settings') }}">Settings</a> -->
-                            </a>
-                            <a type="button" class="logout text nav-link" href="{{ url_for('logout') }}">Logout</a>
+                                <a type="button" class="account text nav-link" href="{{ url_for('account') }}">Account</a>
+                                <!-- <a type="button" class="settings text nav-link"href="{{ url_for('settings') }}">Settings</a> -->
+                                </a>
+                                <a class="text nav-link portrait-only" type="button" href="{{ url_for('settings') }}">Settings</a>
+                                {% if current_user.email == admin_email %}
+                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('admin') }}">Review Testimonies</a>
+                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('add_item') }}">Add Item</a>
+                                {% endif %}
+
+                                <a type="button" class="logout text nav-link" href="{{ url_for('logout') }}">Logout</a>
                             {% else %}
                             <a type="button" class="sign-up text nav-link" href="{{ url_for('sign_up') }}">Sign up</a>
                             <a type="button" class="login text nav-link" href="{{ url_for('login') }}">Log in</a>
                             {% endif %}
+                            <a type="button" class="contact text nav-link" href="{{ url_for('contact') }}">Contact</a>
 
                         </div>
                     </div>
