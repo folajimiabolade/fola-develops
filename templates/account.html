@@ -20,14 +20,14 @@
                 {% if current_user.picture_url %}
                 <a class="text picture-button account-project" type="button" href="{{ url_for('profile_picture') }}">
                     <img class="account-picture" alt="picture" src="{{ current_user.picture_url }}">
-                    <p class="picture-prompt">  Profile Picture</p>
+                    <p class="picture-prompt">  Profile picture</p>
                 </a>
                 {% else %}
                 <a class="text picture-button account-project" type="button" href="{{ url_for('profile_picture') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle picture-svg" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg><p class="picture-prompt">  Profile Picture</p>
+                    </svg><p class="picture-prompt">  Profile picture</p>
                 </a>
                 {% endif %}
            <!-- </div>-->
@@ -35,7 +35,7 @@
                 <a class="text mony-button account-project" type="button" href="{{ url_for('add_testimony') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg testify-svg" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                    </svg><p class="testimony-prompt">  Add Testimonial</p>
+                    </svg><p class="testimony-prompt">  Add a comment</p>
                 </a>
     <!--        </div> -->
 
@@ -55,11 +55,11 @@
             </div>
     </div>
     {% if current_user.testimonies %}
-        <h3 class="text testimonies-heading">Testimonies</h3>
+        <h3 class="text testimonies-heading">Comments</h3>
         {% for testimony in current_user.testimonies[::-1] %}
             <div class="testimony-holder">
                 <div class="testimony-unit">
-                    <h3 class="text testimony-heading">Testimony</h3>
+                    <h3 class="text testimony-heading">Comment</h3>
                     <p class="text testimony-data">{{ testimony.testimony }}</p>
                     {% if testimony.website %}
                         <h3 class="text testimony-website">For</h3>

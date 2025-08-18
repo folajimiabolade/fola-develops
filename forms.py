@@ -51,15 +51,15 @@ class LoginForm(FlaskForm):
 
 
 class TestimonyForm(FlaskForm):
-    website = URLField(
-        label="URL of website built (Optional)",
-        # validators=[DataRequired(), URL()],
-        render_kw={"class": "field add-field website", "placeholder": "https://website.com"}
-    )
+    # website = URLField(
+    #     label="URL of website built (Optional)",
+    #     # validators=[DataRequired(), URL()],
+    #     render_kw={"class": "field add-field website", "placeholder": "https://website.com"}
+    # )
     testimony = TextAreaField(
-        label="Testimony",
+        label="Comment",
         validators=[DataRequired()],
-        render_kw={"class": "field add-field", "placeholder": "Your Testimony"}
+        render_kw={"class": "field add-field", "placeholder": "Your Comment"}
     )
     button = SubmitField(label="Submit", render_kw={"class": "text button add-button"})
 

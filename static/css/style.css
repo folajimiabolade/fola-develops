@@ -68,6 +68,7 @@ input.upload-picture, input.upload-photo {
 p.file-name, p.file-title {
     text-align: center;
     word-break: break-word;
+    font-size: 1.9vw;
 }
 
 p.item-flash {
@@ -674,6 +675,8 @@ p {
     h2.user-greeting {
         margin-bottom: 6vw;
         text-align: center;
+        margin-top: 6vw;
+        font-size: 3.2vw;       
     }
 
     div.add-container {
@@ -713,8 +716,9 @@ p {
 
     h3.testimonies-heading {
         text-align: center;
-        margin-top: 7vw;
+        margin-top: 8vw;
         margin-bottom: 1vw;
+        font-size: 3.2vw;
     }
 
     div.testimony-holder {
@@ -723,20 +727,25 @@ p {
     }
 
     div.testimony-unit{
-        padding: 4.5vw 3vw;
+        padding: 4.5vw 4.5vw;
         border: 0.4vw solid rgba(231, 242, 228, 0.7);
         border-radius: 4vw;
         margin: 2.625vw 3.5vw;
-        width: 70vw;
+        width: 67vw;
+    }
+
+    h3.testimony-heading {
+        font-size: 3vw;
     }
 
     h3.date-time {
         margin-top:2vw;
+        font-size: 3vw;
     }
 
     div.testimony-change {
         display: flex;
-        margin-top: 2vw;
+        margin-top: 3.5vw;
     }
 
     div.edit-container {
@@ -752,11 +761,14 @@ p {
 
     svg.edit-svg {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.edit-prompt {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     div.delete-container {
@@ -773,11 +785,14 @@ p {
 
     svg.delete-svg {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.delete-prompt {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     h2.add-title {
@@ -858,10 +873,12 @@ p {
 
     p.testimony-data {
         word-break: break-word;
+        font-size: 3vw;
     }
 
     h3.delete-question {
         text-align: center;
+        font-size: 3.2vw;
     }
 
     p.delete-question {
@@ -876,7 +893,7 @@ p {
     }
 
     div.delete-card {
-        padding: 4vh 3vw;
+        padding: 4vw 3vw;
         border: 3.75px solid rgba(231, 242, 228, 0.7);
         border-radius: 4vw;
         margin: 3.5vh 3.5vw;
@@ -900,11 +917,14 @@ p {
 
     svg.cancel-icon {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.cancel-instruction {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     div.delete-delete {
@@ -921,11 +941,14 @@ p {
 
     svg.delete-icon {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.delete-instruction {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     div.picture-container {
@@ -946,8 +969,8 @@ p {
 
     svg.picture-svg {
         display: inline;
-        width: 2.5vw;
-        height: 2.5vw;
+        width: 3vw;
+        height: 3vw;
     }
 
     p.picture-prompt {
@@ -1016,11 +1039,14 @@ p {
 
     svg.upload-svg {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.upload-prompt {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     form.upload-form {
@@ -1038,7 +1064,7 @@ p {
         border-radius: 1vw;
         border: none;
         padding: 1.5vh 3.6vw;
-        font-size: 2.6vw;
+        font-size: 3vw;
         background: #0065F8;
         color: #E7F2E4;
     }
@@ -1076,11 +1102,14 @@ p {
 
     svg.picture-change {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.change-picture {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     div.delete-picture {
@@ -1097,11 +1126,14 @@ p {
 
     svg.delete-pic {
         display: inline;
+        width: 2.5vw;
+        height: 2.5vw;
     }
 
     p.pic-delete {
         display: inline;
         white-space: pre;
+        font-size: 3vw;
     }
 
     div.delete-confirm {
@@ -1119,8 +1151,8 @@ p {
     }
 
     img.account-picture {
-        width: 2.3vw;
-        height: 2.3vw;
+        width: 2.8vw;
+        height: 2.8vw;
         object-fit: cover;
         object-position: center;
         border-radius: 50%;
@@ -1131,6 +1163,7 @@ p {
 
     h2.picture-greeting {
         text-align: center;
+        font-size: 3.2vw;
     }
 
     div.testimony {
@@ -1144,6 +1177,7 @@ p {
 
     p.testimony-date {
         margin-bottom: 0vw;
+        font-size: 3vw;
     }
 
     img.testimony-image {

@@ -246,7 +246,7 @@ def add_testimony():
                 testimony = Testimony(
                     datetime=datetime.now(timezone.utc),
                     testimony=data["testimony"],
-                    website=data["website"],
+                    # website=data["website"],
                     user_id = current_user.id
                 )
                 db.session.add(testimony)
@@ -256,11 +256,11 @@ def add_testimony():
                     json={
                         "chatId": f"{number}@c.us",
                         "message": f"{current_user.first_name} {current_user.last_name} added a testimony to FolaDevelops: "
-                                   f"{data['testimony']}\nfor: {data['website']}"
+                                   f"{data['testimony']}"
                     },
                     headers={'Content-Type': 'application/json'}
                 )
-            flash("Thanks for adding a testimony, your testimony will be reviewed.")
+            flash("Thanks for adding a comment.")
             return redirect(url_for("account"))
     return render_template("add-testimony.html", form=testimony_form, admin_email=admin_email)
 
@@ -276,18 +276,18 @@ def edit_testimony(i_d):
             with app.app_context():
                 testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
                 testimony.testimony = data["testimony"]
-                testimony.website = data["website"]
+                # testimony.website = data["website"]
                 db.session.commit()
                 requests.post(
                     f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
                         "chatId": f"{number}@c.us",
                         "message": f"{current_user.first_name} {current_user.last_name} edited a testimony in FolaDevelops: "
-                                   f"{data['testimony']}\nfor: {data['website']}"
+                                   f"{data['testimony']}"
                     },
                     headers={'Content-Type': 'application/json'}
                 )
-            flash("Thanks for editing a testimony, your testimony will be reviewed.")
+            flash("Thanks for editing a comment.")
             return redirect(url_for("account"))
     return render_template("edit-testimony.html", i_d=i_d, form=testimony_form)
 
