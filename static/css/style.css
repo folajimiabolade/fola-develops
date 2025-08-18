@@ -97,12 +97,8 @@ div.quantity-buttons.hidden {
     display: none;
 }
 
-p {
+p, a {
     font-weight: 500;
-}
-
-input.password {
-
 }
 
 @media (orientation: portrait) {
