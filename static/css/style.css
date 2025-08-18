@@ -1438,10 +1438,15 @@ p, a {
     }
 
     div.designs-house {
-        margin-left: 3.5vw;
+        /* margin-left: 3.5vw; */
         margin-top: 20vw;
-        width: 93vw;
+        width: 100vw;
         font-size: 3.2vw;
+        text-align: center;
+    }
+
+    div.designs-house ul {
+        text-align: left;
     }
 
     a.hosting-link {
@@ -1452,10 +1457,6 @@ p, a {
     div.design {
         border-bottom: 0.2025vw solid #E7F2E4;
         cursor: pointer;
-    }
-
-    p.design-type {
-        padding-left: 2vw;
     }
 
     div.design-images {
@@ -1621,6 +1622,7 @@ p, a {
         bottom: 7.3vw;
         left: 47vw;
         z-index: 2;
+        text-decoration: none;
     }
 
     svg.cart {
@@ -3398,11 +3400,16 @@ p, a {
     }
 
     div.designs-house {
-        margin-left: 2vw;
         margin-top: 9vw;
-        width: 55vw;
+        width: 100vw;
         margin-bottom: 18vw;
         font-size: 1.65vw;
+        text-align: center;
+    }
+
+    div.designs-house ul {
+        text-align: left;
+        width: 55vw;
     }
 
     a.hosting-link {
@@ -3411,13 +3418,9 @@ p, a {
     }
 
     div.design {
-        width: 96vw;
+        width: 100vw;
         border-bottom: 0.0675vw solid rgba(231, 242, 228, 0.7);
         cursor: pointer;
-    }
-
-    p.design-type {
-        padding-left: 2vw;
     }
 
     div.design-images {
@@ -3598,6 +3601,7 @@ p, a {
         bottom: 0;
         left: 58vw;
         z-index: 1;
+        text-decoration: none;
     }
 
     svg.cart {
