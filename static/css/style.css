@@ -489,6 +489,11 @@ p, a {
         text-decoration: none;
     }
 
+    svg.github {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+
     div.webbuild-container {
         display: grid;
         width: 100vw;
@@ -2530,6 +2535,12 @@ p, a {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        text-decoration: none;
+    }
+
+    svg.github {
+        width: 1.25vw;
+        height: 1.25vw;
     }
 
     input.field{
