@@ -685,13 +685,17 @@ p {
         background: #0065F8;
         border-radius: 2vw;
         border: none;
-        padding: 1.5vh 15.6vw;
-        /* margin-left: 3.5vw; */
-        /* display: flex; */
+        width: 36vw;
+        height: 9.5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.testify-svg {
         display: inline;
+        width: 3vw;
+        height: 3vw;
     }
 
     p.testimony-prompt {
@@ -712,10 +716,10 @@ p {
 
     div.testimony-unit{
         padding: 4.5vw 3vw;
-        border: 3.75px solid rgba(231, 242, 228, 0.7);
+        border: 0.4vw solid rgba(231, 242, 228, 0.7);
         border-radius: 4vw;
         margin: 2.625vw 3.5vw;
-        width: 66vw;
+        width: 70vw;
     }
 
     h3.date-time {
@@ -924,13 +928,18 @@ p {
     a.picture-button {
         background: transparent;
         border-radius: 2vw;
-        border: 1px solid #E7F2E4;
-        padding: 1.5vh 15.6vw;
-        /* margin-left: 3.5vw; */
+        border: 0.2vw solid #E7F2E4;
+        width: 35.6vw;
+        height: 9.1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.picture-svg {
         display: inline;
+        width: 3vw;
+        height: 3vw;
     }
 
     p.picture-prompt {
@@ -940,6 +949,7 @@ p {
 
     div.picture-testimony {
         display: flex;
+        width: 100vw;
         justify-content: center;
     }
 
@@ -951,10 +961,10 @@ p {
     }
 
     div.projects-grid {
-        width: 80vw;
+        width:  76vw;
         display: grid;
-        grid-template-columns: 30vw 30vw;
-        gap: 10vw;
+        grid-template-columns: 36vw 36vw;
+        gap: 4vw;
     }
 
     a.account-project {
@@ -2607,8 +2617,11 @@ p {
         background: #0065F8;
         border-radius: 1vw;
         border: none;
-        padding: 1vh 2vw;
-        margin-left: 2vw;
+        width: 18vw;
+        height: 4.75vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.testify-svg {
@@ -2633,7 +2646,7 @@ p {
 
     div.testimony-unit{
         padding: 3vw 3vw;
-        border: 3.75px solid rgba(231, 242, 228, 0.7);
+        border: 0.2vw solid rgba(231, 242, 228, 0.7);
         border-radius: 2vw;
         margin: 3.5vh 3.5vw;
         width: 50vw;
@@ -2850,9 +2863,12 @@ p {
     a.picture-button {
         background: transparent;
         border-radius: 1vw;
-        border: 1px solid #E7F2E4;
-        padding: 1vh 2vw;
-        margin-left: 2vw;
+        border: 0.1vw solid #E7F2E4;
+        width: 17.8vw;
+        height: 4.55vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.picture-svg {
@@ -2870,14 +2886,15 @@ p {
     }
 
     div.projects-grid {
-        width: 46vw;
+        width:  56.4vw;
         display: grid;
-        grid-template-columns: 22vw 22vw;
-        gap: 2vw;
+        grid-template-columns: 18vw 18vw 18vw;
+        gap: 1.2vw;
     }
 
     a.account-project {
         text-align: center;
+        font-size: 1.5vw;
     }
 
     div.picture-holder {

@@ -20,7 +20,7 @@
                 {% if current_user.picture_url %}
                 <a class="text picture-button account-project" type="button" href="{{ url_for('profile_picture') }}">
                     <img class="account-picture" alt="picture" src="{{ current_user.picture_url }}">
-                    <p class="picture-prompt">  Your Profile Picture</p>
+                    <p class="picture-prompt">  Profile Picture</p>
                 </a>
                 {% else %}
                 <a class="text picture-button account-project" type="button" href="{{ url_for('profile_picture') }}">
@@ -30,14 +30,14 @@
                     </svg><p class="picture-prompt">  Profile Picture</p>
                 </a>
                 {% endif %}
-    <!--        </div>-->
+           <!-- </div>-->
     <!--        <div class="add-container">-->
                 <a class="text testimony-button account-project" type="button" href="{{ url_for('add_testimony') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg testify-svg" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
                     </svg><p class="testimony-prompt">  Add Testimonial</p>
                 </a>
-    <!--        </div>-->
+    <!--        </div> -->
 
                 <a class="text picture-button account-project" type="button" href="{{ url_for('store') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4 testify-svg" viewBox="0 0 16 16">
