@@ -1715,13 +1715,13 @@ p {
     }
 
     p.item-description {
-        font-size: 2.5vw;
+        font-size: 2.75vw;
         text-align: center;
     }
 
     a.add-item {
         margin: 0;
-        font-size: 2.75vw;
+        font-size: 2.5vw;
     }
 
     a.add-item.hidden {
