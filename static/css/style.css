@@ -101,6 +101,10 @@ p {
     font-weight: 500;
 }
 
+input.password {
+
+}
+
 @media (orientation: portrait) {
 
     div.showcase {
@@ -637,6 +641,22 @@ p {
         color: #FF90BB; 
         margin-top: 1vh;
         font-size: 2.4vw;
+    }
+
+    div.signup-password, div.signup-second-password, div.login-password, div.reset-password, div.reset-second-password {
+        display: flex;
+        gap: 1vw;
+    }
+
+    button.signup-toggle, button.signup-second-toggle, button.login-toggle, button.reset-toggle, button.reset-second-toggle {
+        border: none;
+        background: transparent;
+        font-size: 3vw;
+    }
+
+    svg.password-toggle {
+        width: 3vw;
+        height: 3vw;
     }
 
     a.testimonials-prompt {
@@ -1305,7 +1325,7 @@ p {
 
     input.verify-input {
         width: 20vw;
-        text-align: center;
+        /* text-align: center; */
         -moz-appearance: textfield;
     }
 
@@ -1339,11 +1359,11 @@ p {
     form.email-house {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
     }
 
     input.new-password {
-        text-align: center;
+        /* text-align: center; */
         width: 40vw;
     }
 
@@ -2615,6 +2635,22 @@ p {
         font-size: 1.2vw;
     }
 
+    div.signup-password, div.signup-second-password, div.login-password, div.reset-password, div.reset-second-password {
+        display: flex;
+        gap: 0.33vw;
+    }
+
+    button.signup-toggle, button.signup-second-toggle, button.login-toggle, button.reset-toggle, button.reset-second-toggle {
+        border: none;
+        background: transparent;
+        font-size: 1vw;
+    }
+
+    svg.password-toggle {
+        width: 1.25vw;
+        height: 1.25vw;
+    }
+
     a.testimonials-prompt {
         text-decoration: none;
         color:#FF90BB;
@@ -3222,7 +3258,7 @@ p {
 
     input.verify-input {
         width: 12vw;
-        text-align: center;
+        /* text-align: center; */
         -moz-appearance: textfield;
     }
 
@@ -3253,11 +3289,11 @@ p {
     form.email-house {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
     }
 
     input.new-password {
-        text-align: center;
+        /* text-align: center; */
         width: 28.5vw;
     }
 

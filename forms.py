@@ -25,12 +25,12 @@ class SignupForm(FlaskForm):
     password = PasswordField(
         label="Password",
         validators=[DataRequired(), Length(min=8)],
-        render_kw={"class": "field signup-field", "placeholder": "8 characters or more"}
+        render_kw={"class": "field signup-field signup-password", "placeholder": "8 characters or more"}
     )
     second_password = PasswordField(
         label="Re-enter password",
         validators=[DataRequired(), Length(min=8)],
-        render_kw={"class": "field signup-field", "placeholder": "8 characters or more"}
+        render_kw={"class": "field signup-field signup-second-password", "placeholder": "8 characters or more"}
     )
     privacy = BooleanField(label="", validators=[DataRequired(), InputRequired()])
     button = SubmitField(label="Sign Up", render_kw={"class": "text button signup-button signup-field"})
@@ -44,7 +44,7 @@ class LoginForm(FlaskForm):
     )
     password = PasswordField(
         validators=[DataRequired()],
-        render_kw={"class": "field", "placeholder": ""}
+        render_kw={"class": "field login-password", "placeholder": ""}
     )
     next = HiddenField()
     button = SubmitField(label="Login", render_kw={"class": "text button login-button"})
@@ -127,11 +127,11 @@ class NewPasswordForm(FlaskForm):
     )
     password = PasswordField(
         validators=[DataRequired(), Length(min=8)],
-        render_kw={"class": "field signup-field new-password", "placeholder": "New password"}
+        render_kw={"class": "field signup-field new-password reset-password", "placeholder": "New password"}
     )
     second_password = PasswordField(
         validators=[DataRequired(), Length(min=8)],
-        render_kw={"class": "field signup-field new-password", "placeholder": "Re-enter password"}
+        render_kw={"class": "field signup-field new-password reset-second-password", "placeholder": "Re-enter password"}
     )
     submit = SubmitField(
         label="Change password",
