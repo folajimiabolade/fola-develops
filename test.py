@@ -133,7 +133,7 @@ smtp_server = "smtp.gmail.com"
 msg = MIMEMultipart("alternative")
 # msg["From"] = "Test App <no-reply@example.com>"
 # msg["To"] = "recipient@example.com"
-msg["Subject"] = "Styled Email Test (Ethereal)"
+msg["Subject"] = "Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed."
 
 msg["From"] = email
 msg["To"] = "folajimiabolade@gmail.com"
@@ -158,69 +158,13 @@ html_content = """
     <html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
         <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi Amerigo,</p>
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed.</p>
-            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608886/fola-develops-light_iaekwp.png" alt="FolaDevelops" width="200" style="display:block; border:0; outline:none; text-decoration:none;">
-
-            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:#ffffff;border:1px solid #e5e7eb;">
-                <tr style="background:#f8fafc;">
-                    <th align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#111;padding:10px;border-bottom:1px solid #e5e7eb;">Item</th>
-                    <th align="right" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#111;padding:10px;border-bottom:1px solid #e5e7eb;">Price</th>
-                </tr>
-                <tr>
-                    <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;padding:10px;border-bottom:1px solid #f1f5f9;">Widget A</td>
-                    <td align="right" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;padding:10px;border-bottom:1px solid #f1f5f9;">$19.00</td>
-                </tr>
-                <tr>
-                    <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;padding:10px;">Widget B</td>
-                    <td align="right" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;padding:10px;">$29.00</td>
-                </tr>
-                </table>
-
-
-
-
-        </div>
-    </body>
-    </html>
-"""
-
-# Attach HTML body
-msg.attach(MIMEText(html_content, "html"))
-
-# Send the email
-# with smtplib.SMTP(smtp_server, SMTP_PORT) as server:
-#     server.starttls()
-#     server.login(email, password)
-#     server.sendmail(msg["From"], msg["To"], msg.as_string())
-
-
-# Send the email
-# with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-#     server.starttls()
-#     server.login(USERNAME, PASSWORD)
-#     server.sendmail(msg["From"], msg["To"], msg.as_string())
-
-
-print("✅ Email sent! Go to https://ethereal.email and log in with your test credentials to preview it.")
-
-
-
-app = Flask(__name__)
-
-@app.route("/")
-def test():
-    return """
-    <html>
-    <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
-        <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
 
             <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608886/fola-develops-light_iaekwp.png" alt="Company Logo" width="200" style="display:block; border:0; outline:none; text-decoration:none; margin: auto;">
 
             <p style="height: 1px"></p>
 
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi Amerigo,</p>
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed.</p>
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed successfully.</p>
             
             <p style="height: 1px"></p>
 
@@ -281,16 +225,25 @@ def test():
 
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Warm regards,</p>
 
-            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755616313/fola-develops-white-text-dot_jnekxg.png" alt="Company Logo" width="200" style="display:block; border:0; outline:none; text-decoration:none;">
+            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755623630/Fola_A_D_Script_ll0rr6.png" alt="Company Logo" width="200" style="display:block; border:0; outline:none; text-decoration:none;">
 
             <p style="height: 1px"></p>
-
-            <a href="https://example.com"
-            style="display: inline-block; text-align: center; padding: 15px 45px; background-color: #0065F8; color: #E7F2E4; text-decoration: none; border-radius: 4px; font-size: 14px;">
-                Visit Website
-            </a>
-
             <p style="height: 1px"></p>
+
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center">
+                        <a href="https://foladevelops.onrender.com/"
+                        style="display: inline-block; text-align: center; padding: 15px 45px; background-color: #0065F8; color: #E7F2E4; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                            Visit Website
+                        </a>
+                    </td>
+                </tr>
+                </table>
+            
+
+            
+
             <p style="height: 1px"></p>
 
             <p style="color: #2b3035; font-size: 14px; font-weight: bold; text-align: center; text-decoration: underlin;">Socials:</p>
@@ -298,7 +251,7 @@ def test():
             <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;padding-top: 8px;">
                 <tr>
                     <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
-                        <a href="https://example.com"
+                        <a href="https://wa.me/2348067071135"
                             style="display:inline-block; background: #E7F2E4; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755618726/outline-whatsapp-wa-watsup-green-logo-icon-symbol-sign_szj5lc.png'); 
                                     background-size:cover; border-radius:8px; 
                                     color:#fff; font-family:Arial,sans-serif; 
@@ -308,7 +261,7 @@ def test():
                     </td>
 
                     <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
-                        <a href="https://example.com"
+                        <a href="https://github.com/folajimiabolade"
                             style="display:inline-block; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755618724/aawpwnuou_hfei6a.webp'); 
                                     background-size:cover; border-radius:8px; 
                                     color:#fff; font-family:Arial,sans-serif; 
@@ -318,13 +271,220 @@ def test():
                     </td>
 
                     <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
-                        <a href="https://example.com"
-                            style="display:inline-block; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755618724/7a791a7183478843b347a5d17fc79e13_nduwbc.webp'); 
+                        <a href="https://www.linkedin.com/in/folajimi-abolade-379a01362"
+                            style="display:inline-block; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755621132/7a791a7183478843b347a5d17fc79e13_qxdmu1.webp'); 
                                     background-size:cover; border-radius:8px; 
                                     color:#fff; font-family:Arial,sans-serif; 
                                     font-size:16px; text-decoration:none; padding:12px 12px;">
                             
                         </a>
+                    </td>
+                    
+
+                </tr>
+            </table>
+            
+            <div style="height: 5px"></div>
+
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;padding-top: 8px;">
+                <tr>
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">WhatsApp</p>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">GitHub</p>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">LinkedIn</p>
+                    </td>
+                    
+
+                </tr>
+            </table>
+
+            <p style="height: 1px"></p>
+
+        </div>
+    </body>
+    </html>
+"""
+# Attach HTML body
+msg.attach(MIMEText(html_content, "html"))
+
+# Send the email
+# with smtplib.SMTP(smtp_server, SMTP_PORT) as server:
+#     server.starttls()
+#     server.login(email, password)
+#     server.sendmail(msg["From"], msg["To"], msg.as_string())
+
+
+# Send the email
+# with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+#     server.starttls()
+#     server.login(USERNAME, PASSWORD)
+#     server.sendmail(msg["From"], msg["To"], msg.as_string())
+
+
+print("✅ Email sent! Go to https://ethereal.email and log in with your test credentials to preview it.")
+
+
+
+app = Flask(__name__)
+
+@app.route("/")
+def test():
+    return """
+    <html>
+    <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
+        <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
+
+            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608886/fola-develops-light_iaekwp.png" alt="Company Logo" width="200" style="display:block; border:0; outline:none; text-decoration:none; margin: auto;">
+
+            <p style="height: 1px"></p>
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi Maxwell,</p>
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed successfully.</p>
+            
+            <p style="height: 1px"></p>
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">You ordered for:</p>
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Item 1:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px; border:0.5px solid #2b3035;">
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Image</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">
+                        <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755356537/air_fryer_kdigcd.jpg" alt="Company Logo" style="display:block; border:0; outline:none; text-decoration:none; width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Name</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">SILVER CREST 8L Extra Large Capacity Digital AirFryer</td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Quantity</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">2</td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Price</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦36,785</td>
+                </tr>
+            </table>
+
+            <p style="height: 1px"></p>
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Item 2:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px;border:0.5px solid #2b3035;">
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Image</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">
+                        <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755356221/clothes_wlkwp1.jpg" alt="Company Logo" style="display:block; border:0; outline:none; text-decoration:none; width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Name</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Men's Shorts And T-shirt Set -2 Pieces - Black</td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Quantity</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">8</td>
+                </tr>
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Price</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦8,690</td>
+                </tr>
+            </table>
+
+            <p style="height: 1px"></p>
+
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px;border:0.5px solid #2b3035;">
+                <tr>
+                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Total</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦143,090</td>
+                </tr>
+            </table>
+
+            <p style="height: 1px"></p>
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Thanks for exploring!</p>
+
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Warm regards,</p>
+
+            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755623630/Fola_A_D_Script_ll0rr6.png" alt="Company Logo" width="200" style="display:block; border:0; outline:none; text-decoration:none;">
+
+            <p style="height: 1px"></p>
+            <p style="height: 1px"></p>
+
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center">
+                        <a href="https://foladevelops.onrender.com/"
+                        style="display: inline-block; text-align: center; padding: 15px 45px; background-color: #0065F8; color: #E7F2E4; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                            Visit Website
+                        </a>
+                    </td>
+                </tr>
+                </table>
+            
+
+            
+
+            <p style="height: 1px"></p>
+
+            <p style="color: #2b3035; font-size: 14px; font-weight: bold; text-align: center; text-decoration: underlin;">Socials:</p>
+
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;padding-top: 8px;">
+                <tr>
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
+                        <a href="https://wa.me/2348067071135"
+                            style="display:inline-block; background: #E7F2E4; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755618726/outline-whatsapp-wa-watsup-green-logo-icon-symbol-sign_szj5lc.png'); 
+                                    background-size:cover; border-radius:8px; 
+                                    color:#fff; font-family:Arial,sans-serif; 
+                                    font-size:16px; text-decoration:none; padding:12px 12px;">
+                            
+                        </a>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
+                        <a href="https://github.com/folajimiabolade"
+                            style="display:inline-block; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755618724/aawpwnuou_hfei6a.webp'); 
+                                    background-size:cover; border-radius:8px; 
+                                    color:#fff; font-family:Arial,sans-serif; 
+                                    font-size:16px; text-decoration:none; padding:12px 12px;">
+                            
+                        </a>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: ">
+                        <a href="https://www.linkedin.com/in/folajimi-abolade-379a01362"
+                            style="display:inline-block; background-image:url('https://res.cloudinary.com/foladevelops/image/upload/v1755621132/7a791a7183478843b347a5d17fc79e13_qxdmu1.webp'); 
+                                    background-size:cover; border-radius:8px; 
+                                    color:#fff; font-family:Arial,sans-serif; 
+                                    font-size:16px; text-decoration:none; padding:12px 12px;">
+                            
+                        </a>
+                    </td>
+                    
+
+                </tr>
+            </table>
+            
+            <div style="height: 5px"></div>
+
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;padding-top: 8px;">
+                <tr>
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">WhatsApp</p>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">GitHub</p>
+                    </td>
+
+                    <td align="center" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;width: 33.33%">
+                        <p style="color: #2b3035; font-size: 10px; font-weight: 500;">LinkedIn</p>
                     </td>
                     
 
