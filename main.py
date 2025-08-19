@@ -710,10 +710,11 @@ print("Oraimo Watch 5 Litev 2.01'' AMOLED Screen Smart Watch".replace(" ", "_").
 @login_required
 def item(unique_name):
     item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
+    print('good')
+    print(item)
     item_id = item.id
     count = 0
     cart_products = db.session.query(CartProduct).filter(CartProduct.item_id == item_id, CartProduct.user_id == current_user.id).all()
-    print(cart_products)
     if cart_products:
         # count = (
         #     db.session.query(func.count(CartProduct.id))
@@ -721,7 +722,6 @@ def item(unique_name):
         #     .scalar()
         # )
         count = len(cart_products)
-        print(f"item appears {count} times")
     return render_template("item.html", item=item, page_name="item", admin_email=admin_email, count=count)
 
 

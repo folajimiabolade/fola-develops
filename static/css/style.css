@@ -298,11 +298,11 @@ p, a {
 
     .hero-title {
         /* margin-bottom: 0vw; */
-        font-size: 5vw;
+        font-size: 4.8vw;
     }
 
     .hero-comment {
-        font-size: 4.5vw;
+        font-size: 3.4vw;
         margin-top: 0vw;
     }
 
@@ -322,7 +322,7 @@ p, a {
         border-radius: 2vw;
         padding: 2.8vw 7vw;
         background: #0065F8;
-        font-size: 4.125vw;
+        font-size: 3.1vw;
     }
 
     a.whatsapp {
@@ -356,7 +356,7 @@ p, a {
 
     a.home-link {
         color: #FF90BB;
-        font-size: 4.125vw;
+        font-size: 3.1vw;
         /* font-weight: bold; */
         /* margin-top: 4vw; */
     }

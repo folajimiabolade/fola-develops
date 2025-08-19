@@ -45,7 +45,7 @@ womens_shoes = {
 
 phone = {
     "picture_url": "https://res.cloudinary.com/foladevelops/image/upload/v1755355031/phone_pv91em.jpg",
-    "unique_name": 'Samsung Galaxy A05 6.7" 4GB RAM/64GB ROM Android 13 - Black',
+    "unique_name": 'Samsung Galaxy A05 6.7" 4GB RAM-64GB ROM Android 13 - Black',
     "name": 'Samsung Galaxy A05 6.7" 4GB RAM/64GB ROM Android 13 - Black',
     "price": 118945,
     "description": "The Samsung Galaxy A05 sports a large 6.6 inches IPS LCD display that has an HD+ resolution of 720 x 1600 pixels and a 269 PPI density. The display has a water drop notch at the top center which houses the selfie camera. The screen still has noticable bezels around it but that is normal for an entry-level smartphone.",
