@@ -85,7 +85,7 @@ class SettingsForm(FlaskForm):
         validators=[DataRequired(), Email()],
         render_kw={"class": "field signup-field", "placeholder": "e.g. name@email.com"}
     )
-    submit = SubmitField(label="Submit", render_kw={"class": "text button signup-button signup-field"})
+    submit = SubmitField(label="Change", render_kw={"class": "text button signup-button signup-field"})
 
 
 class VerifyForm(FlaskForm):

@@ -288,22 +288,29 @@ p, a {
         /* margin-top: 20vw; */
         height: 100vh;
         justify-content: center;
+        align-items: center;
     }
 
     .hero-body {
         text-align: center;
-        margin-bottom: 8vw;
+        margin-bottom: 6.2vw;
     }
 
     .hero-title {
-        margin-bottom: 4.2vw;
+        /* margin-bottom: 0vw; */
+        font-size: 5vw;
+    }
+
+    .hero-comment {
+        font-size: 4.5vw;
+        margin-top: 0vw;
     }
 
     .hero-content {
         margin-bottom: 1vh;
     }
 
-     div.hero-actions {
+    div.hero-actions {
         display: flex;
         justify-content: center;
         margin-top: 0vh;
@@ -311,9 +318,11 @@ p, a {
     }
 
     .hero-button {
-        margin-top: 2vw;
-        border-radius: 1vw;
-        padding: 1.5vh 3vw;
+        margin-top: 3.6vw;
+        border-radius: 2vw;
+        padding: 2.8vw 7vw;
+        background: #0065F8;
+        font-size: 4.125vw;
     }
 
     a.whatsapp {
@@ -347,6 +356,9 @@ p, a {
 
     a.home-link {
         color: #FF90BB;
+        font-size: 4.125vw;
+        /* font-weight: bold; */
+        /* margin-top: 4vw; */
     }
 
     div.about-button-container {
@@ -457,9 +469,10 @@ p, a {
         color: #E7F2E4
     }
 
-    p.copyright {
+    a.github {
         font-size: 2.5vw;
         margin-left: 3.5vw;
+        text-decoration: none;
     }
 
     div.brand {
@@ -482,7 +495,7 @@ p, a {
         font-family: "Dancing Script", cursive;
     }
 
-    a.footer-link {
+    a.whats-app {
         margin-right: 3.5vw;
         font-size: 2.5vw;
         text-align: end;
@@ -567,9 +580,9 @@ p, a {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 26vw;
-        min-height: 35vh;
-        margin-bottom: 53vh;
+        /* margin-top: 26vw; */
+        min-height: 100vh;
+        /* margin-bottom: 53vh; */
     }
 
     div.login-form {
@@ -583,7 +596,7 @@ p, a {
     }
 
     p.signup-prompt {
-        font-size: 2.1vw;
+        font-size: 2.5vw;
         /* padding-left: 2.5vw; */
     }
 
@@ -1345,7 +1358,7 @@ p, a {
     }
 
     a.forgot-password {
-        font-size: 2.1vw;
+        font-size: 2.5vw;
     }
 
     div.email-card {
@@ -1424,8 +1437,8 @@ p, a {
     }
 
     svg.home-whatsapp {
-        width: 2.2vw;
-        height: 2.2vw;
+        width: 3.025vw;
+        height: 3.025vw;
     }
 
     span.home-chat {
@@ -1438,14 +1451,10 @@ p, a {
     }
 
     div.designs-house {
-        /* margin-left: 3.5vw; */
+        margin-left: 3.5vw;
         margin-top: 20vw;
-        width: 100vw;
+        width: 96.5vw;
         font-size: 3.2vw;
-        text-align: center;
-    }
-
-    div.designs-house ul {
         text-align: left;
     }
 
@@ -1455,6 +1464,7 @@ p, a {
     }
 
     div.design {
+        width: 93vw;
         border-bottom: 0.2025vw solid #E7F2E4;
         cursor: pointer;
     }
@@ -1997,7 +2007,7 @@ p, a {
     }
 
     p.cart-empty {
-        font-size: 2vw;
+        font-size: 2.5vw;
         margin: 0;
     }
 
@@ -2236,7 +2246,7 @@ p, a {
         display: flex;
         width: 100vw;
         justify-content: space-between;
-        gap: 37vw;
+        gap: 36vw;
         height: auto;
     }
 
@@ -2351,9 +2361,10 @@ p, a {
     }
 
     .hero-button {
-        margin-top: 1vw;
+        margin-top: 1.8vw;
         border-radius: 0.75vw;
         padding: 2.25vh 5.5vw;
+        background: #0065F8;
     }
 
     a.email {
@@ -2503,7 +2514,7 @@ p, a {
         color: #E7F2E4
     }
 
-    p.copyright {
+    a.github {
         font-size: 1.25vw;
         margin-left: 2vw;
         max-width: 20vw;
@@ -2511,6 +2522,7 @@ p, a {
         flex-direction: column;
         justify-content: center;
         z-index: 1;
+        text-decoration: none;
     }
 
     div.brand {
@@ -2535,7 +2547,7 @@ p, a {
         font-family: "Dancing Script", cursive;
     }
 
-    a.footer-link {
+    a.whats-app {
         margin-right: 2vw;
         font-size: 1.25vw;
         min-width: 5vw;
@@ -3406,15 +3418,15 @@ p, a {
     }
 
     div.designs-house {
+        margin-left: 2vw;
         margin-top: 9vw;
-        width: 100vw;
+        width: 98vw;
         margin-bottom: 18vw;
         font-size: 1.65vw;
-        text-align: center;
+        text-align: left;
     }
 
     div.designs-house ul {
-        text-align: left;
         width: 55vw;
     }
 
@@ -3424,7 +3436,7 @@ p, a {
     }
 
     div.design {
-        width: 100vw;
+        width: 96vw;
         border-bottom: 0.0675vw solid rgba(231, 242, 228, 0.7);
         cursor: pointer;
     }
@@ -3983,7 +3995,7 @@ p, a {
     }
 
     p.cart-empty {
-        font-size: 1vw;
+        font-size: 1.25vw;
         margin: 0;
     }
 
