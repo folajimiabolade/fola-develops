@@ -1,5 +1,4 @@
-order_successful = """
-    <html>
+email_brand = """<html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
         <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
 
@@ -7,64 +6,62 @@ order_successful = """
 
             <p style="height: 1px"></p>
 
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi Maxwell,</p>
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed successfully.</p>
+            """
+
+before_greeting = """<p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi """
+
+before_datetime = """,</p>
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on """
+
+after_datetime = """ has been confirmed successfully.</p>
             
             <p style="height: 1px"></p>
 
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">You ordered for:</p>
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Item 1:</p>
+            """
+
+before_number = """<p style="color: #2b3035; font-size: 14px; font-weight: 500;">Item """
+
+before_image = ''':</p>
             <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px; border:0.5px solid #2b3035;">
                 <tr>
                     <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Image</td>
                     <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">
-                        <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755356537/air_fryer_kdigcd.jpg" alt="Company Logo" style="display:block; border:0; outline:none; text-decoration:none; width: 50px; height: 50px; object-fit: cover;">
+                        <img src="'''
+
+before_name = '''" alt="Item image" style="display:block; border:0; outline:none; text-decoration:none; width: 50px; height: 50px; object-fit: cover;">
                     </td>
                 </tr>
                 <tr>
                     <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Name</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">SILVER CREST 8L Extra Large Capacity Digital AirFryer</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">'''
+
+before_quantity = """</td>
                 </tr>
                 <tr>
                     <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Quantity</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">2</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">"""
+
+before_price = """</td>
                 </tr>
                 <tr>
                     <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Price</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦36,785</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">"""
+
+after_price = """</td>
                 </tr>
             </table>
 
             <p style="height: 1px"></p>
 
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Item 2:</p>
-            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px;border:0.5px solid #2b3035;">
-                <tr>
-                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Image</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">
-                        <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755356221/clothes_wlkwp1.jpg" alt="Company Logo" style="display:block; border:0; outline:none; text-decoration:none; width: 50px; height: 50px; object-fit: cover;">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Name</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;">Men's Shorts And T-shirt Set -2 Pieces - Black</td>
-                </tr>
-                <tr>
-                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035; font-weight: 500;">Quantity</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;border-top:0.5px solid #2b3035;">8</td>
-                </tr>
-                <tr>
-                    <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Price</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦8,690</td>
-                </tr>
-            </table>
+            """
 
-            <p style="height: 1px"></p>
-
-            <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px;border:0.5px solid #2b3035;">
+before_total = """<table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background: #E7F2E4;padding-top: 8px;border:0.5px solid #2b3035;">
                 <tr>
                     <td style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">Total</td>
-                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">₦143,090</td>
+                    <td align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px; border-top:0.5px solid #2b3035;  border-bottom:0.5px solid #2b3035;">"""
+
+after_total = """</td>
                 </tr>
             </table>
 
@@ -89,7 +86,7 @@ order_successful = """
                         </a>
                     </td>
                 </tr>
-                </table>
+            </table>
             
 
             
@@ -158,8 +155,7 @@ order_successful = """
 
         </div>
     </body>
-    </html>
-"""
+    </html>"""
 
 verify_one = """<html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">

@@ -34,7 +34,7 @@ import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email_templates import verify_one, verify_two, reset_one, reset_two
+from email_templates import verify_one, verify_two, reset_one, reset_two, email_brand, before_greeting, before_datetime, after_datetime, before_number, before_image, before_name, before_quantity, before_price, after_price, before_total, after_total
 from functools import wraps
 from items_data import things
 
@@ -897,6 +897,40 @@ def checkout():
         db.session.add(order)
         db.session.delete(cart_product)
         db.session.commit()
+    items_details = (
+        db.session.query(Order.item_id, func.count(Order.item_id))
+        .filter(Order.user_id == current_user.id, Order.datetime == now)
+        .group_by(Order.item_id).all()
+    )
+    orders = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
+    items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
+    total_price = 0
+    for item in items:
+        for order in orders:
+            if item.id == order["item_id"]:
+                total_price += (item.price * order["quantity"])
+    products = db.session.query(Order).filter(
+        Order.user_id == current_user.id, 
+        Order.datetime == now
+        ).all()
+    items_html = ""
+    for order in orders:
+        for item in items:
+            if order["item_id"] == item.id:
+                items_html += f"{before_number}{orders.index(order) + 1}{before_image}{item.picture_url}{before_name}{item.name}{before_quantity}{order["quantity"]}{before_price}{"₦{:,.0f}".format(item.price)}{after_price}"
+    order_datetime = f"{now.strftime("%B %d, %Y")} at {now.strftime("%H:%M:%S UTC")}"
+    html_email = f"""{email_brand}{before_greeting}{current_user.first_name}{before_datetime}{order_datetime}{after_datetime}{items_html}{before_total}{"₦{:,.0f}".format(total_price)}{after_total}"""
+    message = MIMEMultipart("alternative")
+    message["Subject"] = f"Your order made on {order_datetime} has been confirmed."
+    message["From"] = email
+    message["To"] = current_user.email
+    message.attach(MIMEText(html_email, "html"))
+    with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
+        connection.ehlo()
+        connection.starttls()
+        connection.ehlo()
+        connection.login(email, password)
+        connection.sendmail(message["From"], message["To"], message.as_string())
     return render_template("checkout.html", page_name="checkout")
 
 
