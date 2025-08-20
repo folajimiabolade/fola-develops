@@ -141,7 +141,7 @@ msg["To"] = "folajimiabolade@gmail.com"
 
 order_successful = """
     <html>
-    <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
+    <body style="font-family: 'Noto Sans', sans-serif; background-color: #C9CDCF; padding: 20px;">
         <div style="background: #E7F2E4; padding: 20px; padding-top: 0; padding-bottom: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px; max-width: 500px; margin: auto; background: #2b3035; overflow:hidden;">
 
             <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608891/fola-develops-dark_vywcqv.png" alt="Company Logo" width="34%" style="display:block; border:0; outline:none; text-decoration:none; margin: auto; padding-top: 10px; margin-bottom: 0;">
