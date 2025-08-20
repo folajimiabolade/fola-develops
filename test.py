@@ -142,13 +142,15 @@ msg["To"] = "folajimiabolade@gmail.com"
 order_successful = """
     <html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
-        <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
+        <div style="background: #E7F2E4; padding: 20px; padding-top: 0; padding-bottom: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px; max-width: 500px; margin: auto; background: #2b3035; overflow:hidden;">
 
-            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608886/fola-develops-light_iaekwp.png" alt="Company Logo" width="166.66" style="display:block; border:0; outline:none; text-decoration:none; margin: auto;">
+            <img src="https://res.cloudinary.com/foladevelops/image/upload/v1755608891/fola-develops-dark_vywcqv.png" alt="Company Logo" width="34%" style="display:block; border:0; outline:none; text-decoration:none; margin: auto; padding-top: 10px; margin-bottom: 0;">
+        </div>
 
-            <p style="height: 1px"></p>
+        <div style="background: #E7F2E4; padding: 20px; padding-top: 0; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; max-width: 500px; margin: auto; margin-top: 0; overflow:hidden;">
+            <p style="height: 1px; "background: #E7F2E4; "></p>
 
-            <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Hi Maxwell,</p>
+            <p style="color: #2b3035; font-size: 14px; font-weight: 500; "background: #E7F2E4; ">Hi Maxwell,</p>
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed successfully.</p>
             
             <p style="height: 1px"></p>
@@ -472,7 +474,7 @@ reset_password = """<html>
 
 
 # Attach HTML body
-msg.attach(MIMEText(verify_email, "html"))
+msg.attach(MIMEText(order_successful, "html"))
 
 # Send the email
 # with smtplib.SMTP_SSL(smtp_server, 465, timeout=60) as server:
@@ -500,7 +502,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def test():
-    return html_content
+    return order_successful
 b = '#0065F8;'
 a = """
         <a href="https://example.com"
