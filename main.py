@@ -393,8 +393,6 @@ def verify_email(e_mail):
             connection.ehlo()
             connection.starttls()
             connection.ehlo()
-            print("Email (from):", email, type(email))
-            print("Email (to):", e_mail, type(e_mail))
             connection.login(email, password)
             connection.sendmail(message["From"], message["To"], message.as_string())
     unconfirmed_person.mail_sent = True
@@ -451,8 +449,6 @@ def resend_email(e_mail):
     message.attach(MIMEText(f"""{verify_one}{person.verification_code}{verify_two}""", "html"))
     with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
         connection.starttls()
-        print("Email (from):", email, type(email))
-        print("Email (to):", e_mail, type(e_mail))
         connection.login(email, password)
         connection.sendmail(message["From"], message["To"], message.as_string())
     flash(f"A verification code has been resent to '{e_mail}'.", "success")
@@ -701,14 +697,11 @@ def add_item():
         return redirect(url_for("store"))
     return render_template("add-item.html", form=item_form, admin_email=admin_email)
 
-print("Oraimo Watch 5 Litev 2.01'' AMOLED Screen Smart Watch".replace(" ", "_").replace("|", "-"))
 
 @app.route("/item/<unique_name>")
 @login_required
 def item(unique_name):
     item = db.session.execute(db.select(Item).where(Item.unique_name == unique_name)).scalar()
-    print('good')
-    print(item)
     item_id = item.id
     count = 0
     cart_products = db.session.query(CartProduct).filter(CartProduct.item_id == item_id, CartProduct.user_id == current_user.id).all()
@@ -826,7 +819,6 @@ def cart():
         .group_by(CartProduct.item_id).all()
     )
     cart_products = [{"item_id": value, "quantity": frequency} for value, frequency in items_details]
-    print(cart_products)
     items = db.session.execute(db.select(Item).order_by(Item.id)).scalars().all()
     total_price = 0
     for item in items:
@@ -909,10 +901,6 @@ def checkout():
         for order in orders:
             if item.id == order["item_id"]:
                 total_price += (item.price * order["quantity"])
-    products = db.session.query(Order).filter(
-        Order.user_id == current_user.id, 
-        Order.datetime == now
-        ).all()
     items_html = ""
     for order in orders:
         for item in items:
@@ -942,7 +930,6 @@ def orders():
         .group_by(Order.datetime)
         .order_by(desc(Order.datetime)).all()
     )
-    print(order_points)
     return render_template("orders.html", order_points=order_points, page_name="orders")
 
 @app.route("/order/<order_point>")
