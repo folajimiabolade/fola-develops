@@ -32,6 +32,9 @@ import cloudinary.api
 import random
 # The simple-mail-transfer-protocol library(smtplib) is used send emails
 import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email_templates import verify_one, verify_two, reset_one, reset_two
 from functools import wraps
 from items_data import things
 
@@ -381,6 +384,11 @@ def verify_email(e_mail):
     verify_form = VerifyForm()
     unconfirmed_person = db.session.execute(db.select(UnverifiedUser).where(UnverifiedUser.email == e_mail)).scalar()
     if unconfirmed_person.mail_sent != True:
+        message = MIMEMultipart("alternative")
+        message["Subject"] = f"{unconfirmed_person.verification_code} is your verification code for FolaDevelops."
+        message["From"] = email
+        message["To"] = e_mail
+        message.attach(MIMEText(f"""{verify_one}{unconfirmed_person.verification_code}{verify_two}""", "html"))
         with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
             connection.ehlo()
             connection.starttls()
@@ -388,13 +396,7 @@ def verify_email(e_mail):
             print("Email (from):", email, type(email))
             print("Email (to):", e_mail, type(e_mail))
             connection.login(email, password)
-            connection.sendmail(
-                from_addr=email,
-                to_addrs=e_mail,
-                msg=f"Subject:{unconfirmed_person.verification_code} is your verification code for FolaDevelops\n\n"
-                    f"Dear user,\n\nYour verification code is {unconfirmed_person.verification_code}. Please "
-                    f"note that it will expire in 14 minutes.\n\nBest Regards,\nFolaDevelops"
-            )
+            connection.sendmail(message["From"], message["To"], message.as_string())
     unconfirmed_person.mail_sent = True
     db.session.commit()
     if verify_form.validate_on_submit():
@@ -442,18 +444,17 @@ def resend_email(e_mail):
     unconfirmed_person.mail_sent = True
     db.session.commit()
     person = db.session.execute(db.select(UnverifiedUser).where(UnverifiedUser.email == e_mail)).scalar()
+    message = MIMEMultipart("alternative")
+    message["Subject"] = f"{unconfirmed_person.verification_code} is your verification code for FolaDevelops."
+    message["From"] = email
+    message["To"] = e_mail
+    message.attach(MIMEText(f"""{verify_one}{person.verification_code}{verify_two}""", "html"))
     with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
         connection.starttls()
         print("Email (from):", email, type(email))
         print("Email (to):", e_mail, type(e_mail))
         connection.login(email, password)
-        connection.sendmail(
-            from_addr=email,
-            to_addrs=e_mail,
-            msg=f"Subject:{person.verification_code} is your verification code for FolaDevelops\n\n"
-                f"Dear user,\n\nYour verification code is {person.verification_code}. Please "
-                f"note that it will expire in 14 minutes.\n\nBest Regards,\nFolaDevelops"
-        )
+        connection.sendmail(message["From"], message["To"], message.as_string())
     flash(f"A verification code has been resent to '{e_mail}'.", "success")
     return redirect(url_for("verify_email", e_mail=e_mail))
 
@@ -488,17 +489,15 @@ def reset_password(e_mail):
     password_form = NewPasswordForm()
     password_changer = db.session.execute(db.select(PasswordChanger).where(PasswordChanger.email == e_mail)).scalar()
     if password_changer.mail_sent != True:
+        message = MIMEMultipart("alternative")
+        message["Subject"] = f"{password_changer.verification_code} is the code to reset your password for your FolaDevelops account."
+        message["From"] = email
+        message["To"] = e_mail
+        message.attach(MIMEText(f"""{reset_one}{password_changer.verification_code}{reset_two}""", "html"))
         with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
             connection.starttls()
             connection.login(email, password)
-            connection.sendmail(
-                from_addr=email,
-                to_addrs=e_mail,
-                msg=f"Subject:Password reset for FolaDevelops account ({password_changer.verification_code})\n\n"
-                    f"Dear user,\n\nYour verification code to use in changing your password "
-                    f"is {password_changer.verification_code}. Please note, it will expire in "
-                    f"14 minutes.\n\nBest Regards,\nFolaDevelops"
-            )
+            connection.sendmail(message["From"], message["To"], message.as_string())
     password_changer.mail_sent = True
     db.session.commit()
     if password_form.validate_on_submit():
@@ -540,17 +539,15 @@ def resend_password(e_mail):
     password_changer.mail_sent = True
     db.session.commit()
     someone = db.session.execute(db.select(PasswordChanger).where(PasswordChanger.email == e_mail)).scalar()
+    message = MIMEMultipart("alternative")
+    message["Subject"] = f"{someone.verification_code} is the code to reset your password for your FolaDevelops account."
+    message["From"] = email
+    message["To"] = e_mail
+    message.attach(MIMEText(f"""{reset_one}{someone.verification_code}{reset_two}""", "html"))
     with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
         connection.starttls()
         connection.login(email, password)
-        connection.sendmail(
-            from_addr=email,
-            to_addrs=e_mail,
-            msg=f"Subject:Password reset for FolaDevelops account ({someone.verification_code})\n\n"
-                f"Dear user,\n\nYour verification code to use in changing your password "
-                f"is {someone.verification_code}. Please note, it will expire in "
-                f"14 minutes.\n\nBest Regards,\nFolaDevelops"
-        )
+        connection.sendmail(message["From"], message["To"], message.as_string())
     flash(f"A verification code has been resent to '{e_mail}'.")
     return redirect(url_for("reset_password", e_mail=e_mail))
 

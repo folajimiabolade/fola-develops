@@ -1,144 +1,3 @@
-# # Search test
-# from flask import Flask, render_template
-# from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-# from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy import String, Integer, DateTime, ForeignKey, text, Boolean
-#
-#
-# class Base(DeclarativeBase):
-#     pass
-#
-#
-# db = SQLAlchemy(model_class=Base)
-#
-#
-# class Person(db.Model):
-#     __tablename__ = "people"
-#     id: Mapped[int] = mapped_column(Integer(), primary_key=True)
-#     name: Mapped[str] = mapped_column(String())
-#     number: Mapped[int] = mapped_column(Integer())
-#
-#
-# app = Flask(__name__)
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pegasus"
-# db.init_app(app)
-#
-#
-# with app.app_context():
-#     db.create_all()
-#
-#
-# @app.route("/")
-# def index():
-#     query = Person.query.filter(Person.name.ilike(f'%chloe%')).all()
-#     return render_template("test.html", query=query)
-#
-#
-# if __name__ == "__main__":
-#     app.run(debug=True)
-#
-# # End of search test
-
-
-# # Pagination test
-# from flask import Flask, render_template
-# from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-# from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy import String, Integer, DateTime, ForeignKey, text, Boolean
-#
-#
-# class Base(DeclarativeBase):
-#     pass
-#
-#
-# db = SQLAlchemy(model_class=Base)
-#
-#
-# class Person(db.Model):
-#     __tablename__ = "people"
-#     id: Mapped[int] = mapped_column(Integer(), primary_key=True)
-#     name: Mapped[str] = mapped_column(String())
-#     number: Mapped[int] = mapped_column(Integer())
-#
-#
-# app = Flask(__name__)
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pegasus"
-# db.init_app(app)
-#
-#
-# with app.app_context():
-#     db.create_all()
-#
-#
-# @app.route("/<int:page_number>")
-# def index(page_number):
-#     people = db.select(Person).order_by(Person.id)
-#     book = db.paginate(select=people, page=page_number, per_page=6)
-#     sub_people = book.items
-#     link_helpers = book.iter_pages(left_current=1, right_current=2)
-#     return render_template("test.html", page_number=page_number, book=book, people=sub_people, pages=link_helpers)
-#
-#
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-# # End of pagination test
-
-
-# with smtplib.SMTP("smtp.gmail.com") as connection:
-#     connection.starttls()
-#     connection.login(email, password)
-#     connection.sendmail(
-#         from_addr=email,
-#         to_addrs=e_mail,
-#         msg=f"Subject:{unconfirmed_person.verification_code} is your verification code for WebBuildHQ\n\n"
-#             f"Dear user,\n\nYour verification code is {unconfirmed_person.verification_code}. Please "
-#             f"note that it will expire in 14 minutes.\n\nBest Regards,\nWebBuildHQ"
-#     )
-
-
-    # with smtplib.SMTP("smtp.ethereal.email", 587) as connection:
-    #     connection.starttls()
-    #     connection.login("era99@ethereal.email", "vqr3dG8HWUHu23AMhY")
-    #     connection.sendmail(
-    #         from_addr="reply@webbuildhq.com",
-    #         to_addrs=e_mail,
-    #         msg=f"Subject:Password reset for WebBuildHQ account ({password_changer.verification_code})\n\n"
-    #             f"Dear user,\n\nYour verification code to use in changing your password "
-    #             f"is {password_changer.verification_code}. Please note it will expire in "
-    #             f"14 minutes.\n\nBest Regards,\nWebBuildHQ"
-    #     )
-
-
-from flask import Flask, render_template, request, jsonify
-
-
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import os
-
-# Replace with the Ethereal credentials you got
-SMTP_SERVER = "smtp.ethereal.email"
-SMTP_PORT = 587
-USERNAME = "abdullah.schuster@ethereal.email"
-PASSWORD = "NXrqmBnURWTmKRNyGz"
-
-
-email = os.environ.get("EMAIL")
-password = os.environ.get("PASSWORD")
-smtp_server = "smtp.gmail.com"
-
-# Create the message
-msg = MIMEMultipart("alternative")
-# msg["From"] = "Test App <no-reply@example.com>"
-# msg["To"] = "recipient@example.com"
-msg["Subject"] = "Your order made on August 8, 2025 at 23:48:54 UTC has been confirmed."
-msg["From"] = email
-msg["To"] = "folajimiabolade@gmail.com"
-# msg["Subject"] = "4096 is your verification code for FolaDevelops"
-# msg["Subject"] = "5124 is the code to reset your password for your FolaDevelops account"
-
 order_successful = """
     <html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
@@ -302,7 +161,7 @@ order_successful = """
     </html>
 """
 
-verify_email = """<html>
+verify_one = """<html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
         <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
 
@@ -312,7 +171,9 @@ verify_email = """<html>
 
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Dear user,</p>
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your verification code is:</p>
-            <p style="color: #0065F8; font-size: 30px; font-weight: 900; text-align: center;">4096</p>
+            <p style="color: #0065F8; font-size: 30px; font-weight: 900; text-align: center;">"""
+
+verify_two = """</p>
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Please note that it will expire in 14 minutes.</p>
             
             <p style="height: 1px"></p>
@@ -386,7 +247,7 @@ verify_email = """<html>
     </body>
     </html>"""
 
-reset_password = """<html>
+reset_one = """<html>
     <body style="font-family: 'Noto Sans', sans-serif; background-color: ; padding: 20px;">
         <div style="background: #E7F2E4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
 
@@ -396,7 +257,9 @@ reset_password = """<html>
 
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Dear user,</p>
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Your verification code to use in changing your password is:</p>
-            <p style="color: #0065F8; font-size: 30px; font-weight: 900; text-align: center;">5124</p>
+            <p style="color: #0065F8; font-size: 30px; font-weight: 900; text-align: center;">"""
+
+reset_two = """</p>
             <p style="color: #2b3035; font-size: 14px; font-weight: 500;">Please note, it will expire in 14 minutes.</p>
             
             <p style="height: 1px"></p>
@@ -469,49 +332,3 @@ reset_password = """<html>
         </div>
     </body>
     </html>"""
-
-
-# Attach HTML body
-msg.attach(MIMEText(verify_email, "html"))
-
-# Send the email
-# with smtplib.SMTP_SSL(smtp_server, 465, timeout=60) as server:
-#     server.login(email, password)
-#     server.sendmail(msg["From"], msg["To"], msg.as_string())
-
-
-# Send the email
-# with smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=60) as server:
-#     server.ehlo()
-#     server.starttls()
-#     server.ehlo()
-#     server.login(USERNAME, PASSWORD)
-#     server.sendmail(msg["From"], msg["To"], msg.as_string())
-
-
-# print("✅ Email sent! Go to https://ethereal.email and log in with your test credentials to preview it.")
-
-jimi = """liva"""
-print(f'{jimi } wiva')
-
-
-
-app = Flask(__name__)
-
-@app.route("/")
-def test():
-    return html_content
-b = '#0065F8;'
-a = """
-        <a href="https://example.com"
-            style="display: inline-block; text-align: center; padding: 10px 15px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 4px;">
-            Visit Site
-        </a> """
-
-th = """<tr style="background: #E7F2E4;">
-                    <th align="left" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;">Item</th>
-                    <th align="right" style="font-family:'Noto Sans', sans-serif;font-size:14px;color: #2b3035;padding:10px;">Price</th>
-                </tr>"""
-
-if __name__ == "__main__":
-    app.run(debug=True)
