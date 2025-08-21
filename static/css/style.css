@@ -662,14 +662,25 @@ p, a {
     }
 
     div.signup-password, div.signup-second-password, div.login-password, div.reset-password, div.reset-second-password {
-        display: flex;
-        gap: 1vw;
+        display:grid;
+        width: 31vw;
+        grid-template-columns: 37.5vw 7.5vw;
+    }
+
+    input.signup-password, input.signup-second-password, input.login-password, input.reset-password, input.reset-second-password {
+        grid-area: 1/ 1/ 2/ 3;
     }
 
     button.signup-toggle, button.signup-second-toggle, button.login-toggle, button.reset-toggle, button.reset-second-toggle {
         border: none;
         background: transparent;
         font-size: 3vw;
+        grid-area: 1/ 2/ 2/ 3;
+        width: 7.5vw;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.password-toggle {
@@ -2692,14 +2703,25 @@ p, a {
     }
 
     div.signup-password, div.signup-second-password, div.login-password, div.reset-password, div.reset-second-password {
-        display: flex;
-        gap: 0.33vw;
+        display:grid;
+        width: 31vw;
+        grid-template-columns: 26vw 6vw;
+    }
+
+    input.signup-password, input.signup-second-password, input.login-password, input.reset-password, input.reset-second-password {
+        grid-area: 1/ 1/ 2/ 3;
     }
 
     button.signup-toggle, button.signup-second-toggle, button.login-toggle, button.reset-toggle, button.reset-second-toggle {
         border: none;
         background: transparent;
         font-size: 1vw;
+        grid-area: 1/ 2/ 2/ 3;
+        width: 5vw;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     svg.password-toggle {
