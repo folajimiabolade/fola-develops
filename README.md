@@ -1,78 +1,128 @@
-# FolaDevelops
-An application where you can add 
-pictures and comments to.
+## 🌟 At a Glance  
 
-## About
-This is an application where you
-can add pictures to, it
-was built with Python, the server
-that communicates with the users
-was built with Flask, the database
-where users' information(like emails,
-comments e.t.c.) are stored was built
-with SQLAlchemy, for the user-side,
-the structure was built with HTML,
-appearance was made using CSS styling
-(the icons and some of the buttons'
-colors were gotten from Bootstrap) and the
-animation was done with 
-JavaScript and jQuery,
-the colors were gotten from 
-Color Hunt and
-fonts were gotten from 
-Google Fonts. 
-The application is run from the 
-"main.py" file.
+**FolaDevelops** is my portfolio web application showcasing the projects and features I’ve implemented as a full-stack developer. It demonstrates:  
 
-## How to use the app
-**Step 1**
-Visit the homepage 
-https://foladevelops.onrender.com
-<!-- , you 
-should see a webpage that looks like this: -->
+- Secure authentication (sign-up, login, password reset, email verification).  
+- E-commerce workflows with a responsive design.  
+- Deployment on VPS with Nginx, Gunicorn, PostgreSQL, and SSL.  
+- Email automation for user interactions and transactions. 
+- WhatsApp automation for events. 
 
-<!-- ![Home page](static/images/screenshots/Home.jpg) -->
+👉 **Live Demo:** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
+👉 **Projects:** Included on the live site.  
 
-**Step 2**
-Sign up or login, after signing up or 
-logging in, you should be redirected to 
-your 'Account' page
- <!-- which looks like this:
+---
 
-![Account page](static/images/screenshots/Account.jpg) -->
+# FolaDevelops  
 
-**Step 3**
-Click on the 'Profile Picture' button, 
-then click on 'Add a profile picture' and 
-upload your picture, then your picture 
-should display on your 'Profile Picture'. 
-<!-- page like this:
+A full-stack portfolio web application demonstrating authentication systems, e-commerce functionality, deployment pipelines, and integrated developer projects.  
 
-![Profile picture page](static/images/screenshots/Picture.jpg) -->
+This project serves as a showcase of my backend and frontend engineering skills, as well as my ability to deploy production-ready systems.  
 
-<!-- Done! Now you can navigate back to 
-your 'Account' page. -->
-<!-- 
-**Step 4**
-On your 'Account' page, click on 
-the 'Add comment' button, add 
-your comment and click the 'Submit' 
-button, you should be redirected to 
-your 'Account' page with your comment and 
-the date and time it was made showing up 
-on your dashboard -->
-<!-- , your 'Account' page 
-should look like this:
+---
 
-![Account page with a comment](static/images/screenshots/Comment.jpg) -->
+## 🚀 Features  
 
-<!-- You can add as many comments as you want!  -->
-<!-- Your comment should also show up on 
-the 'Comments' page, which you can 
-navigate to by clicking the 'Menu' button, 
-then clicking the 'Comments' button, the 
-'Comments' page looks like this:
+- **Authentication System**  
+  - Sign-up, login, logout with secure session handling.  
+  - Email verification and password reset via one-time codes.  
+  - Role-based access (admin vs. user).  
 
-![Comments section](static/images/screenshots/Comments.jpg) -->
+- **E-Commerce Module**  
+  - Product listing and order workflow.  
+  - Responsive, user-friendly design.  
+  - Automated confirmation emails for successful orders.  
 
+- **Deployment & Hosting**  
+  - VPS hosting with Nginx, Gunicorn, and PostgreSQL.  
+  - SSL security via Let’s Encrypt.  
+  - Static file handling through Nginx.  
 
+- **Email Automation**  
+  - SMTP integration for account verification, password resets, and order confirmations.  
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Backend:** Python, Flask, SQLAlchemy  
+- **Frontend:** HTML, CSS, JavaScript, Jinja templates  
+- **Database:** PostgreSQL  
+- **Deployment:** VPS (Hostinger), Nginx, Gunicorn, Let’s Encrypt SSL  
+- **Email:** SMTP (custom domain)  
+- **Version Control:** Git, GitHub  
+
+---
+
+## 📂 Project Structure  
+
+    fola-develops/
+    │── main.py             # Flask entry point
+    │── entities.py         # Database entities
+    │── forms.py            # WTForms
+    │── templates/          # Jinja HTML templates
+    │── static/             # CSS, JS, images
+    │── email_templates.py  # Styled email templates
+    │── items_data.py       # E-commerce demo items
+    │── requirements.txt    # Dependencies
+    └── README.md
+
+---
+
+## 🔧 Setup & Installation  
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/folajimiabolade/fola-develops.git
+   cd fola-develops
+
+2. **Create a virtual environment**  
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Linux/Mac
+    venv\Scripts\activate     # On Windows
+
+3. **Install dependencies**  
+    ```bash
+    pip install -r requirements.txt
+
+4. **Set up environment variables** 
+    ```bash
+    export DATABASE-URI=your_postgres_or_sqlite_url
+    export ADMIN-EMAIL=your_primary_email_for_admin_control
+    export EMAIL=your_email_for_smtp
+    export PASSWORD=your_password_for_smtp
+    export CLOUDINARY_URL=your_cloudinary_cloud_storage_url
+    export API-URL=your_green_api_url_for_automated_whatsapp_messages
+    export ID-INSTANCE=your_green_api_id
+    export API-TOKEN-INSTANCE=your_green_api_token
+    export NUMBER=your_green_api_phone_number
+    export FLASK-SECRET-KEY=your_flask_secret_key
+    export VIDEO-URL=your_video_url
+
+4. **Start the app** 
+    ```bash
+    flask run
+
+---
+
+## 🌐 Deployment 
+
+- Configured for VPS hosting with Nginx + Gunicorn.
+
+- SSL certificates via Let’s Encrypt.
+
+- PostgreSQL managed securely with environment variables.
+
+- Static assets served directly through Nginx.
+
+---
+
+## 📬 Contact
+
+- **Portfolio (Live Projects):** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
+- **GitHub:** [github.com/folajimiabolade](https://github.com/folajimiabolade)  
+- **LinkedIn:** [linkedin.com/in/folajimi-abolade-379a01362](https://www.linkedin.com/in/folajimi-abolade-379a01362)  
+- **Email:** folajimiabolade@gmail.com 
+
+💡 *Feel free to reach out for collaborations, opportunities, or just to connect.*
