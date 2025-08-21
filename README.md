@@ -1,23 +1,12 @@
-## 🌟 At a Glance  
-
-**FolaDevelops** is my portfolio web application showcasing the projects and features I’ve implemented as a full-stack developer. It demonstrates:  
-
-- Secure authentication (sign-up, login, password reset, email verification).  
-- E-commerce workflows with a responsive design.  
-- Deployment on VPS with Nginx, Gunicorn, PostgreSQL, and SSL.  
-- Email automation for user interactions and transactions. 
-- WhatsApp automation for events. 
-
-👉 **Live Demo:** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
-👉 **Projects:** Included on the live site.  
-
----
-
 # FolaDevelops  
 
 A full-stack portfolio web application demonstrating authentication systems, e-commerce functionality, deployment pipelines, and integrated developer projects.  
 
 This project serves as a showcase of my backend and frontend engineering skills, as well as my ability to deploy production-ready systems.  
+
+
+🔗 **Live Demo:** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
+📄 **CV:** [Download Resume](./static/documents/Folajimi-Abolade-FullStack-Web-Engineer-CV.pdf)
 
 ---
 
