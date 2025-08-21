@@ -5,8 +5,7 @@ A full-stack portfolio web application demonstrating authentication systems, e-c
 This project serves as a showcase of my backend and frontend engineering skills, as well as my ability to deploy production-ready systems.  
 
 
-🔗 **Live Demo:** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
-📄 **CV:** [Download Resume](./static/documents/Folajimi-Abolade-FullStack-Web-Engineer-CV.pdf)
+🔗 **Live Demo:** [foladevelops.onrender.com](https://foladevelops.onrender.com)
 
 ---
 
