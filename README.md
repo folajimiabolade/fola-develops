@@ -46,7 +46,7 @@ This project serves as a showcase of my backend and frontend engineering skills,
 ## 📂 Project Structure  
 
     fola-develops/
-    │── main.py             # Flask entry point
+    │── main.py             # Flask app entry point
     │── entities.py         # Database entities
     │── forms.py            # WTForms
     │── templates/          # Jinja HTML templates
