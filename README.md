@@ -42,6 +42,18 @@ This project serves as a showcase of my backend and frontend engineering skills,
 
 ---
 
+
+
+## 🖥️ Preview
+### 🔑 Login Page
+![Login Page](static/images/demo/login-webpage.png) 
+### 🛍️ Product Listing
+![Product Listing](static/images/demo/store-page.png) 
+### ✅ Automated Order Confirmation Email
+![Order Successful](static/images/demo/email-template.png) 
+
+---
+
 ## 📂 Project Structure  
 
     fola-develops/
