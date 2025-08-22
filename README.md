@@ -124,6 +124,7 @@ This project serves as a showcase of my backend and frontend engineering skills,
 
 - **Portfolio (Live Projects):** [foladevelops.onrender.com](https://foladevelops.onrender.com)  
 - **GitHub:** [github.com/folajimiabolade](https://github.com/folajimiabolade)  
+- **X:** [x.com/onlyonefola](https://x.com/onlyonefola)  
 - **LinkedIn:** [linkedin.com/in/folajimi-abolade-379a01362](https://www.linkedin.com/in/folajimi-abolade-379a01362)  
 - **Email:** folajimiabolade@gmail.com 
 
