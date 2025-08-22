@@ -588,7 +588,7 @@ p, a {
     div.login-form {
         padding: 2.1vh 3.5vw;
         border: 1px solid #757575;
-        border-radius: 0.5vw;
+        border-radius: 2vw;
     }
 
     p.login-label {
@@ -2626,7 +2626,7 @@ p, a {
     div.login-form {
         padding: 2.1vh 3.5vw;
         border: 1px solid #757575;
-        border-radius: 0.5vw;
+        border-radius: 2vw;
     }
 
     p.login-label {
