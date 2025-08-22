@@ -46,11 +46,15 @@ This project serves as a showcase of my backend and frontend engineering skills,
 
 ## 🖥️ Preview
 ### 🔑 Login Page
-![Login Page](static/images/demo/login-webpage.png) 
+<img src="static/images/demo/login-webpage.png" alt="Login Page" width="400" style="border-radius:28px;"> 
+<br><br>
+
 ### 🛍️ Product Listing
-![Product Listing](static/images/demo/store-page.png) 
+<img src="static/images/demo/store-page.png" alt="Product Listing" width="400" style="border-radius:28px;"> 
+<br><br>
+
 ### ✅ Automated Order Confirmation Email
-![Order Successful](static/images/demo/email-template.png) 
+<img src="static/images/demo/email-template.png" alt="Order Successful" width="400" style="border-radius:28px;"> 
 
 ---
 
