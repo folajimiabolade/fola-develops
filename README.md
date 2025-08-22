@@ -114,3 +114,19 @@ This project serves as a showcase of my backend and frontend engineering skills,
 - **Email:** folajimiabolade@gmail.com 
 
 💡 *Feel free to reach out for collaborations, opportunities, or just to connect.*
+
+---
+
+### 📊 GitHub Stats
+
+<!-- General GitHub stats -->
+![Folaarr's GitHub Stats](https://github-readme-stats.vercel.app/api?username=folaarr&show_icons=true&theme=react)
+
+<!-- Top languages -->
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=folaarr&layout=compact&theme=react)
+
+<!-- Contribution graph -->
+![Folaarr's GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=folaarr&theme=react-dark)
+
+<!-- Streak stats -->
+![GitHub Streak](https://streak-stats.demolab.com/?user=folaarr&theme=react&hide_border=true)
