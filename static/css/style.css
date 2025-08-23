@@ -2185,10 +2185,17 @@ p, a {
         font-size: 4vw;
     }
 
-    h2.store-heading {
+    h2.store-welcome {
         margin-top: 8vw;
+        margin-bottom: 4vw;
         text-align: center;
         font-size: 3.75vw;
+    }
+
+    h3.store-heading {
+        margin-bottom: 4vw;
+        text-align: center;
+        font-size: 3.25vw;
     }
 
     div.demo-prompt {
@@ -4197,10 +4204,17 @@ p, a {
         font-size: 2vw;
     }
 
-    h2.store-heading {
+    h2.store-welcome {
         margin-top: 2vw;
+        margin-bottom: 2vw;
         text-align: center;
         font-size: 1.875vw;
+    }
+
+    h3.store-heading {
+        margin-bottom: 2vw;
+        text-align: center;
+        font-size: 1.625vw;
     }
 
     div.demo-prompt {
