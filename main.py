@@ -625,8 +625,8 @@ def add_placeholders():
         picture_number=0
         )
         db.session.add(user)
-        # db.session.add(user_2)
-        # db.session.add(user_3)
+        db.session.add(user_2)
+        db.session.add(user_3)
         db.session.commit()
         # Add store items
         for thing in things:
@@ -638,8 +638,8 @@ def add_placeholders():
             description=thing["description"],
             user_id=thing["user_id"]
             )
-            # db.session.add(item)
-            # db.session.commit()
+            db.session.add(item)
+            db.session.commit()
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
