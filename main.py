@@ -36,7 +36,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email_templates import verify_one, verify_two, reset_one, reset_two, email_brand, before_greeting, before_datetime, after_datetime, before_number, before_image, before_name, before_quantity, before_price, after_price, before_total, after_total
 from functools import wraps
-from items_data import things
+from items_data import thingsZ
 
 
 load_dotenv()
