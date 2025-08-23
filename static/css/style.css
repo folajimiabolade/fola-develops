@@ -2191,6 +2191,19 @@ p, a {
         font-size: 3.75vw;
     }
 
+    div.demo-prompt {
+        width: 86vw;
+        /* height: 27vw; */
+        border-radius: 2.5vw;
+        border: 0.2vw solid #E7F2E4;
+        margin-top: 12vw;
+        background: rgba(43, 48, 54, 0.3);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        font-size: 3.2vw;
+        padding: 3.5vw;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -4189,5 +4202,19 @@ p, a {
         text-align: center;
         font-size: 1.875vw;
     }
+
+    div.demo-prompt {
+        width: 92vw;
+        /* height: 27vw; */
+        border-radius: 1.25vw;
+        border: 0.1vw solid #E7F2E4;
+        margin-top: 6vw;
+        background: rgba(43, 48, 54, 0.3);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        font-size: 1.65vw;
+        padding: 2vw;
+    }
+
 
 }
