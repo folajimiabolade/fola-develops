@@ -607,7 +607,7 @@ def add_placeholders():
         first_name="User",
         last_name="Account",
         email="view@foladevelops.onrender.com",
-        password="pbkdf2:sha256:1000000$XNHlSP0e$a5533993a0ca68a502d1cc56ecb9b46f1300c95bb0b5ad311a965e7b6d70336c",
+        password="pbkdf2:sha256:1000000$STNIsWCs$ba157c62d3a12e324789fe094dbd42a6589832f8a1909b9e4f4beb3ccbd0f359",
         picture_number=0
         )
         user_2 = User(
@@ -625,8 +625,8 @@ def add_placeholders():
         picture_number=0
         )
         db.session.add(user)
-        db.session.add(user_2)
-        db.session.add(user_3)
+        # db.session.add(user_2)
+        # db.session.add(user_3)
         db.session.commit()
         # Add store items
         for thing in things:
@@ -638,8 +638,8 @@ def add_placeholders():
             description=thing["description"],
             user_id=thing["user_id"]
             )
-            db.session.add(item)
-            db.session.commit()
+            # db.session.add(item)
+            # db.session.commit()
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
