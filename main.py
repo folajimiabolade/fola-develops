@@ -37,6 +37,7 @@ from email.mime.text import MIMEText
 from email_templates import verify_one, verify_two, reset_one, reset_two, email_brand, before_greeting, before_datetime, after_datetime, before_number, before_image, before_name, before_quantity, before_price, after_price, before_total, after_total
 from functools import wraps
 from items_data import things
+from flask_cors import CORS
 
 
 load_dotenv()
@@ -52,6 +53,8 @@ db.init_app(app)
 app.config["UPLOAD_FOLDER"] = "static/images/uploads"
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
 # app.config["MAX_CONTENT_LENGTH"] = 8 * 1000 * 1000
+
+CORS(app)
 
 url = os.environ.get("API-URL")
 i_d_ = os.environ.get("ID-INSTANCE")

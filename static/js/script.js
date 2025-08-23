@@ -256,39 +256,39 @@ $("input.upload-photo").change(function () {
 });
 
 
-// Load store
-document.addEventListener("DOMContentLoaded", () => {
-    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+// // Load store
+// document.addEventListener("DOMContentLoaded", () => {
+//     const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
 
-    if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
-        fetch("/load-store/api")
-        .then(response => response.json())
-        .then(function(data)  {
-            document.querySelector("p.item-count").textContent = data["cart_length"];
-            document.querySelectorAll("a.item-button").forEach(function(item) {
-                const itemId = Number(item.getAttribute("data-item-id"));
-                $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
-                const currentUserId = Number(item.getAttribute("data-current-user-id"));
-                data["product_ids"].forEach(content => {
-                    const buyerId = data["buyer_ids"][data["product_ids"].indexOf(itemId)]
-                    if (buyerId === currentUserId) {
-                        var quantity = 0;
-                        data["items_ids"].forEach(item => {
-                            if (item === itemId) {
-                                quantity++;
-                            }
-                        })
-                        $("div.item-button[data-item-id='" + itemId + "']").addClass("hidden");
-                        $("p.item-quantity[data-item-id='" + itemId + "']").text(quantity + " item(s) selected");
-                        $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
-                    } else {
-                        $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
-                    }
-                })
-            });
-        });
-    }
-})
+//     if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
+//         fetch("/load-store/api")
+//         .then(response => response.json())
+//         .then(function(data)  {
+//             document.querySelector("p.item-count").textContent = data["cart_length"];
+//             document.querySelectorAll("a.item-button").forEach(function(item) {
+//                 const itemId = Number(item.getAttribute("data-item-id"));
+//                 $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+//                 const currentUserId = Number(item.getAttribute("data-current-user-id"));
+//                 data["product_ids"].forEach(content => {
+//                     const buyerId = data["buyer_ids"][data["product_ids"].indexOf(itemId)]
+//                     if (buyerId === currentUserId) {
+//                         var quantity = 0;
+//                         data["items_ids"].forEach(item => {
+//                             if (item === itemId) {
+//                                 quantity++;
+//                             }
+//                         })
+//                         $("div.item-button[data-item-id='" + itemId + "']").addClass("hidden");
+//                         $("p.item-quantity[data-item-id='" + itemId + "']").text(quantity + " item(s) selected");
+//                         $("div.quantity-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+//                     } else {
+//                         $("div.item-button[data-item-id='" + itemId + "']").removeClass("hidden");
+//                     }
+//                 })
+//             });
+//         });
+//     }
+// })
 
 
 // add-to-cart
