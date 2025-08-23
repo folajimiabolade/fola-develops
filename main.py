@@ -604,28 +604,28 @@ def add_placeholders():
     with app.app_context():
     # Add users
         user = User(
-        first_name="Jimi",
-        last_name="Abolade",
-        email="folajimiabolade@gmail.com",
-        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
-        picture_number=0
-        )
-        user_2 = User(
-        first_name="Eniola",
-        last_name="Abolade",
-        email="i.eniolaabolade@gmail.com",
-        password="pbkdf2:sha256:1000000$Djjxf1OZ$156ac5333ad3abdd78e0ae3e962c30ffa1e7d247843ceeeff6e908294474a00a",
-        picture_number=0
-        )
-        user_3 = User(
         first_name="User",
         last_name="Account",
         email="view@foladevelops.onrender.com",
         password="pbkdf2:sha256:1000000$XNHlSP0e$a5533993a0ca68a502d1cc56ecb9b46f1300c95bb0b5ad311a965e7b6d70336c",
         picture_number=0
         )
-        # db.session.add(user)
-        # db.session.add(user_2)
+        user_2 = User(
+        first_name="Jimi",
+        last_name="Abolade",
+        email="folajimiabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$LnEVrUJt$924cc433408925189620f4254f00e2001b7911f38440d75bbb6735135498c2e4",
+        picture_number=0
+        )
+        user_3 = User(
+        first_name="Eniola",
+        last_name="Abolade",
+        email="i.eniolaabolade@gmail.com",
+        password="pbkdf2:sha256:1000000$ELa3VoLQ$d40360f04e6f5f5d20145a4eb1dd3747b1881988e7766d9129c16bed2f3742fe",
+        picture_number=0
+        )
+        db.session.add(user)
+        db.session.add(user_2)
         db.session.add(user_3)
         db.session.commit()
         # Add store items
@@ -638,8 +638,8 @@ def add_placeholders():
             description=thing["description"],
             user_id=thing["user_id"]
             )
-            # db.session.add(item)
-            # db.session.commit()
+            db.session.add(item)
+            db.session.commit()
     return "<h2>All placeholders have been added successfully!</h2>"
 
 
