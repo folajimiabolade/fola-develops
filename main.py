@@ -71,6 +71,8 @@ login_manager.login_view = "login"
 
 admin_email = os.environ.get("ADMIN-EMAIL")
 
+admin_emails = [admin_email, "view@foladevelops.onrender.com"]
+
 with app.app_context():
     db.create_all()
 
@@ -84,7 +86,7 @@ def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         # If the current user is not the admin then return abort with a 403 error
-        if current_user.email != admin_email:
+        if current_user.email not in admin_emails:
             return abort(403)
         # Otherwise continue with the route function
         return f(*args, **kwargs)
