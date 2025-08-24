@@ -47,7 +47,7 @@ class LoginForm(FlaskForm):
         render_kw={"class": "field login-password", "placeholder": ""}
     )
     next = HiddenField()
-    button = SubmitField(label="Login", render_kw={"class": "text button login-button"})
+    button = SubmitField(label="Log In", render_kw={"class": "text button login-button"})
 
 
 class TestimonyForm(FlaskForm):
