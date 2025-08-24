@@ -62,11 +62,11 @@
                                 <a class="text nav-link portrait-only" type="button" href="{{ url_for('settings') }}">Settings</a>
                                 {% if current_user.email == admin_email %}
                                     <a class="text nav-link portrait-only" type="button" href="{{ url_for('admin') }}">Review Testimonies</a>
-                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('add_item') }}">Add Item</a>
+                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('add_item') }}">Add Item To Store</a>
                                 {% endif %}
 
                                 {% if current_user.email == "view@foladevelops.onrender.com" %}
-                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('add_item') }}">Add Item</a>
+                                    <a class="text nav-link portrait-only" type="button" href="{{ url_for('add_item') }}">Add Item To Store</a>
                                 {% endif %}
 
                                 <a type="button" class="logout text nav-link" href="{{ url_for('logout') }}">Logout</a>
