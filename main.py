@@ -37,6 +37,7 @@ from email.mime.text import MIMEText
 from email_templates import verify_one, verify_two, reset_one, reset_two, email_brand, before_greeting, before_datetime, after_datetime, before_number, before_image, before_name, before_quantity, before_price, after_price, before_total, after_total
 from functools import wraps
 from items_data import things
+from flask_cors import CORS
 
 
 load_dotenv()
@@ -72,6 +73,8 @@ login_manager.login_view = "login"
 admin_email = os.environ.get("ADMIN-EMAIL")
 
 admin_emails = [admin_email, "view@foladevelops.onrender.com"]
+
+CORS(app)
 
 with app.app_context():
     db.create_all()
@@ -942,9 +945,8 @@ def orders():
     )
     return render_template("orders.html", order_points=order_points, page_name="orders")
 
+
 @app.route("/order/<order_point>")
-
-
 def order(order_point):
     order_instance = datetime.fromisoformat(order_point)
     orders = db.session.query(Order).filter(Order.datetime == order_instance).all()
@@ -968,6 +970,11 @@ def order(order_point):
         page_name="order", 
         order_point=order_instance
         )
+
+
+@app.route("/ai")
+def ai():
+    return render_template("ai.html")
 
 
 if __name__ == "__main__":
