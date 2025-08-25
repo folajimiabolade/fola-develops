@@ -2211,6 +2211,19 @@ p, a {
         padding: 3.5vw;
     }
 
+    div.chatbot-holder {
+        /* display: flex;
+        flex-direction: column;
+        align-items: center; */
+    }
+
+    textarea.message-box {
+        position: fixed;
+        bottom: 30vw;
+        margin-left: 27.5vw;
+        margin-right: 27.5vw;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -4228,6 +4241,10 @@ p, a {
         -webkit-backdrop-filter: blur(8px);
         font-size: 1.65vw;
         padding: 2vw;
+    }
+
+    textarea.message-box {
+        
     }
 
 

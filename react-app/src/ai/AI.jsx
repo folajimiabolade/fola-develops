@@ -1,10 +1,10 @@
 import React from "react";
+import MessageBox from "./MessageBox";
 
 function AI() {
-    console.log("App component rendered!");
     return (
-        <div>
-            <h1 className="text">Artificial smartness</h1>
+        <div class="chatbot-holder">
+            <MessageBox />
         </div>
     );
 }
