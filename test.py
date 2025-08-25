@@ -111,21 +111,100 @@
 
 
 from flask import Flask, render_template
-from flask_cors import CORS
+# from flask_cors import CORS
+import os
+from openai import OpenAI
+from dotenv import load_dotenv
+import markdown2
+from bs4 import BeautifulSoup
+
+load_dotenv()
+
+gemini_key = os.environ.get("GEMINI_API_KEY")
+
+import requests
+import json
+
+url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+
+headers = {
+    "Content-Type": "application/json",
+    "X-goog-api-key": gemini_key
+}
+
+data = {
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "What does OluwaFolajimi mean in english"
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": '"OluwaFolajimi" is a Yoruba name (a language spoken in Nigeria). Here\'s a breakdown of its meaning:\n\n*   **Oluwa:** God, Lord\n*   **Folajimi:** Crown is given to me\n\nTherefore, **OluwaFolajimi** roughly translates to:\n\n*   **God gave me a crown**\n*   **God has given me honor/glory**\n*   **God bestowed a crown upon me**\n\nIt\'s a name expressing gratitude to God for a gift or blessing, symbolized by a crown.\n'
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Great. Can you use it in a sentence?"
+                }
+            ]
+        }
+    ]
+}
+
+# response = requests.post(url, headers=headers, data=json.dumps(data))
+
+# print(response.json())
+
+print({'candidates': [{'content': {'parts': [{'text': 'Here are a few sentences using the name OluwaFolajimi:\n\n*   OluwaFolajimi\'s parents chose the name as a testament to their faith and gratitude for his safe arrival.\n*   We celebrate OluwaFolajimi\'s achievements, knowing they are a reflection of the blessings inherent in his name.\n*   OluwaFolajimi carries his name with pride, understanding its meaning as "God has given me a crown."\n'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.27636760912443464}], 'usageMetadata': {'promptTokenCount': 139, 'candidatesTokenCount': 95, 'totalTokenCount': 234, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 139}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 95}]}, 'modelVersion': 'gemini-2.0-flash', 'responseId': 'LVqsaOv_NbDikdUP7v_a2Qg'}["candidates"][0]["content"]["parts"][0]["text"])
 
 
+# md_text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
 
-app = Flask(__name__)
+mdown_text = 'Here are a few sentences using the name OluwaFolajimi:\n\n*   OluwaFolajimi\'s parents chose the name as a testament to their faith and gratitude for his safe arrival.\n*   We celebrate OluwaFolajimi\'s achievements, knowing they are a reflection of the blessings inherent in his name.\n*   OluwaFolajimi carries his name with pride, understanding its meaning as "God has given me a crown."\n'
 
-CORS(app)
+# html_output = markdown2.markdown(md_text)
 
-@app.route("/")
-def test():
-    return render_template("test.html")
+# print(html_output)
+
+# Parse with BeautifulSoup
+# soup = BeautifulSoup(html_output, "html.parser")
+
+# # Example: add a class to <strong> tags
+# for strong_tag in soup.find_all("strong"):
+#     strong_tag["style"] = "color: red;"
+
+# # Example: add an id to the first <li>
+# first_li = soup.find("li")
+# if first_li:
+#     first_li["style"] = "color: blue;"
+    
+# for p_tag in soup.find_all("p"):
+#     p_tag["style"] = "color: green;"
+
+# html = soup.prettify()
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# app = Flask(__name__)
+
+# CORS(app)
+
+# @app.route("/")
+# def test():
+#     return html
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
 
 
