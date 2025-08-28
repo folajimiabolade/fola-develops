@@ -37,7 +37,7 @@ from email.mime.text import MIMEText
 from email_templates import verify_one, verify_two, reset_one, reset_two, email_brand, before_greeting, before_datetime, after_datetime, before_number, before_image, before_name, before_quantity, before_price, after_price, before_total, after_total
 from functools import wraps
 from items_data import things
-from flask_cors import CORS
+# from flask_cors import CORS
 
 
 load_dotenv()
@@ -74,7 +74,7 @@ admin_email = os.environ.get("ADMIN-EMAIL")
 
 admin_emails = [admin_email, "view@foladevelops.onrender.com"]
 
-CORS(app)
+# CORS(app)
 
 with app.app_context():
     db.create_all()
