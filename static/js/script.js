@@ -209,9 +209,9 @@ $("div.portfolio").click(() => {
 $("div.blog").click(() => {
     $("div.blog-designs").toggleClass("hidden");
     if ($("div.blog-designs").hasClass("hidden")) {
-        $("div.blog").html('<p class="text design-type"><b>▲ 3. 🛒 E-commerce Platform (Demo)</b></p>');
+        $("div.blog").html('<p class="text design-type"><b>▲ 3. 🛒 E-commerce Platform</b></p>');
     } else {
-        $("div.blog").html('<p class="text design-type"><b>▼ 3. 🛒 E-commerce Platform (Demo)</b></p>');
+        $("div.blog").html('<p class="text design-type"><b>▼ 3. 🛒 E-commerce Platform</b></p>');
     }
 });
 $("div.personal").click(() => {

@@ -3,6 +3,11 @@
 {% block user_title %}A.I. Powered Assistant{% endblock %}
 
 {% block user_head %}
+    <style>
+        div.user-page::before {
+            background-image: url({{ url_for('static', filename='images/keyboard.jpg') }});
+        }
+    </style>
     <script src="http://localhost:3000/static/js/bundle.js" defer></script>
 {% endblock %}
 
