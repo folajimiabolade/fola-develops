@@ -2219,9 +2219,13 @@ p, a {
 
     textarea.message-box {
         position: fixed;
-        bottom: 30vw;
-        margin-left: 27.5vw;
-        margin-right: 27.5vw;
+        bottom: 15vw;
+        width: 80vw;
+        height: 25vw;
+        margin-left: 6.95vw;
+        margin-right: 6.95vw;
+        border-radius: 9999px;
+        border: 0.55vw solid #E7F2E4;
     }
 
 }
