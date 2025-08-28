@@ -17,6 +17,7 @@
             {{ form.csrf_token }}
             {{ form.picture() }}<br>
             {{ form.button() }}
+        </form>
             <!--  Flashed Messages  -->
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -26,6 +27,5 @@
                 {% endif %}
             {% endwith %}
             <!--  End of Flashed Messages  -->
-        </form>
     </div>
 {% endblock %}

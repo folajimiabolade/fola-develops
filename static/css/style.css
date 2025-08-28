@@ -1100,7 +1100,7 @@ p, a {
 
     form.upload-form {
         /* margin-left: 3.5vw; */
-        margin-bottom: 50vh;
+        margin-bottom: 4vw;
     }
 
     input.upload-picture {
@@ -1129,6 +1129,7 @@ p, a {
         color: #FF90BB;
         margin-top: 0;
         font-size: 2.6vw;
+        text-align: center;
     }
 
     img.profile-picture {
@@ -3145,6 +3146,7 @@ p, a {
 
     form.upload-form {
         /* margin-left: 2vw; */
+        margin-bottom: 1.6vw;
     }
 
     input.upload-picture {
@@ -3173,7 +3175,8 @@ p, a {
     p.upload-flash {
         color: #FF90BB;
         margin-top: 0;
-        font-size: 1.3vw;;
+        font-size: 1.3vw;
+        text-align: center;
     }
 
     img.profile-picture {
