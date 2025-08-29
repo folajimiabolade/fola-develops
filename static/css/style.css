@@ -4324,14 +4324,14 @@ p, a {
     }
 
     textarea.message-box {
-        padding: 1vw 2vw;
-        width: 40vw;
-        height: 2vw;
+        padding: 1vw 2.5vw;
+        width: 37.1vw;
+        height: 3.25vw;
         margin: 0;
         margin-left: 2vw;
         /* margin-right: 6.95vw; #89918c;*/
         border-radius: 9999px;
-        border: 0.1vw solid #E7F2E4;
+        border: 0.15vw solid #E7F2E4;
         background: rgba(5, 4, 3, 0.3);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
@@ -4345,15 +4345,15 @@ p, a {
     button.send-button {
         border: none;
         border-radius: 50%;
-        width: 4.1vw;
-        height: 4.1vw;
-        margin: 0.2vw;
+        width: 5.55vw;
+        height: 5.55vw;
+        margin: 0.275vw;
         margin-right: 2.1vw;
     }
 
     svg.send-svg {
-        width: 1.5vw;
-        height: 1.5vw;
+        width: 2.25vw;
+        height: 2.25vw;
     }
 
     div.user-message {
@@ -4369,22 +4369,22 @@ p, a {
     }
 
     p.user-message {
-        font-size: 1vw;
+        font-size: 1.6vw;
         margin: 0;
-        line-height: 1.4vw;
+        line-height: 2.15vw;
     }
 
     div.assistant-message {
-        margin: 1vw;
+        margin: 3vw;
         margin-left: 17vw;
         width: 45vw;
         margin-right: 15vw;
     }
 
     p.assistant-message {
-        font-size: 1vw;
+        font-size: 1.6vw;
         margin: 0;
-        line-height: 1.4vw;
+        line-height: 2.15vw;
     }
 
 
