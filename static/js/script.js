@@ -103,24 +103,20 @@ $(document).ready(function () {
 
 
 // Show navigation bar only when scrolling up if the page is not a user page
-if (this.document.querySelector("div.user-page")) { // if it is a user page
-    $("div.navigation-container").css("position", "static")
-    $("div.navigation-container").css("top", "auto")
-} else { // if it not is a user page
-    var currentScroll = window.scrollY || document.documentElement.scrollTop;
-    window.addEventListener("scroll", function () {
-        var lastScroll = currentScroll;
-        currentScroll = window.scrollY || document.documentElement.scrollTop;
-        if (currentScroll < 0) { // Default all negative values to 0. 
-            currentScroll = 0;
-        }
-        if (currentScroll > lastScroll) {
-            $("div.navigation-container").slideUp(333);
-        } else if (currentScroll < lastScroll) {
-            $("div.navigation-container").slideDown(333);
-        }
-    })
-}
+var currentScroll = window.scrollY || document.documentElement.scrollTop;
+window.addEventListener("scroll", function () {
+    var lastScroll = currentScroll;
+    currentScroll = window.scrollY || document.documentElement.scrollTop;
+    if (currentScroll < 0) { // Default all negative values to 0. 
+        currentScroll = 0;
+    }
+    if (currentScroll > lastScroll) {
+        $("div.navigation-container").slideUp(333);
+    } else if (currentScroll < lastScroll) {
+        $("div.navigation-container").slideDown(333);
+    }
+})
+
 
 ////        Transparent navbar effect
 //        if (currentScroll === 0) {

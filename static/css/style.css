@@ -2355,6 +2355,7 @@ p, a {
         justify-content: space-between;
         gap: 36vw;
         height: auto;
+        z-index: 2;
     }
 
     a.brand {
@@ -2838,6 +2839,7 @@ p, a {
         display: flex;
         flex-direction: column;
         z-index: 1;
+        padding-top: 6vw;
     } 
 
     a.user-link {
