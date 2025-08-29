@@ -2245,8 +2245,8 @@ p, a {
     button.send-button {
         border: none;
         border-radius: 50%;
-        width: 11.1vw;
-        height: 11.1vw;
+        width: 10.5vw;
+        height: 10.5vw;
         margin: 0.55vw;
         margin-right: 7.5vw;
     }
@@ -4345,8 +4345,8 @@ p, a {
     button.send-button {
         border: none;
         border-radius: 50%;
-        width: 5.55vw;
-        height: 5.55vw;
+        width: 5.25vw;
+        height: 5.25vw;
         margin: 0.275vw;
         margin-right: 2.1vw;
     }
