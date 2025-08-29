@@ -119,6 +119,8 @@ if (this.document.querySelector("div.user-page")) { // if it is a user page
         } else if (currentScroll < lastScroll) {
             $("div.navigation-container").slideDown(333);
         }
+    })
+}
 
 ////        Transparent navbar effect
 //        if (currentScroll === 0) {
@@ -128,8 +130,6 @@ if (this.document.querySelector("div.user-page")) { // if it is a user page
 //        } else {
 //            $("div.navigation-container").css("background", "#2b3035");
 //        }
-    })
-}
 
 
 // // Convert text version to title case
