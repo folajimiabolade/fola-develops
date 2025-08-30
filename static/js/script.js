@@ -102,7 +102,7 @@ $(document).ready(function () {
 
 
 
-// Show navigation bar only when scrolling up if the page is not a user page
+// Show navigation bar only when scrolling up
 var currentScroll = window.scrollY || document.documentElement.scrollTop;
 window.addEventListener("scroll", function () {
     var lastScroll = currentScroll;
@@ -115,7 +115,7 @@ window.addEventListener("scroll", function () {
     } else if (currentScroll < lastScroll) {
         $("div.navigation-container").slideDown(333);
     }
-})
+});
 
 
 ////        Transparent navbar effect
@@ -442,79 +442,100 @@ document.querySelectorAll("a.delete-item").forEach(item => {
 });
 
 
-// Reduce count on 'Item' page
-document.querySelector("a.reduce-count").addEventListener("click", function(event) {
-    event.preventDefault();
-    const itemId = Number(document.querySelector("a.reduce-count").getAttribute("data-item-id"));
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch("/reduce-quantity/api", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": token
-        },
-        body: JSON.stringify({
-            "item_id": itemId
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-            if (data["quantity"] === 0) {
-                $("div.count-buttons[data-item-id='" + itemId + "']").addClass("hidden");
-                $("a.add-item[data-item-id='" + itemId + "']").removeClass("hidden");
-            } else{
-                $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
-            }
-            document.querySelector("p.item-count").textContent = data["cart_length"];
-    });
-})
 
 
-// Increase count on 'Item' page
-document.querySelector("a.increase-count").addEventListener("click", function(event) {
-    event.preventDefault()
-    const itemId = Number(document.querySelector("a.increase-count").getAttribute("data-item-id"));
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch("/increase-quantity/api", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": token
-        },
-        body: JSON.stringify({
-            "item_id": itemId
+document.addEventListener("DOMContentLoaded", () => {
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
+        // Reduce count on 'Item' page
+        document.querySelector("a.reduce-count").addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = Number(document.querySelector("a.reduce-count").getAttribute("data-item-id"));
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch("/reduce-quantity/api", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": token
+                },
+                body: JSON.stringify({
+                    "item_id": itemId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                    if (data["quantity"] === 0) {
+                        $("div.count-buttons[data-item-id='" + itemId + "']").addClass("hidden");
+                        $("a.add-item[data-item-id='" + itemId + "']").removeClass("hidden");
+                    } else{
+                        $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+                    }
+                    document.querySelector("p.item-count").textContent = data["cart_length"];
+            });
         })
-    })
-    .then(response => response.json())
-    .then(function(data)  {
-        $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
-        document.querySelector("p.item-count").textContent = data["cart_length"];
-    })
+    }
 });
 
 
-// Add to cart from 'Item' page
-document.querySelector("a.add-item").addEventListener("click", function(event) {
-    event.preventDefault()
-    const itemId = Number(document.querySelector("a.add-item").getAttribute("data-item-id"));
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch("/add-to-trolley/api", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": token
-        },
-        body: JSON.stringify({
-            "item_id": itemId
-        })
-    })
-    .then(response => response.json())
-    .then(function(data)  {
-        $("a.add-item[data-item-id='" + itemId + "']").addClass("hidden");
-        $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
-        $("div.count-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
-        document.querySelector("p.item-count").textContent = data["cart_length"];
-    })
+document.addEventListener("DOMContentLoaded", () => {
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
+        // Increase count on 'Item' page
+        document.querySelector("a.increase-count").addEventListener("click", function(event) {
+            event.preventDefault()
+            const itemId = Number(document.querySelector("a.increase-count").getAttribute("data-item-id"));
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch("/increase-quantity/api", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": token
+                },
+                body: JSON.stringify({
+                    "item_id": itemId
+                })
+            })
+            .then(response => response.json())
+            .then(function(data)  {
+                $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+                document.querySelector("p.item-count").textContent = data["cart_length"];
+            })
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const pageName = document.querySelector('meta[name="page-name"]').getAttribute("content");
+
+    if (pageName === "store" || "cart" || "item" || "checkout" || "orders" || "order") {
+        
+        // Add to cart from 'Item' page
+        document.querySelector("a.add-item").addEventListener("click", function(event) {
+            event.preventDefault()
+            const itemId = Number(document.querySelector("a.add-item").getAttribute("data-item-id"));
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch("/add-to-trolley/api", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": token
+                },
+                body: JSON.stringify({
+                    "item_id": itemId
+                })
+            })
+            .then(response => response.json())
+            .then(function(data)  {
+                $("a.add-item[data-item-id='" + itemId + "']").addClass("hidden");
+                $("p.item-size[data-item-id='" + itemId + "']").text(data["quantity"]);
+                $("div.count-buttons[data-item-id='" + itemId + "']").removeClass("hidden");
+                document.querySelector("p.item-count").textContent = data["cart_length"];
+            })
+        });
+    }
 });
 
 
@@ -529,6 +550,28 @@ function togglePassword(buttonClass, inputClass) {
         $("button." + buttonClass).html(eye);  // change back to "show"
     }
 }
+
+
+// Open the A.I. menu bar on click (portrait mode only)
+document.querySelector("button.ai-menu").addEventListener("click", function() {
+    console.log("Jimi");
+    const menu = document.querySelector("div.ai-menu");
+    menu.classList.remove("slide-left");
+    menu.classList.add("slide-right");
+    menu.style.left = 0;
+});
+
+
+// Close the A.I. menu bar on click (portrait mode only)
+document.querySelector("button.close-ai").addEventListener("click", function() {
+    const menu = document.querySelector("div.ai-menu");
+    menu.classList.remove("slide-right");
+    menu.classList.add("slide-left");
+    setTimeout(() => {
+        menu.style.left = "-66vw";
+    }, 60);
+});
+
 
 // // Get data from the database by fetching data from the Flask server
 //$(".betan").click(function () {
