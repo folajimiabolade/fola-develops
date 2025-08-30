@@ -189,13 +189,13 @@ p, a {
         flex-direction: column;
         height: auto;
         /* padding-right: ; */
-        z-index: 1;
+        z-index: 2;
     }
 
     a.brand {
         flex: 1;
         display: flex;
-        padding: 1.5vh 0vh;
+        padding: 2.6vw 0vh;
     }
 
     svg.logo {
@@ -2211,9 +2211,9 @@ p, a {
         padding: 3.5vw;
     }
 
-    div.ai-holder {
+    /* div.ai-holder {
         margin-top: 20vw;
-    }
+    } */
 
     div.message {
         width: 100vw;
@@ -2221,6 +2221,7 @@ p, a {
         bottom: 18vw;
         display: flex;
         justify-content: space-between;
+        z-index: 0;
     }
 
     textarea.message-box {
@@ -2256,6 +2257,10 @@ p, a {
         width: 4.5vw;
         height: 4.5vw;
         color: #E7F2E4;
+    }
+
+    div.messages {
+        margin-top: 20vw;
     }
 
     div.user-message {
@@ -2304,6 +2309,83 @@ p, a {
         width: 4.5vw;
         height: 4.5vw;
         color: #E7F2E4;
+    }
+
+    div.ai-menu {
+        background: #2b3035;
+        height: 100vh;
+        z-index: 1;
+        width: 66vw;
+        padding-top: 13vw;
+    }
+
+    div.close-ai {
+        width: 66vw;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4vw;
+    }
+
+    svg.bot {
+        width: 4.5vw;
+        height: 4.5vw;
+        color: #E7F2E4;
+        padding: 1.65vw 3.5vw;
+    }
+
+    button.new-chat {
+        background: transparent;
+        /* padding: 1.65vw 3.5vw; */
+        font-size: 3.2vw;
+        border: none;
+        color: #E7F2E4;
+        display: flex;
+        white-space: pre;
+        height: 7.8vw;
+        align-items: center;
+        margin-left: 2.5vw;
+    }
+
+    svg.new-chat {
+        width: 4.5vw;
+        height: 4.5vw;
+        color: #E7F2E4;
+    }
+
+    button.close-ai {
+        border: none;
+        background: transparent;
+        padding: 1.65vw 3.5vw;
+    }
+
+    svg.close-ai {
+        width: 4.5vw;
+        height: 4.5vw;
+        color: #E7F2E4;
+    }
+
+    div.chats-label {
+        background: transparent;
+        border: none;
+        /* border-top: 0.2vw solid #E7F2E4; */
+        padding: 2vw 3.5vw;
+        width: 59vw;
+        font-size: 2.9vw;
+        color: #89918C;
+        text-align: left;
+        /* margin-top: 4vw; */
+        /* border-top: 0.1vw solid #E7F2E4; */
+    }
+
+    button.old-chat {
+        background: transparent;
+        border: none;
+        /* border-top: 0.2vw solid #E7F2E4; */
+        padding: 2vw 3.5vw;
+        width: 66vw;
+        font-size: 3.2vw;
+        color: #E7F2E4;
+        text-align: left;
     }
 
 }
