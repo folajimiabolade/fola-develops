@@ -554,7 +554,13 @@ function togglePassword(buttonClass, inputClass) {
 
 // Open the A.I. menu bar on click (portrait mode only)
 document.querySelector("button.ai-menu").addEventListener("click", function() {
-    console.log("Jimi");
+    const messageBox = document.querySelector("div.message");
+    messageBox.style.filter = "brightness(0.33)";
+    document.querySelector("div.messages").style.filter = "brightness(0.33)";
+    messageBox.style.zIndex = "1";
+    const textArea = document.querySelector("textarea.message-box")
+    textArea.style.backdropFilter = "blur(6px)";
+    textArea.style.webkitBackdropFilter = "blur(6px)";
     const menu = document.querySelector("div.ai-menu");
     menu.classList.remove("slide-left");
     menu.classList.add("slide-right");
@@ -569,6 +575,13 @@ document.querySelector("button.close-ai").addEventListener("click", function() {
     menu.classList.add("slide-left");
     setTimeout(() => {
         menu.style.left = "-66vw";
+        const messageBox = document.querySelector("div.message");
+        messageBox.style.filter = "brightness(1)";
+        document.querySelector("div.messages").style.filter = "brightness(1)";
+        messageBox.style.zIndex = "1";
+        const textArea = document.querySelector("textarea.message-box")
+        textArea.style.backdropFilter = "blur(6px)";
+        textArea.style.webkitBackdropFilter = "blur(6px)";
     }, 300);
 });
 
