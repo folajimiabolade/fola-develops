@@ -2249,11 +2249,13 @@ p, a {
         height: 10.5vw;
         margin: 0.55vw;
         margin-right: 7.5vw;
+        background: #2b3035;
     }
 
     svg.send-svg {
         width: 4.5vw;
         height: 4.5vw;
+        color: #E7F2E4;
     }
 
     div.user-message {
@@ -2285,6 +2287,23 @@ p, a {
         font-size: 3.2vw;
         margin: 0;
         line-height: 4.3vw;
+    }
+
+    button.ai-menu {
+        border: none;
+        border-radius: 50%;
+        width: 10.5vw;
+        height: 10.5vw;
+        background: #2b3035;
+        position: fixed;
+        top: 20vw;
+        left: 3.5vw;
+    }
+
+    svg.ai-svg {
+        width: 4.5vw;
+        height: 4.5vw;
+        color: #E7F2E4;
     }
 
 }
@@ -4349,11 +4368,13 @@ p, a {
         height: 5.25vw;
         margin: 0.275vw;
         margin-right: 2.1vw;
+        background: #2b3035;
     }
 
     svg.send-svg {
         width: 2.25vw;
         height: 2.25vw;
+        color: #E7F2E4;
     }
 
     div.user-message {
