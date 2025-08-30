@@ -569,7 +569,7 @@ document.querySelector("button.close-ai").addEventListener("click", function() {
     menu.classList.add("slide-left");
     setTimeout(() => {
         menu.style.left = "-66vw";
-    }, 60);
+    }, 300);
 });
 
 
